@@ -1,0 +1,25 @@
+name: Japandi Shibuya Dark Fixed
+accent: '#60A5FA'
+cursor: '#F472B6'
+background: '#0F172A'
+foreground: '#F0F9FF'
+details: darker
+terminal_colors:
+  bright:
+    black: '#64748B'
+    blue: '#93C5FD'
+    cyan: '#67E8F9'
+    green: '#6EE7B7'
+    magenta: '#F9A8D4'
+    red: '#FCA5A5'
+    white: '#FFFFFF'
+    yellow: '#FDE68A'
+  normal:
+    black: '#334155'
+    blue: '#60A5FA'
+    cyan: '#34D399'
+    green: '#10B981'
+    magenta: '#F472B6'
+    red: '#EF4444'
+    white: '#F0F9FF'
+    yellow: '#F59E0B'

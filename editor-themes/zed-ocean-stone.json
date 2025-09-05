@@ -1,0 +1,55 @@
+{
+  "name": "Japandi Ocean Stone",
+  "author": "Japandi Design System",
+  "themes": [
+    {
+      "name": "Japandi Ocean Stone",
+      "appearance": "light",
+      "style": {
+        "background": "#F6F7F8",
+        "foreground": "#475159",
+        "editor.background": "#F6F7F8",
+        "editor.foreground": "#475159",
+        "editor.line_highlight": "#EFF1F2",
+        "editor.selection": "#E5E8EA",
+        "editor.cursor": "#798186",
+        "editor.indent_guide": "#D8DCDF",
+        "editor.line_number": "#B1B8BE",
+        "editor.active_line_number": "#798186",
+        "sidebar.background": "#EFF1F2",
+        "sidebar.foreground": "#5F6B72",
+        "toolbar.background": "#E5E8EA",
+        "tab.active_background": "#F6F7F8",
+        "tab.inactive_background": "#EFF1F2",
+        "status_bar.background": "#798186",
+        "status_bar.foreground": "#F6F7F8"
+      },
+      "syntax": {
+        "comment": {
+          "color": "#B1B8BE",
+          "font_style": "italic"
+        },
+        "keyword": {
+          "color": "#5F6B72",
+          "font_weight": "bold"
+        },
+        "string": {
+          "color": "#798186"
+        },
+        "number": {
+          "color": "#95A0A8"
+        },
+        "function": {
+          "color": "#475159",
+          "font_weight": "bold"
+        },
+        "variable": {
+          "color": "#5F6B72"
+        },
+        "type": {
+          "color": "#798186"
+        }
+      }
+    }
+  ]
+}

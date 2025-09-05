@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japandi Design System - Complete Showcase</title>
+    <style>
+        @font-face {
+            font-family: 'Atkinson Hyperlegible';
+            src: url('file:///Users/bradleyheitmann/Library/Fonts/AtkinsonHyperlegibleNerdFontMono-Regular.ttf') format('truetype');
+            font-weight: 400;
+        }
+        @font-face {
+            font-family: 'Atkinson Hyperlegible';
+            src: url('file:///Users/bradleyheitmann/Library/Fonts/AtkinsonHyperlegibleNerdFontMono-Bold.ttf') format('truetype');
+            font-weight: 700;
+        }
+        
+        :root {
+            /* Cool Sage Palette */
+            --sage-1: #F7F8F6; --sage-2: #F0F2ED; --sage-3: #E8EBE4; --sage-4: #DDE1D8; --sage-5: #D0D5C8;
+            --sage-6: #B8C0AD; --sage-7: #9FAA93; --sage-8: #7A8470; --sage-9: #5C6655; --sage-10: #434B3F;
+            
+            /* Ocean Stone Palette */
+            --ocean-1: #F6F7F8; --ocean-2: #EFF1F2; --ocean-3: #E5E8EA; --ocean-4: #D8DCDF; --ocean-5: #C8CDD2;
+            --ocean-6: #B1B8BE; --ocean-7: #95A0A8; --ocean-8: #798186; --ocean-9: #5F6B72; --ocean-10: #475159;
+            
+            /* Nordic Tech Palette */
+            --nordic-1: #FEFEFE; --nordic-2: #F8F9FA; --nordic-3: #F1F3F4; --nordic-4: #E8EAED; --nordic-5: #DADCE0;
+            --nordic-6: #9AA0A6; --nordic-7: #5F6368; --nordic-8: #3C4043; --nordic-9: #202124; --nordic-10: #0F0F10;
+            
+            /* Shibuya Light Palette */
+            --shibuya-light-1: #FDFDFE; --shibuya-light-2: #F9FAFB; --shibuya-light-3: #F4F6F8; 
+            --shibuya-light-4: #E9ECEF; --shibuya-light-5: #D6DBDF; --shibuya-light-6: #4A90E2; 
+            --shibuya-light-7: #FF6B6B; --shibuya-light-8: #2C3E50; --shibuya-light-9: #1A252F; --shibuya-light-10: #0D1117;
+            
+            /* Shibuya Dark - OFFICIAL COLORS */
+            --shibuya-dark-1: #0D1117; --shibuya-dark-2: #161B22; --shibuya-dark-3: #21262D; 
+            --shibuya-dark-4: #30363D; --shibuya-dark-5: #484F58; --shibuya-dark-6: #58A6FF; 
+            --shibuya-dark-7: #FF7B72; --shibuya-dark-8: #3FB950; --shibuya-dark-9: #F0F6FC; --shibuya-dark-10: #FFFFFF;
+            
+            /* Warm Neutral Palette */
+            --warm-1: #F8F6F1; --warm-2: #F3F0E8; --warm-3: #EDE8DF; --warm-4: #E5DFD2; --warm-5: #DDD4C0;
+            --warm-6: #C8B8A0; --warm-7: #B5A085; --warm-8: #9B8468; --warm-9: #7A6B52; --warm-10: #5A4F3D;
+            
+            /* Blush Mauve Palette */
+            --blush-1: #F8F5F4; --blush-2: #F2EDE9; --blush-3: #EDE5DF; --blush-4: #E6D9D1; --blush-5: #DBC9BC;
+            --blush-6: #C5B3A6; --blush-7: #B09A8A; --blush-8: #957E6E; --blush-9: #786357; --blush-10: #5D4E45;
+            
+            /* Studio Nordost Palette */
+            --studio-1: #FFFFFF; --studio-2: #FAFAFA; --studio-3: #F5F5F5; --studio-4: #EEEEEE; --studio-5: #E0E0E0;
+            --studio-6: #BDBDBD; --studio-7: #757575; --studio-8: #424242; --studio-9: #212121; --studio-10: #000000;
+            
+            /* Datum Tech Palette */
+            --datum-1: #F6F6F6; --datum-2: #FFFFFF; --datum-3: #F0F0F0; --datum-4: #E8E8E8; --datum-5: #D4D4D4;
+            --datum-6: #9C9C9C; --datum-7: #6A6A6A; --datum-8: #282828; --datum-9: #1A1A1A; --datum-10: #0A0A0A;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Atkinson Hyperlegible', monospace;
+            line-height: 1.6;
+            color: var(--sage-9);
+            background: var(--sage-1);
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(247, 248, 246, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--sage-4);
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--sage-8);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--sage-9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--sage-8);
+        }
+        
+        .main {
+            margin-top: 70px;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: var(--sage-10);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--sage-8);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 500;
+            margin: 60px 0 30px 0;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 500;
+            margin: 40px 0 20px 0;
+        }
+        
+        p, li {
+            font-size: clamp(12px, 1.5vw, 14px);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .ascii {
+            font-family: 'Atkinson Hyperlegible', monospace;
+            font-size: 13px;
+            line-height: 1.2;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 6px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .ascii-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Palette-specific styling */
+        .sage-section {
+            background: var(--sage-1);
+            color: var(--sage-9);
+        }
+        
+        .sage-section h2 {
+            color: var(--sage-9);
+            border-bottom: 2px solid var(--sage-5);
+        }
+        
+        .sage-section .ascii {
+            background: var(--sage-2);
+            border-left: 4px solid var(--sage-8);
+        }
+        
+        .sage-section .ascii-title {
+            color: var(--sage-10);
+        }
+        
+        .ocean-section {
+            background: var(--ocean-1);
+            color: var(--ocean-9);
+        }
+        
+        .ocean-section h2 {
+            color: var(--ocean-9);
+            border-bottom: 2px solid var(--ocean-5);
+        }
+        
+        .ocean-section .ascii {
+            background: var(--ocean-2);
+            border-left: 4px solid var(--ocean-8);
+        }
+        
+        .ocean-section .ascii-title {
+            color: var(--ocean-10);
+        }
+        
+        .nordic-section {
+            background: var(--nordic-1);
+            color: var(--nordic-9);
+        }
+        
+        .nordic-section h2 {
+            color: var(--nordic-9);
+            border-bottom: 2px solid var(--nordic-5);
+        }
+        
+        .nordic-section .ascii {
+            background: var(--nordic-2);
+            border-left: 4px solid var(--nordic-8);
+        }
+        
+        .nordic-section .ascii-title {
+            color: var(--nordic-10);
+        }
+        
+        .shibuya-light-section {
+            background: var(--shibuya-light-1);
+            color: var(--shibuya-light-8);
+        }
+        
+        .shibuya-light-section h2 {
+            color: var(--shibuya-light-8);
+            border-bottom: 2px solid var(--shibuya-light-5);
+        }
+        
+        .shibuya-light-section .ascii {
+            background: var(--shibuya-light-2);
+            border-left: 4px solid var(--shibuya-light-6);
+        }
+        
+        .shibuya-light-section .ascii-title {
+            color: var(--shibuya-light-8);
+        }
+        
+        .shibuya-dark-section {
+            background: var(--shibuya-dark-1);
+            color: var(--shibuya-dark-9);
+        }
+        
+        .shibuya-dark-section h2 {
+            color: var(--shibuya-dark-9);
+            border-bottom: 2px solid var(--shibuya-dark-5);
+        }
+        
+        .shibuya-dark-section .ascii {
+            background: var(--shibuya-dark-2);
+            border-left: 4px solid var(--shibuya-dark-6);
+        }
+        
+        .shibuya-dark-section .ascii-title {
+            color: var(--shibuya-dark-10);
+        }
+        
+        .warm-section {
+            background: var(--warm-1);
+            color: var(--warm-9);
+        }
+        
+        .warm-section h2 {
+            color: var(--warm-9);
+            border-bottom: 2px solid var(--warm-5);
+        }
+        
+        .warm-section .ascii {
+            background: var(--warm-2);
+            border-left: 4px solid var(--warm-8);
+        }
+        
+        .warm-section .ascii-title {
+            color: var(--warm-10);
+        }
+        
+        .blush-section {
+            background: var(--blush-1);
+            color: var(--blush-9);
+        }
+        
+        .blush-section h2 {
+            color: var(--blush-9);
+            border-bottom: 2px solid var(--blush-5);
+        }
+        
+        .blush-section .ascii {
+            background: var(--blush-2);
+            border-left: 4px solid var(--blush-8);
+        }
+        
+        .blush-section .ascii-title {
+            color: var(--blush-10);
+        }
+        
+        .studio-section {
+            background: var(--studio-1);
+            color: var(--studio-9);
+        }
+        
+        .studio-section h2 {
+            color: var(--studio-9);
+            border-bottom: 2px solid var(--studio-5);
+        }
+        
+        .studio-section .ascii {
+            background: var(--studio-2);
+            border-left: 4px solid var(--studio-8);
+        }
+        
+        .studio-section .ascii-title {
+            color: var(--studio-10);
+        }
+        
+        .datum-section {
+            background: var(--datum-1);
+            color: var(--datum-9);
+        }
+        
+        .datum-section h2 {
+            color: var(--datum-9);
+            border-bottom: 2px solid var(--datum-5);
+        }
+        
+        .datum-section .ascii {
+            background: var(--datum-2);
+            border-left: 4px solid var(--datum-8);
+        }
+        
+        .datum-section .ascii-title {
+            color: var(--datum-10);
+        }
+        
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 13px;
+        }
+        
+        .color-table th, .color-table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid var(--sage-4);
+        }
+        
+        .color-table th {
+            background: var(--sage-3);
+            font-weight: 600;
+            color: var(--sage-9);
+        }
+        
+        .color-chip {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid var(--sage-6);
+            margin-left: 8px;
+        }
+        
+        .insight {
+            padding: 25px;
+            border-radius: 6px;
+            margin: 25px 0;
+            font-size: 13px;
+        }
+        
+        .sage-section .insight {
+            background: var(--sage-2);
+            border-left: 4px solid var(--sage-7);
+        }
+        
+        .ocean-section .insight {
+            background: var(--ocean-2);
+            border-left: 4px solid var(--ocean-7);
+        }
+        
+        .nordic-section .insight {
+            background: var(--nordic-2);
+            border-left: 4px solid var(--nordic-7);
+        }
+        
+        ul, ol { margin-left: 25px; margin-bottom: 20px; }
+        strong { font-weight: 600; }
+        em { font-style: italic; }
+        
+        @media (max-width: 768px) {
+            .nav { padding: 12px 15px; }
+            .main { margin-top: 60px; padding: 20px 15px; }
+            .ascii { font-size: 11px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-content">
+        <div class="nav-title">🎋 Japandi Design System</div>
+        <ul class="nav-links">
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#cool-sage">Cool Sage</a></li>
+            <li><a href="#ocean-stone">Ocean Stone</a></li>
+            <li><a href="#nordic-tech">Nordic Tech</a></li>
+            <li><a href="#warm-neutral">Warm Neutral</a></li>
+            <li><a href="#blush-mauve">Blush Mauve</a></li>
+            <li><a href="#shibuya-light">Shibuya Light</a></li>
+            <li><a href="#shibuya-dark">Shibuya Dark</a></li>
+            <li><a href="#studio-nordost">Studio Nordost</a></li>
+            <li><a href="#datum-tech">Datum Tech</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="main">
+
+<h1>Japandi Design System</h1>
+<p class="subtitle">Complete Style Guide for Brand & UX Applications<br><em>Bridging Japanese Wabi-Sabi & Scandinavian Hygge</em></p>
+
+<section id="philosophy">
+<h2>Philosophy & Foundation</h2>
+
+<h3>Core Principles</h3>
+<p><strong>Japandi</strong> represents the harmonious fusion of Japanese <strong>wabi-sabi</strong> (finding beauty in imperfection and impermanence) and Scandinavian <strong>hygge</strong> (creating comfort and coziness). This design philosophy emphasizes:</p>
+
+<ul>
+<li><strong>Intentional Simplicity</strong>: Every element serves a purpose</li>
+<li><strong>Natural Harmony</strong>: Colors reflect the organic world</li>
+<li><strong>Quiet Luxury</strong>: Sophistication through restraint</li>
+<li><strong>Timeless Elegance</strong>: Avoiding fleeting trends</li>
+<li><strong>Functional Beauty</strong>: Form follows function</li>
+<li><strong>Mindful Contrast</strong>: Strategic light and dark balance</li>
+</ul>
+</section>
+
+<section id="cool-sage" class="sage-section">
+<h2>🌿 Cool Sage (The Forest Meditation)</h2>
+<p><em>Philosophy: Japanese mountain temples meets Nordic forest walks</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Paper White</strong></td><td>#F7F8F6</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F7F8F6;"></span></td></tr>
+<tr><td><strong>Soft Mist</strong></td><td>#F0F2ED</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #F0F2ED;"></span></td></tr>
+<tr><td><strong>Dove Grey</strong></td><td>#E8EBE4</td><td>Hover states</td><td><span class="color-chip" style="background-color: #E8EBE4;"></span></td></tr>
+<tr><td><strong>Stone Grey</strong></td><td>#DDE1D8</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #DDE1D8;"></span></td></tr>
+<tr><td><strong>Sage Mist</strong></td><td>#D0D5C8</td><td>Separators</td><td><span class="color-chip" style="background-color: #D0D5C8;"></span></td></tr>
+<tr><td><strong>Soft Sage</strong></td><td>#B8C0AD</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #B8C0AD;"></span></td></tr>
+<tr><td><strong>Sage Green</strong></td><td>#9FAA93</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #9FAA93;"></span></td></tr>
+<tr><td><strong>Forest Sage</strong></td><td>#7A8470</td><td>Primary text</td><td><span class="color-chip" style="background-color: #7A8470;"></span></td></tr>
+<tr><td><strong>Deep Moss</strong></td><td>#5C6655</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #5C6655;"></span></td></tr>
+<tr><td><strong>Charcoal Green</strong></td><td>#434B3F</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #434B3F;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Mindful, sustainable, grounded, authentic, peaceful<br>
+<strong>Perfect For</strong>: Meditation apps, sustainable brands, wellness companies<br>
+<strong>Psychological Effect</strong>: Promotes calmness, focus, and connection to nature
+</div>
+
+<div class="ascii-title">🌿 WELLNESS METRICS - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">■ WELLNESS EXECUTIVE DASHBOARD ■                        ■ BALANCED ■</span>
+
+KEY METRICS                          SUSTAINABILITY TRENDS                                   
+
+<span style="color: #434B3F; font-weight: bold;">Carbon Offset:</span>  <span style="color: #434B3F; font-weight: bold;">2.4T  ↑15%</span>        <span style="color: #5C6655;">Monthly:</span> <span style="color: #434B3F; font-weight: bold;">████████████████</span> Positive Impact         
+<span style="color: #5C6655; font-weight: bold;">Green Energy:</span>   <span style="color: #5C6655; font-weight: bold;">89%  ↑23%</span>        <span style="color: #7A8470;">Energy: </span> <span style="color: #5C6655; font-weight: bold;">████████████████</span> 100% Renewable          
+<span style="color: #7A8470; font-weight: bold;">Wellness Score:</span> <span style="color: #7A8470; font-weight: bold;">8.7  ↑0.3</span>        <span style="color: #9FAA93;">Wellness:</span><span style="color: #7A8470; font-weight: bold;">████████████████</span> Team Health             
+<span style="color: #9FAA93; font-weight: bold;">Mindfulness:</span>    <span style="color: #9FAA93; font-weight: bold;">72%  ↑5pts</span>                                                                          
+
+REGIONAL PERFORMANCE                 IMPACT AREAS                                            
+
+<span style="color: #434B3F;">North </span> <span style="color: #434B3F; font-weight: bold;">██████████████████████</span> 45%    <span style="color: #5C6655;">Environment</span> <span style="color: #434B3F; font-weight: bold;">████████████████</span> 40%          
+<span style="color: #5C6655;">South </span> <span style="color: #5C6655; font-weight: bold;">████████████████</span>       35%    <span style="color: #7A8470;">Community  </span> <span style="color: #5C6655; font-weight: bold;">██████████████</span>   35%          
+<span style="color: #7A8470;">East  </span> <span style="color: #7A8470; font-weight: bold;">████████</span>             15%    <span style="color: #9FAA93;">Wellness   </span> <span style="color: #7A8470; font-weight: bold;">██████████</span>       25%          
+<span style="color: #9FAA93;">West  </span> <span style="color: #9FAA93; font-weight: bold;">████</span>                 5%                                                             
+</div>
+
+<div class="ascii-title">SYSTEM PERFORMANCE - Cool Sage</div>
+<div class="ascii">
+[<span style="color: #434B3F;">API    </span>] <span style="color: #434B3F; font-weight: bold;">████████████████████████████████████████</span> 40ms (100%)
+[<span style="color: #5C6655;">DB     </span>] <span style="color: #5C6655; font-weight: bold;">████████████████████</span>                    20ms (50%)
+[<span style="color: #7A8470;">CACHE  </span>] <span style="color: #7A8470; font-weight: bold;">████</span>                                     4ms (10%)
+[<span style="color: #9FAA93;">AUTH   </span>] <span style="color: #9FAA93; font-weight: bold;">████████</span>                                 8ms (20%)
+[<span style="color: #B8C0AD;">STORAGE</span>] <span style="color: #B8C0AD; font-weight: bold;">██████████████</span>                          14ms (35%)
+                        0         10        20        30        40ms
+</div>
+
+<div class="ascii-title">SPARKLINES - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">CPU:     ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓</span> (trending down - Charcoal Green)
+<span style="color: #5C6655; font-weight: bold;">Memory:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (trending up - Deep Moss)
+<span style="color: #7A8470; font-weight: bold;">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (stable - Forest Sage)
+<span style="color: #9FAA93; font-weight: bold;">Disk:    ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (decreasing - Sage Green)
+<span style="color: #B8C0AD; font-weight: bold;">Power:   ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ →</span> (stable - Soft Sage)
+
+<span style="color: #434B3F;">Temp:    20°</span> <span style="color: #5C6655; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #7A8470;">35° ↑</span>
+<span style="color: #9FAA93;">Latency: 5ms</span> <span style="color: #B8C0AD; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #D0D5C8;">50ms ↑</span>
+<span style="color: #434B3F;">FPS:     30</span> <span style="color: #7A8470; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #9FAA93;">144 ↓</span>
+
+<span style="color: #434B3F;">CPU:</span>  <span style="color: #5C6655; font-weight: bold;">▃▅▇█▇▅▃▁</span> <span style="color: #434B3F;">45%</span>  <span style="color: #7A8470;">MEM:</span> <span style="color: #9FAA93; font-weight: bold;">▂▄▆████</span> <span style="color: #7A8470;">72%</span>
+<span style="color: #9FAA93;">NET:</span>  <span style="color: #B8C0AD; font-weight: bold;">▁▂▃▄▅▆▇█</span> <span style="color: #9FAA93;">↑</span>    <span style="color: #D0D5C8;">DISK:</span> <span style="color: #434B3F; font-weight: bold;">██▇▆▅▄</span> <span style="color: #D0D5C8;">↓</span>
+</div>
+
+<div class="ascii-title">TERMGRAPH STYLE - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F;">January  :</span> <span style="color: #434B3F; font-weight: bold;">▇▇▇▇▇▇▇▇▇</span> 27.00
+<span style="color: #5C6655;">February :</span> <span style="color: #5C6655; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 136.50
+<span style="color: #7A8470;">March    :</span> <span style="color: #7A8470; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 98.70
+<span style="color: #9FAA93;">April    :</span> <span style="color: #9FAA93; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 84.00
+<span style="color: #B8C0AD;">May      :</span> <span style="color: #B8C0AD; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇</span> 27.35
+
+<span style="color: #434B3F;">cats   </span> <span style="color: #434B3F; font-weight: bold;">########################</span>                                     6
+<span style="color: #5C6655;">ferrets</span> <span style="color: #5C6655; font-weight: bold;">############################################################</span> 15
+<span style="color: #7A8470;">dogs   </span> <span style="color: #7A8470; font-weight: bold;">########</span>                                                     2
+<span style="color: #9FAA93;">koalas </span> <span style="color: #9FAA93; font-weight: bold;"></span>                                                              0
+
+<span style="color: #434B3F;">/data</span> <span style="color: #434B3F; font-weight: bold;">********************</span> 150gb
+<span style="color: #5C6655;">/srv </span> <span style="color: #5C6655; font-weight: bold;">*</span>                    5gb
+<span style="color: #7A8470;">/etc </span>                      150mb
+</div>
+</section>
+
+<section id="ocean-stone" class="ocean-section">
+<h2>🌊 Ocean Stone (The Coastal Meditation)</h2>
+<p><em>Philosophy: Japanese zen gardens meets Scandinavian fjords</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Fog White</strong></td><td>#F6F7F8</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F6F7F8;"></span></td></tr>
+<tr><td><strong>Deep Slate</strong></td><td>#798186</td><td>Primary text</td><td><span class="color-chip" style="background-color: #798186;"></span></td></tr>
+<tr><td><strong>Ocean Grey</strong></td><td>#5F6B72</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #5F6B72;"></span></td></tr>
+<tr><td><strong>Slate Blue</strong></td><td>#95A0A8</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #95A0A8;"></span></td></tr>
+<tr><td><strong>Blue Grey</strong></td><td>#B1B8BE</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #B1B8BE;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Professional, trustworthy, sophisticated<br>
+<strong>Perfect For</strong>: Financial services, consulting, architecture studios
+</div>
+
+<div class="ascii-title">CORPORATE PERFORMANCE - Ocean Stone</div>
+<div class="ascii">
+[<span style="color: #475159;">API    </span>] <span style="color: #475159; font-weight: bold;">████████████████████████████████████████</span> 40ms (100%)
+[<span style="color: #5F6B72;">DB     </span>] <span style="color: #5F6B72; font-weight: bold;">████████████████████</span>                    20ms (50%)
+[<span style="color: #798186;">CACHE  </span>] <span style="color: #798186; font-weight: bold;">████</span>                                     4ms (10%)
+[<span style="color: #95A0A8;">AUTH   </span>] <span style="color: #95A0A8; font-weight: bold;">████████</span>                                 8ms (20%)
+[<span style="color: #B1B8BE;">STORAGE</span>] <span style="color: #B1B8BE; font-weight: bold;">██████████████</span>                          14ms (35%)
+
+<span style="color: #475159;">Consulting</span>  <span style="color: #475159; font-weight: bold;">████████████████████████████████</span>                    
+<span style="color: #5F6B72;">Advisory</span>    <span style="color: #5F6B72; font-weight: bold;">████████████████████████</span>                            
+<span style="color: #798186;">Training</span>    <span style="color: #798186; font-weight: bold;">████████████████</span>                                    
+<span style="color: #95A0A8;">Support</span>     <span style="color: #95A0A8; font-weight: bold;">████████████</span>                                        
+
+ROI vs Risk Analysis:
+100 ┤                              <span style="color: #475159; font-weight: bold;">●</span>     (* High ROI - Charcoal Blue)
+ 90 ┤                         <span style="color: #5F6B72; font-weight: bold;">●</span>    <span style="color: #798186; font-weight: bold;">•</span>     (• Medium ROI - Deep Slate)
+ 80 ┤                    <span style="color: #798186; font-weight: bold;">•</span>      <span style="color: #475159; font-weight: bold;">●</span>     <span style="color: #95A0A8; font-weight: bold;">○</span>  (○ Standard ROI - Slate Blue)
+ 70 ┤                <span style="color: #95A0A8; font-weight: bold;">○</span>      <span style="color: #798186; font-weight: bold;">•</span>          <span style="color: #B1B8BE;">◦</span>
+ 60 ┤           <span style="color: #95A0A8; font-weight: bold;">○</span>     <span style="color: #798186; font-weight: bold;">•</span>         <span style="color: #B1B8BE;">◦</span>
+ 50 ┤       <span style="color: #B1B8BE;">◦</span>    <span style="color: #95A0A8; font-weight: bold;">○</span>       <span style="color: #B1B8BE;">◦</span>  <span style="color: #C8CDD2;">○</span>    <span style="color: #B1B8BE;">◦</span>
+  0 ┴──────────────────────────────────────────
+    0  20  40  60  80  100 Risk Factor (%)
+</div>
+</section>
+
+<section id="nordic-tech" class="nordic-section">
+<h2>💻 Nordic Tech (The Digital Minimalist)</h2>
+<p><em>Philosophy: Scandinavian design meets Silicon Valley precision</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Pure Snow</strong></td><td>#FEFEFE</td><td>Primary background</td><td><span class="color-chip" style="background-color: #FEFEFE;"></span></td></tr>
+<tr><td><strong>Ghost White</strong></td><td>#F8F9FA</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #F8F9FA;"></span></td></tr>
+<tr><td><strong>Light Steel</strong></td><td>#F1F3F4</td><td>Hover states</td><td><span class="color-chip" style="background-color: #F1F3F4;"></span></td></tr>
+<tr><td><strong>Silver Mist</strong></td><td>#E8EAED</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #E8EAED;"></span></td></tr>
+<tr><td><strong>Cool Grey</strong></td><td>#DADCE0</td><td>Separators</td><td><span class="color-chip" style="background-color: #DADCE0;"></span></td></tr>
+<tr><td><strong>Steel Blue</strong></td><td>#9AA0A6</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #9AA0A6;"></span></td></tr>
+<tr><td><strong>Nordic Blue</strong></td><td>#5F6368</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #5F6368;"></span></td></tr>
+<tr><td><strong>Graphite</strong></td><td>#3C4043</td><td>Primary text</td><td><span class="color-chip" style="background-color: #3C4043;"></span></td></tr>
+<tr><td><strong>Midnight</strong></td><td>#202124</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #202124;"></span></td></tr>
+<tr><td><strong>Void Black</strong></td><td>#0F0F10</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #0F0F10;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Innovative, efficient, forward-thinking, democratic, user-centric<br>
+<strong>Perfect For</strong>: SaaS platforms, developer tools, fintech applications, productivity software<br>
+<strong>Psychological Effect</strong>: Promotes focus, efficiency, and trust in technology<br>
+<strong>Cultural Notes</strong>: Embodies Scandinavian democratic design principles applied to digital interfaces
+</div>
+
+<div class="ascii-title">SYSTEM MONITOR - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">■ SYSTEM STATUS MONITOR ■                        ■ LIVE ■ 14:32:01</span>
+
+<span style="color: #202124;">CPU    </span> <span style="color: #3C4043; font-weight: bold;">████████████</span><span style="color: #DADCE0;">░░░░░░░░</span> 60%  <span style="color: #202124;">Temperature: 52°C</span>
+<span style="color: #3C4043;">Memory </span> <span style="color: #202124; font-weight: bold;">████████████████</span><span style="color: #DADCE0;">░░░░</span> 82%  <span style="color: #3C4043;">Available: 3.2GB</span>
+<span style="color: #5F6368;">Disk   </span> <span style="color: #3C4043; font-weight: bold;">██████████</span><span style="color: #DADCE0;">░░░░░░░░░░</span> 41%  <span style="color: #5F6368;">I/O: 125 MB/s</span>
+<span style="color: #9AA0A6;">Network</span> ↑ 45.7 Mbps  ↓ 12.4 Mbps   <span style="color: #9AA0A6;">Latency: 12ms</span>
+
+<span style="color: #202124;">Service Status:</span>
+<span style="color: #3C4043;">✓ Database    ✓ Cache    ! Queue    ✓ API    ✗ Backup</span>
+
+<span style="color: #0F0F10;">Uptime: 42d 16h 23m  Load: 2.43, 2.51, 2.38</span>
+</div>
+
+<div class="ascii-title">DEVELOPMENT PIPELINE - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">Build Pipeline Status:</span>
+
+[<span style="color: #0F0F10;">TESTS  </span>] <span style="color: #0F0F10; font-weight: bold;">████████████████████████████████████████</span> 2847 passed (100%)
+[<span style="color: #202124;">BUILD  </span>] <span style="color: #202124; font-weight: bold;">████████████████████████████████████</span>     Building... (95%)
+[<span style="color: #3C4043;">DEPLOY </span>] <span style="color: #3C4043; font-weight: bold;">████████████████████████████████</span>         Staging (80%)
+[<span style="color: #5F6368;">PROD   </span>] <span style="color: #5F6368; font-weight: bold;">████████████████████████</span>                 Ready (60%)
+
+<span style="color: #202124;">Recent Deployments:</span>
+<span style="color: #3C4043;">✓ v2.1.4   API Gateway     12:34   Success</span>
+<span style="color: #5F6368;">✓ v1.8.2   Frontend        11:22   Success</span>
+<span style="color: #9AA0A6;">⚠ v3.0.1   Database        10:15   Warning</span>
+<span style="color: #DADCE0;">⏳ v2.2.0   Services        09:45   Pending</span>
+
+<span style="color: #0F0F10;">Performance Metrics:</span>
+<span style="color: #202124;">Load Time: 1.2s</span>    <span style="color: #3C4043;">Bundle Size: 234KB</span>    <span style="color: #5F6368;">API Latency: 45ms</span>
+</div>
+
+<div class="ascii-title">CODE COVERAGE - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10;">Frontend   </span> <span style="color: #0F0F10; font-weight: bold;">██████████████████████████████████████</span> 96% (Void Black)
+<span style="color: #202124;">Backend    </span> <span style="color: #202124; font-weight: bold;">██████████████████████████████████</span>     87% (Midnight)
+<span style="color: #3C4043;">API        </span> <span style="color: #3C4043; font-weight: bold;">████████████████████████████████</span>       82% (Graphite)
+<span style="color: #5F6368;">Database   </span> <span style="color: #5F6368; font-weight: bold;">████████████████████████</span>               67% (Nordic Blue)
+<span style="color: #9AA0A6;">Utils      </span> <span style="color: #9AA0A6; font-weight: bold;">████████████████████</span>                   54% (Steel Blue)
+
+<span style="color: #0F0F10;">Quality Gate Status:</span>
+<span style="color: #202124;">✓ Bugs: 0/0           ✓ Vulnerabilities: 0/0</span>
+<span style="color: #3C4043;">✓ Code Smells: 12/50  ✓ Duplications: 2.1%</span>
+<span style="color: #5F6368;">✓ Maintainability: A  ✓ Reliability: A</span>
+<span style="color: #9AA0A6;">⚠ Security Review: B  ⚠ Technical Debt: 2.3h</span>
+</div>
+
+<div class="ascii-title">SPARKLINES - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">Requests: ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓</span> (trending down - Void Black)
+<span style="color: #202124; font-weight: bold;">Errors:   ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (trending up - Midnight)
+<span style="color: #3C4043; font-weight: bold;">Response: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (stable - Graphite)
+<span style="color: #5F6368; font-weight: bold;">Memory:   ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (decreasing - Nordic Blue)
+<span style="color: #9AA0A6; font-weight: bold;">Cache:    ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ →</span> (stable - Steel Blue)
+
+<span style="color: #0F0F10;">Users:    200</span> <span style="color: #202124; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #3C4043;">2.4K ↑</span>
+<span style="color: #5F6368;">Sessions: 45</span>  <span style="color: #9AA0A6; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #DADCE0;">890 ↑</span>
+<span style="color: #0F0F10;">Revenue:  $50</span> <span style="color: #3C4043; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #5F6368;">$12K ↓</span>
+</div>
+</section>
+
+<section id="warm-neutral" class="warm-section">
+<h2>🏯 Warm Neutral (The Kyoto Classical)</h2>
+<p><em>Philosophy: Traditional Japanese aesthetics meets Scandinavian hygge</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Silk White</strong></td><td>#F8F6F1</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F8F6F1;"></span></td></tr>
+<tr><td><strong>Warm Snow</strong></td><td>#F3F0E8</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #F3F0E8;"></span></td></tr>
+<tr><td><strong>Cream Mist</strong></td><td>#EDE8DF</td><td>Hover states</td><td><span class="color-chip" style="background-color: #EDE8DF;"></span></td></tr>
+<tr><td><strong>Linen</strong></td><td>#E5DFD2</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #E5DFD2;"></span></td></tr>
+<tr><td><strong>Sand Stone</strong></td><td>#DDD4C0</td><td>Separators</td><td><span class="color-chip" style="background-color: #DDD4C0;"></span></td></tr>
+<tr><td><strong>Warm Taupe</strong></td><td>#C8B8A0</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #C8B8A0;"></span></td></tr>
+<tr><td><strong>Clay</strong></td><td>#B5A085</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #B5A085;"></span></td></tr>
+<tr><td><strong>Walnut</strong></td><td>#9B8468</td><td>Primary text</td><td><span class="color-chip" style="background-color: #9B8468;"></span></td></tr>
+<tr><td><strong>Deep Earth</strong></td><td>#7A6B52</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #7A6B52;"></span></td></tr>
+<tr><td><strong>Charcoal Warm</strong></td><td>#5A4F3D</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #5A4F3D;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Classic, trustworthy, artisanal, premium yet approachable<br>
+<strong>Perfect For</strong>: Luxury hospitality, artisanal food brands, premium wellness products, heritage fashion<br>
+<strong>Psychological Effect</strong>: Evokes warmth, security, and timeless elegance<br>
+<strong>Cultural Notes</strong>: Inspired by traditional Japanese tea ceremony aesthetics and Scandinavian cabin interiors
+</div>
+
+<div class="ascii-title">EXECUTIVE SUMMARY - Warm Neutral</div>
+<div class="ascii">
+KEY PERFORMANCE INDICATORS          QUARTERLY TREND ANALYSIS                               
+
+<span style="color: #5A4F3D;">Revenue:</span>    $2.4M  ↑12%                 <span style="color: #7A6B52;">Monthly:</span>  <span style="color: #5A4F3D; font-weight: bold;">████████████████</span> Positive Growth                
+<span style="color: #7A6B52;">Customers:</span>  145K   ↑23%                 <span style="color: #9B8468;">Customer:</span> <span style="color: #7A6B52; font-weight: bold;">████████████████</span> Strong Acquisition            
+<span style="color: #9B8468;">Retention:</span>  89%    →2%                  <span style="color: #B5A085;">Premium:</span>  <span style="color: #9B8468; font-weight: bold;">████████████████</span> Luxury Segment                
+<span style="color: #B5A085;">NPS Score:</span>  72     ↑5pts                                                                        
+
+<span style="color: #5A4F3D;">North America</span> <span style="color: #5A4F3D; font-weight: bold;">██████████████████████</span> 45%    <span style="color: #7A6B52;">Premium</span>  <span style="color: #5A4F3D; font-weight: bold;">████████████████</span> 40%            
+<span style="color: #7A6B52;">Europe</span>        <span style="color: #7A6B52; font-weight: bold;">████████████████</span>       35%    <span style="color: #9B8468;">Standard</span> <span style="color: #7A6B52; font-weight: bold;">██████████████</span>   35%            
+<span style="color: #9B8468;">Asia Pacific</span>  <span style="color: #9B8468; font-weight: bold;">████████</span>             15%    <span style="color: #B5A085;">Artisanal</span><span style="color: #9B8468; font-weight: bold;">██████████</span>       25%            
+<span style="color: #B5A085;">Other</span>         <span style="color: #B5A085; font-weight: bold;">████</span>                 5%                                                        
+</div>
+
+<div class="ascii-title">HOSPITALITY METRICS - Warm Neutral</div>
+<div class="ascii">
+<span style="color: #5A4F3D; font-weight: bold;">■ LUXURY HOSPITALITY DASHBOARD ■                ■ PREMIUM SERVICE ■</span>
+
+GUEST SATISFACTION                   PREMIUM SERVICES                                      
+
+<span style="color: #5A4F3D;">Concierge:</span>  <span style="color: #5A4F3D; font-weight: bold;">96%  ↑8%</span>         <span style="color: #7A6B52;">Spa:</span>      <span style="color: #5A4F3D; font-weight: bold;">████████████████</span> Premium Experience       
+<span style="color: #7A6B52;">Dining:</span>     <span style="color: #7A6B52; font-weight: bold;">94%  ↑12%</span>        <span style="color: #9B8468;">Dining:</span>   <span style="color: #7A6B52; font-weight: bold;">████████████████</span> Artisanal Cuisine        
+<span style="color: #9B8468;">Rooms:</span>      <span style="color: #9B8468; font-weight: bold;">92%  ↑5%</span>         <span style="color: #B5A085;">Events:</span>   <span style="color: #9B8468; font-weight: bold;">████████████████</span> Cultural Heritage        
+<span style="color: #B5A085;">Amenities:</span>  <span style="color: #B5A085; font-weight: bold;">88%  ↑3%</span>                                                                          
+
+OCCUPANCY BY SEASON                  GUEST DEMOGRAPHICS                                   
+
+<span style="color: #5A4F3D;">Spring  </span> <span style="color: #5A4F3D; font-weight: bold;">██████████████████████</span> 87%    <span style="color: #7A6B52;">Luxury   </span> <span style="color: #5A4F3D; font-weight: bold;">████████████████</span> 42%          
+<span style="color: #7A6B52;">Summer  </span> <span style="color: #7A6B52; font-weight: bold;">████████████████████████████</span> 98%    <span style="color: #9B8468;">Business </span> <span style="color: #7A6B52; font-weight: bold;">██████████████</span>   33%          
+<span style="color: #9B8468;">Fall    </span> <span style="color: #9B8468; font-weight: bold;">████████████████████</span>     78%    <span style="color: #B5A085;">Cultural </span> <span style="color: #9B8468; font-weight: bold;">██████████</span>       25%          
+<span style="color: #B5A085;">Winter  </span> <span style="color: #B5A085; font-weight: bold;">████████████████</span>         65%
+</div>
+
+<div class="ascii-title">ARTISANAL PRODUCTION - Warm Neutral</div>
+<div class="ascii">
+<span style="color: #5A4F3D;">Tea Ceremony</span>  <span style="color: #5A4F3D; font-weight: bold;">████████████████████████████████</span>     Traditional Kyoto Style
+<span style="color: #7A6B52;">Pottery</span>       <span style="color: #7A6B52; font-weight: bold;">████████████████████████████████████████</span> Handcrafted Excellence
+<span style="color: #9B8468;">Textiles</span>      <span style="color: #9B8468; font-weight: bold;">████████████████████████</span>                 Heritage Weaving
+<span style="color: #B5A085;">Woodwork</span>      <span style="color: #B5A085; font-weight: bold;">████████████████████</span>                     Premium Craftsmanship
+<span style="color: #C8B8A0;">Calligraphy</span>   <span style="color: #C8B8A0; font-weight: bold;">████████████████</span>                         Cultural Arts
+
+Craftsmanship Quality:
+100 ┤                              <span style="color: #5A4F3D; font-weight: bold;">●</span>     (* Master Level - Charcoal Warm)
+ 90 ┤                         <span style="color: #7A6B52; font-weight: bold;">●</span>    <span style="color: #9B8468; font-weight: bold;">•</span>     (• Expert Level - Deep Earth)
+ 80 ┤                    <span style="color: #9B8468; font-weight: bold;">•</span>      <span style="color: #5A4F3D; font-weight: bold;">●</span>     <span style="color: #B5A085; font-weight: bold;">○</span>  (○ Skilled Level - Clay)
+ 70 ┤                <span style="color: #B5A085; font-weight: bold;">○</span>      <span style="color: #9B8468; font-weight: bold;">•</span>          <span style="color: #C8B8A0;">◦</span>
+ 60 ┤           <span style="color: #B5A085; font-weight: bold;">○</span>     <span style="color: #9B8468; font-weight: bold;">•</span>         <span style="color: #C8B8A0;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Tea   Pottery  Textiles  Wood   Calligraphy
+</div>
+
+<div class="ascii-title">SEASONAL TRENDS - Warm Neutral</div>
+<div class="ascii">
+<span style="color: #5A4F3D; font-weight: bold;">Spring:  ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Cherry Blossom Season - Charcoal Warm)
+<span style="color: #7A6B52; font-weight: bold;">Summer:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (Festival Season - Deep Earth)
+<span style="color: #9B8468; font-weight: bold;">Autumn:  ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Harvest Season - Walnut)
+<span style="color: #B5A085; font-weight: bold;">Winter:  ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Tea Season - Clay)
+
+<span style="color: #5A4F3D;">Bookings: 150</span> <span style="color: #7A6B52; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #9B8468;">750 ↑</span>
+<span style="color: #B5A085;">Revenue:  $2K</span>  <span style="color: #C8B8A0; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #DDD4C0;">$45K ↑</span>
+<span style="color: #5A4F3D;">Reviews:  4.2</span>  <span style="color: #9B8468; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #B5A085;">4.9 ↑</span>
+</div>
+</section>
+
+<section id="blush-mauve" class="blush-section">
+<h2>🌸 Blush Mauve (The Sunset Ritual)</h2>
+<p><em>Philosophy: Japanese cherry blossoms meets Scandinavian evening light</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Porcelain</strong></td><td>#F8F5F4</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F8F5F4;"></span></td></tr>
+<tr><td><strong>Soft Blush</strong></td><td>#F2EDE9</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #F2EDE9;"></span></td></tr>
+<tr><td><strong>Rose Mist</strong></td><td>#EDE5DF</td><td>Hover states</td><td><span class="color-chip" style="background-color: #EDE5DF;"></span></td></tr>
+<tr><td><strong>Warm Stone</strong></td><td>#E6D9D1</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #E6D9D1;"></span></td></tr>
+<tr><td><strong>Dusty Rose</strong></td><td>#DBC9BC</td><td>Separators</td><td><span class="color-chip" style="background-color: #DBC9BC;"></span></td></tr>
+<tr><td><strong>Mauve Grey</strong></td><td>#C5B3A6</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #C5B3A6;"></span></td></tr>
+<tr><td><strong>Soft Mauve</strong></td><td>#B09A8A</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #B09A8A;"></span></td></tr>
+<tr><td><strong>Rose Brown</strong></td><td>#957E6E</td><td>Primary text</td><td><span class="color-chip" style="background-color: #957E6E;"></span></td></tr>
+<tr><td><strong>Deep Mauve</strong></td><td>#786357</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #786357;"></span></td></tr>
+<tr><td><strong>Charcoal Rose</strong></td><td>#5D4E45</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #5D4E45;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Gentle, nurturing, sophisticated, feminine without being exclusive, therapeutic<br>
+<strong>Perfect For</strong>: Beauty and skincare brands, fertility and women's health services, luxury spas, wedding planners<br>
+<strong>Psychological Effect</strong>: Creates feelings of safety, nurturing, and gentle sophistication<br>
+<strong>Cultural Notes</strong>: Inspired by Japanese hanami (cherry blossom viewing) and soft Scandinavian summer evenings
+</div>
+
+<div class="ascii-title">BEAUTY ANALYTICS - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #5D4E45;">Skincare</span>  <span style="color: #5D4E45; font-weight: bold;">████████████████████████████████</span> 68% (Charcoal Rose)
+<span style="color: #786357;">Makeup</span>    <span style="color: #786357; font-weight: bold;">████████████████████</span>             32% (Deep Mauve)  
+<span style="color: #957E6E;">Hair</span>      <span style="color: #957E6E; font-weight: bold;">████████████████</span>                 23% (Rose Brown)
+<span style="color: #B09A8A;">Body</span>      <span style="color: #B09A8A; font-weight: bold;">████████</span>                         8% (Soft Mauve)
+<span style="color: #C5B3A6;">Nails</span>     <span style="color: #C5B3A6; font-weight: bold;">████████████</span>                     15% (Mauve Grey)
+
+Beauty Routine Consistency:
+100% ┤                                    <span style="color: #5D4E45; font-weight: bold;">💄──💄──💄──💄</span>
+ 90% ┤                              <span style="color: #786357; font-weight: bold;">💄──💄</span>               
+ 80% ┤                        <span style="color: #957E6E; font-weight: bold;">💄──💄</span>                     
+ 70% ┤                  <span style="color: #B09A8A; font-weight: bold;">💄──💄</span>                           
+ 60% ┤            <span style="color: #C5B3A6; font-weight: bold;">💄──💄</span>                                 
+     ┴────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──
+     JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV
+</div>
+
+<div class="ascii-title">WELLNESS SANCTUARY - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #5D4E45; font-weight: bold;">■ SPA & WELLNESS CENTER ■                       ■ NURTURING ■</span>
+
+TREATMENT SATISFACTION             THERAPEUTIC SERVICES                                   
+
+<span style="color: #5D4E45;">Massage:</span>    <span style="color: #5D4E45; font-weight: bold;">98%  ↑6%</span>         <span style="color: #786357;">Facial:</span>    <span style="color: #5D4E45; font-weight: bold;">████████████████</span> Deep Cleansing          
+<span style="color: #786357;">Facial:</span>     <span style="color: #786357; font-weight: bold;">96%  ↑8%</span>         <span style="color: #957E6E;">Massage:</span>  <span style="color: #786357; font-weight: bold;">████████████████</span> Therapeutic Touch       
+<span style="color: #957E6E;">Aromatherapy:</span><span style="color: #957E6E; font-weight: bold;">94%  ↑12%</span>        <span style="color: #B09A8A;">Wellness:</span> <span style="color: #957E6E; font-weight: bold;">████████████████</span> Mind-Body Harmony       
+<span style="color: #B09A8A;">Meditation:</span> <span style="color: #B09A8A; font-weight: bold;">92%  ↑5%</span>                                                                          
+
+CLIENT DEMOGRAPHICS                SEASONAL BOOKINGS                                    
+
+<span style="color: #5D4E45;">Self-Care </span> <span style="color: #5D4E45; font-weight: bold;">██████████████████████</span> 52%    <span style="color: #786357;">Spring  </span> <span style="color: #5D4E45; font-weight: bold;">████████████████</span> 45%          
+<span style="color: #786357;">Couples   </span> <span style="color: #786357; font-weight: bold;">████████████████</span>       28%    <span style="color: #957E6E;">Summer  </span> <span style="color: #786357; font-weight: bold;">████████████████████</span> 58%      
+<span style="color: #957E6E;">Wellness  </span> <span style="color: #957E6E; font-weight: bold;">████████</span>             15%    <span style="color: #B09A8A;">Autumn  </span> <span style="color: #957E6E; font-weight: bold;">██████████████</span>   38%          
+<span style="color: #B09A8A;">Events    </span> <span style="color: #B09A8A; font-weight: bold;">████</span>                 5%     <span style="color: #C5B3A6;">Winter  </span> <span style="color: #B09A8A; font-weight: bold;">██████████</span>       25%
+</div>
+
+<div class="ascii-title">PRODUCT PERFORMANCE - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #5D4E45;">Rose Serum</span>     <span style="color: #5D4E45; font-weight: bold;">████████████████████████████████████████</span> Premium Anti-Aging
+<span style="color: #786357;">Gentle Cleanser</span> <span style="color: #786357; font-weight: bold;">████████████████████████████████</span>         Daily Ritual
+<span style="color: #957E6E;">Cherry Mask</span>    <span style="color: #957E6E; font-weight: bold;">████████████████████████</span>                 Weekly Treatment
+<span style="color: #B09A8A;">Sunset Oil</span>     <span style="color: #B09A8A; font-weight: bold;">████████████████████</span>                     Evening Care
+<span style="color: #C5B3A6;">Blush Mist</span>     <span style="color: #C5B3A6; font-weight: bold;">████████████████</span>                         Refreshing Toner
+
+Product Effectiveness:
+100 ┤                              <span style="color: #5D4E45; font-weight: bold;">●</span>     (* Premium Formula - Charcoal Rose)
+ 90 ┤                         <span style="color: #786357; font-weight: bold;">●</span>    <span style="color: #957E6E; font-weight: bold;">•</span>     (• Therapeutic - Deep Mauve)
+ 80 ┤                    <span style="color: #957E6E; font-weight: bold;">•</span>      <span style="color: #5D4E45; font-weight: bold;">●</span>     <span style="color: #B09A8A; font-weight: bold;">○</span>  (○ Gentle Care - Soft Mauve)
+ 70 ┤                <span style="color: #B09A8A; font-weight: bold;">○</span>      <span style="color: #957E6E; font-weight: bold;">•</span>          <span style="color: #C5B3A6;">◦</span>
+ 60 ┤           <span style="color: #B09A8A; font-weight: bold;">○</span>     <span style="color: #957E6E; font-weight: bold;">•</span>         <span style="color: #C5B3A6;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Rose   Cleanser  Mask   Oil   Mist
+</div>
+
+<div class="ascii-title">WELLNESS TRENDS - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #5D4E45; font-weight: bold;">Self-Care: ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Growing mindfulness - Charcoal Rose)
+<span style="color: #786357; font-weight: bold;">Skincare:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (Beauty routine focus - Deep Mauve)
+<span style="color: #957E6E; font-weight: bold;">Wellness:  ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Holistic health - Rose Brown)
+<span style="color: #B09A8A; font-weight: bold;">Therapy:   ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Stress relief - Soft Mauve)
+
+<span style="color: #5D4E45;">Clients:  85</span>  <span style="color: #786357; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #957E6E;">350 ↑</span>
+<span style="color: #B09A8A;">Bookings: $1.8K</span><span style="color: #C5B3A6; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #DBC9BC;">$24K ↑</span>
+<span style="color: #5D4E45;">Rating:   4.6</span> <span style="color: #957E6E; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #B09A8A;">4.9 ↑</span>
+</div>
+</section>
+
+<section id="shibuya-light" class="shibuya-light-section">
+<h2>⚡ Shibuya Light (The Urban Energy)</h2>
+<p><em>Philosophy: Tokyo's electric energy meets Scandinavian accessibility - More Shibuya than Kyoto</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Electric White</strong></td><td>#FDFDFE</td><td>Primary background</td><td><span class="color-chip" style="background-color: #FDFDFE;"></span></td></tr>
+<tr><td><strong>Bright Canvas</strong></td><td>#F9FAFB</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #F9FAFB;"></span></td></tr>
+<tr><td><strong>Light Pulse</strong></td><td>#F4F6F8</td><td>Hover states</td><td><span class="color-chip" style="background-color: #F4F6F8;"></span></td></tr>
+<tr><td><strong>Urban Silver</strong></td><td>#E9ECEF</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #E9ECEF;"></span></td></tr>
+<tr><td><strong>Steel Shine</strong></td><td>#D6DBDF</td><td>Separators</td><td><span class="color-chip" style="background-color: #D6DBDF;"></span></td></tr>
+<tr><td><strong>Electric Blue</strong></td><td>#4A90E2</td><td>Primary interactive elements</td><td><span class="color-chip" style="background-color: #4A90E2;"></span></td></tr>
+<tr><td><strong>Neon Accent</strong></td><td>#FF6B6B</td><td>Secondary buttons, highlights</td><td><span class="color-chip" style="background-color: #FF6B6B;"></span></td></tr>
+<tr><td><strong>Urban Charcoal</strong></td><td>#2C3E50</td><td>Primary text</td><td><span class="color-chip" style="background-color: #2C3E50;"></span></td></tr>
+<tr><td><strong>Deep Electric</strong></td><td>#1A252F</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #1A252F;"></span></td></tr>
+<tr><td><strong>Midnight Pulse</strong></td><td>#0D1117</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #0D1117;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Energetic, innovative, youthful, bold, forward-moving, urban-sophisticated<br>
+<strong>Perfect For</strong>: Tech startups, gaming platforms, social media apps, fitness brands, creative software<br>
+<strong>Psychological Effect</strong>: Creates excitement and urgency while maintaining professionalism<br>
+<strong>Cultural Notes</strong>: Captures the electric energy of Tokyo's Shibuya district with Scandinavian accessibility
+</div>
+
+<div class="ascii-title">⚡ GAMING DASHBOARD - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #2C3E50; font-weight: bold;">System Performance:</span>
+<span style="color: #2C3E50;">GPU Usage</span>     <span style="color: #2C3E50; font-weight: bold;">████████████████████████████████████████</span> 98% ⚡ RTX 4090
+<span style="color: #4A90E2;">CPU Threads</span>   <span style="color: #4A90E2; font-weight: bold;">████████████████████████████████████</span>     89% ⚡ 16-Core 
+<span style="color: #FF6B6B;">Memory</span>        <span style="color: #FF6B6B; font-weight: bold;">████████████████████████████████</span>         76% ⚡ 32GB DDR5
+<span style="color: #1A252F;">VRAM</span>          <span style="color: #1A252F; font-weight: bold;">██████████████████████████████████████</span>   95% ⚡ 24GB GDDR6X
+
+<span style="color: #4A90E2; font-weight: bold;">Live Player Stats:</span>
+100k ┤              <span style="color: #2C3E50; font-weight: bold;">*...*...*</span>     (* Active Players - Urban Charcoal)
+ 90k ┤          <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡       <span style="color: #4A90E2; font-weight: bold;">o...o</span> (o Sessions - Electric Blue)
+ 80k ┤      <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡     <span style="color: #4A90E2; font-weight: bold;">o...</span> ⚡  <span style="color: #FF6B6B; font-weight: bold;">o...o</span>
+ 70k ┤  <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡  <span style="color: #4A90E2; font-weight: bold;">o...</span>         ⚡   <span style="color: #FF6B6B; font-weight: bold;">+...+</span> (+ Revenue - Neon Accent)
+ 60k ┤   <span style="color: #4A90E2; font-weight: bold;">o...</span> ⚡       <span style="color: #FF6B6B; font-weight: bold;">+...</span> ⚡   <span style="color: #FF6B6B; font-weight: bold;">+</span>
+  0 ┴─────────────────────────────────────────────────────
+    00:00 06:00 12:00 18:00 24:00
+
+<span style="color: #4A90E2;">Status:</span> <span style="color: #2C3E50; font-weight: bold;">████████████████████</span> ⚡ TURBOCHARGED ⚡
+</div>
+
+<div class="ascii-title">STARTUP METRICS - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #0D1117; font-weight: bold;">■ TECH STARTUP DASHBOARD ■                      ■ HYPERGROWTH ■</span>
+
+USER ENGAGEMENT                      GROWTH METRICS                                         
+
+<span style="color: #0D1117;">Daily Active:</span> <span style="color: #0D1117; font-weight: bold;">2.4M  ↑45%</span>      <span style="color: #1A252F;">Users:</span>     <span style="color: #0D1117; font-weight: bold;">████████████████</span> Viral Growth           
+<span style="color: #1A252F;">Session Time:</span> <span style="color: #1A252F; font-weight: bold;">12m   ↑8%</span>       <span style="color: #2C3E50;">Revenue:</span>  <span style="color: #1A252F; font-weight: bold;">████████████████</span> Monetization Success   
+<span style="color: #2C3E50;">Retention:</span>    <span style="color: #2C3E50; font-weight: bold;">78%   ↑12%</span>      <span style="color: #4A90E2;">Features:</span> <span style="color: #2C3E50; font-weight: bold;">████████████████</span> Product Innovation     
+<span style="color: #4A90E2;">CTR:</span>          <span style="color: #4A90E2; font-weight: bold;">4.2%  ↑0.8%</span>     <span style="color: #FF6B6B;">Energy:</span>   <span style="color: #4A90E2; font-weight: bold;">████████████████</span> Team Performance       
+
+PLATFORM DISTRIBUTION               ENGAGEMENT CHANNELS                                    
+
+<span style="color: #0D1117;">Mobile    </span> <span style="color: #0D1117; font-weight: bold;">██████████████████████</span> 68%    <span style="color: #1A252F;">Social   </span> <span style="color: #0D1117; font-weight: bold;">████████████████</span> 45%          
+<span style="color: #1A252F;">Desktop   </span> <span style="color: #1A252F; font-weight: bold;">████████████████</span>       22%    <span style="color: #2C3E50;">Direct   </span> <span style="color: #1A252F; font-weight: bold;">██████████████</span>   35%          
+<span style="color: #2C3E50;">Tablet    </span> <span style="color: #2C3E50; font-weight: bold;">████████</span>             8%     <span style="color: #4A90E2;">Search   </span> <span style="color: #2C3E50; font-weight: bold;">██████████</span>       15%          
+<span style="color: #4A90E2;">Smart TV  </span> <span style="color: #4A90E2; font-weight: bold;">██</span>                   2%     <span style="color: #FF6B6B;">Referral </span> <span style="color: #4A90E2; font-weight: bold;">████</span>             5%
+</div>
+
+<div class="ascii-title">ELECTRIC PERFORMANCE - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #0D1117;">App Launch</span>    <span style="color: #0D1117; font-weight: bold;">████████████████████████████████████████</span> Lightning Fast
+<span style="color: #1A252F;">API Response</span>  <span style="color: #1A252F; font-weight: bold;">████████████████████████████████</span>         Super Responsive
+<span style="color: #2C3E50;">UI Rendering</span>  <span style="color: #2C3E50; font-weight: bold;">████████████████████████</span>                 Smooth Animation
+<span style="color: #4A90E2;">Data Sync</span>     <span style="color: #4A90E2; font-weight: bold;">████████████████████</span>                     Real-time Updates
+<span style="color: #FF6B6B;">Notifications</span> <span style="color: #FF6B6B; font-weight: bold;">████████████████</span>                         Instant Delivery
+
+Performance Optimization:
+100 ┤                              <span style="color: #0D1117; font-weight: bold;">●</span>     (* Peak Performance - Midnight Pulse)
+ 90 ┤                         <span style="color: #1A252F; font-weight: bold;">●</span>    <span style="color: #2C3E50; font-weight: bold;">•</span>     (• High Speed - Deep Electric)
+ 80 ┤                    <span style="color: #2C3E50; font-weight: bold;">•</span>      <span style="color: #0D1117; font-weight: bold;">●</span>     <span style="color: #4A90E2; font-weight: bold;">○</span>  (○ Optimized - Electric Blue)
+ 70 ┤                <span style="color: #4A90E2; font-weight: bold;">○</span>      <span style="color: #2C3E50; font-weight: bold;">•</span>          <span style="color: #FF6B6B;">◦</span>
+ 60 ┤           <span style="color: #4A90E2; font-weight: bold;">○</span>     <span style="color: #2C3E50; font-weight: bold;">•</span>         <span style="color: #FF6B6B;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Launch   API   UI   Sync   Notify
+</div>
+
+<div class="ascii-title">ENERGY TRENDS - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #0D1117; font-weight: bold;">Growth:   ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Exponential - Midnight Pulse)
+<span style="color: #1A252F; font-weight: bold;">Engagement:▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (High Energy - Deep Electric)
+<span style="color: #2C3E50; font-weight: bold;">Revenue:  ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Scaling Up - Urban Charcoal)
+<span style="color: #4A90E2; font-weight: bold;">Features: ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Sprint Mode - Electric Blue)
+
+<span style="color: #0D1117;">Users:    12K</span> <span style="color: #1A252F; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #2C3E50;">2.4M ↑</span> ⚡
+<span style="color: #4A90E2;">Revenue:  $50K</span><span style="color: #FF6B6B; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #D6DBDF;">$8.7M ↑</span> ⚡
+<span style="color: #0D1117;">Valuation:$1M</span> <span style="color: #2C3E50; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #4A90E2;">$500M ↑</span> ⚡
+</div>
+</section>
+
+<section id="shibuya-dark" class="shibuya-dark-section">
+<h2>🌃 Shibuya Dark (The Night City)</h2>
+<p><em>Philosophy: Tokyo after midnight meets Nordic night - Bold and energetic dark mode</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Midnight Base</strong></td><td>#0D1117</td><td>Primary background</td><td><span class="color-chip" style="background-color: #0D1117;"></span></td></tr>
+<tr><td><strong>Dark Electric</strong></td><td>#161B22</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #161B22;"></span></td></tr>
+<tr><td><strong>Urban Shadow</strong></td><td>#21262D</td><td>Elevated surfaces</td><td><span class="color-chip" style="background-color: #21262D;"></span></td></tr>
+<tr><td><strong>Steel Dark</strong></td><td>#30363D</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #30363D;"></span></td></tr>
+<tr><td><strong>Charcoal Bright</strong></td><td>#484F58</td><td>Inactive elements</td><td><span class="color-chip" style="background-color: #484F58;"></span></td></tr>
+<tr><td><strong>Cyber Blue</strong></td><td>#58A6FF</td><td>Primary interactive</td><td><span class="color-chip" style="background-color: #58A6FF;"></span></td></tr>
+<tr><td><strong>Neon Pink</strong></td><td>#FF7B72</td><td>Secondary actions</td><td><span class="color-chip" style="background-color: #FF7B72;"></span></td></tr>
+<tr><td><strong>Electric Green</strong></td><td>#3FB950</td><td>Success states</td><td><span class="color-chip" style="background-color: #3FB950;"></span></td></tr>
+<tr><td><strong>Bright Text</strong></td><td>#F0F6FC</td><td>Primary text</td><td><span class="color-chip" style="background-color: #F0F6FC;"></span></td></tr>
+<tr><td><strong>Pure Light</strong></td><td>#FFFFFF</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #FFFFFF;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Cutting-edge, nocturnal, powerful, rebellious, premium-tech, urban-cool<br>
+<strong>Perfect For</strong>: Gaming platforms, crypto/DeFi apps, night entertainment, creative software, developer tools<br>
+<strong>Psychological Effect</strong>: Creates focus and reduces eye strain while maintaining energy<br>
+<strong>Cultural Notes</strong>: Inspired by Tokyo's neon-lit nightscape and Nordic embrace of darkness for creativity
+</div>
+
+<div class="ascii-title">🌃 CRYPTO DASHBOARD - Shibuya Dark</div>
+<div class="ascii">
+<span style="color: #FFFFFF; font-weight: bold;">Night Trading Performance:</span>
+
+100 ┤       <span style="color: #FFFFFF; font-weight: bold;">*···*···*</span>     (* Hashrate - Pure Light)
+ 90 ┤     <span style="color: #FFFFFF; font-weight: bold;">*</span> 🔥       <span style="color: #58A6FF; font-weight: bold;">o···o</span> (o Staking - Cyber Blue)
+ 80 ┤   <span style="color: #FFFFFF; font-weight: bold;">*</span> ↗     <span style="color: #58A6FF; font-weight: bold;">o···</span>🔥   <span style="color: #58A6FF; font-weight: bold;">o···o</span>  
+ 70 ┤ <span style="color: #FFFFFF; font-weight: bold;">*</span> 🌃  <span style="color: #58A6FF; font-weight: bold;">o···</span>         ↗   <span style="color: #FF7B72; font-weight: bold;">+···+</span> (+ Yield - Neon Pink)
+ 60 ┤   <span style="color: #58A6FF; font-weight: bold;">o···</span> ↗       <span style="color: #FF7B72; font-weight: bold;">+···</span> 🔥   <span style="color: #3FB950; font-weight: bold;">+</span>
+ 50 ┤ <span style="color: #58A6FF; font-weight: bold;">o</span>       ↗ <span style="color: #FF7B72; font-weight: bold;">+···</span>     ↗   <span style="color: #3FB950; font-weight: bold;">+···+</span>
+
+<span style="color: #58A6FF;">HASH:</span> <span style="color: #FF7B72; font-weight: bold;">▃▅▇█▇▅▃▁</span> 2.4T 🔥 <span style="color: #58A6FF;">POOL:</span> <span style="color: #3FB950; font-weight: bold;">▂▄▆████</span> 89%
+<span style="color: #58A6FF;">NET: </span> <span style="color: #FFFFFF; font-weight: bold;">████████</span> 567↗ 🌃 <span style="color: #58A6FF;">EARN:</span> <span style="color: #3FB950; font-weight: bold;">██▇▆</span> +15.7%
+</div>
+
+<div class="ascii-title">DEFI PROTOCOL - Shibuya Dark</div>
+<div class="ascii">
+<span style="color: #FFFFFF; font-weight: bold;">■ DECENTRALIZED FINANCE HUB ■                   ■ NIGHT TRADING ■</span>
+
+LIQUIDITY POOLS                      YIELD FARMING                                          
+
+<span style="color: #0D1117;">ETH/USDC:</span>   <span style="color: #FFFFFF; font-weight: bold;">$12.4M ↑23%</span>     <span style="color: #161B22;">Staking:</span>   <span style="color: #FFFFFF; font-weight: bold;">████████████████</span> 18.7% APY             
+<span style="color: #161B22;">BTC/ETH:</span>    <span style="color: #F0F6FC; font-weight: bold;">$8.7M  ↑15%</span>     <span style="color: #21262D;">Farming:</span>   <span style="color: #F0F6FC; font-weight: bold;">████████████████</span> 24.3% APY             
+<span style="color: #21262D;">LINK/USDT:</span>  <span style="color: #58A6FF; font-weight: bold;">$4.2M  ↑8%</span>      <span style="color: #30363D;">Lending:</span>   <span style="color: #58A6FF; font-weight: bold;">████████████████</span> 12.1% APY             
+<span style="color: #30363D;">UNI/WETH:</span>   <span style="color: #FF7B72; font-weight: bold;">$2.1M  ↑45%</span>     <span style="color: #484F58;">Compound:</span> <span style="color: #FF7B72; font-weight: bold;">████████████████</span> 31.2% APY             
+
+PROTOCOL STATISTICS                  TOKEN PERFORMANCE                                      
+
+<span style="color: #0D1117;">TVL Total </span> <span style="color: #FFFFFF; font-weight: bold;">██████████████████████</span> $847M   <span style="color: #161B22;">Native   </span> <span style="color: #FFFFFF; font-weight: bold;">████████████████</span> 245%          
+<span style="color: #161B22;">24h Volume</span> <span style="color: #F0F6FC; font-weight: bold;">████████████████</span>       $127M   <span style="color: #21262D;">Governance</span><span style="color: #F0F6FC; font-weight: bold;">██████████████</span>   178%          
+<span style="color: #21262D;">Active Users</span><span style="color: #58A6FF; font-weight: bold;">████████</span>             24.5K   <span style="color: #30363D;">Rewards  </span> <span style="color: #58A6FF; font-weight: bold;">██████████</span>       89%           
+<span style="color: #30363D;">Transactions</span><span style="color: #FF7B72; font-weight: bold;">████</span>                 8.9K    <span style="color: #484F58;">Burned   </span> <span style="color: #FF7B72; font-weight: bold;">████</span>             34%
+</div>
+
+<div class="ascii-title">NIGHT MINING - Shibuya Dark</div>
+<div class="ascii">
+<span style="color: #0D1117;">Mining Rig 01</span>  <span style="color: #0D1117; font-weight: bold;">████████████████████████████████████████</span> 2.45 TH/s Online
+<span style="color: #161B22;">Mining Rig 02</span>  <span style="color: #161B22; font-weight: bold;">████████████████████████████████</span>         1.89 TH/s Online
+<span style="color: #21262D;">Mining Rig 03</span>  <span style="color: #21262D; font-weight: bold;">████████████████████████</span>                 1.23 TH/s Online
+<span style="color: #30363D;">Mining Rig 04</span>  <span style="color: #30363D; font-weight: bold;">████████████████████</span>                     0.97 TH/s Offline
+<span style="color: #484F58;">Mining Rig 05</span>  <span style="color: #484F58; font-weight: bold;">████████████████</span>                         0.76 TH/s Maintenance
+
+Mining Pool Performance:
+100 ┤                              <span style="color: #0D1117; font-weight: bold;">●</span>     (* Peak Hashrate - Midnight Base)
+ 90 ┤                         <span style="color: #161B22; font-weight: bold;">●</span>    <span style="color: #21262D; font-weight: bold;">•</span>     (• High Performance - Dark Electric)
+ 80 ┤                    <span style="color: #21262D; font-weight: bold;">•</span>      <span style="color: #0D1117; font-weight: bold;">●</span>     <span style="color: #58A6FF; font-weight: bold;">○</span>  (○ Active Mining - Cyber Blue)
+ 70 ┤                <span style="color: #58A6FF; font-weight: bold;">○</span>      <span style="color: #21262D; font-weight: bold;">•</span>          <span style="color: #FF7B72;">◦</span>
+ 60 ┤           <span style="color: #58A6FF; font-weight: bold;">○</span>     <span style="color: #21262D; font-weight: bold;">•</span>         <span style="color: #FF7B72;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Rig01  Rig02  Rig03  Rig04  Rig05
+</div>
+
+<div class="ascii-title">NOCTURNAL TRENDS - Shibuya Dark</div>
+<div class="ascii">
+<span style="color: #FFFFFF; font-weight: bold;">Trading:  ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Night activity peak - Pure Light)
+<span style="color: #F0F6FC; font-weight: bold;">Mining:   ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (24/7 operations - Bright Text)
+<span style="color: #58A6FF; font-weight: bold;">DeFi:     ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Automated protocols - Cyber Blue)
+<span style="color: #FF7B72; font-weight: bold;">Gaming:   ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Late night sessions - Neon Pink)
+
+<span style="color: #0D1117;">Volume:   $2.4M</span> <span style="color: #161B22; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #21262D;">$127M ↑</span> 🌃
+<span style="color: #58A6FF;">Profit:   $45K</span>  <span style="color: #FF7B72; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #3FB950;">$2.8M ↑</span> 🔥
+<span style="color: #0D1117;">Holdings: 12.4</span>  <span style="color: #21262D; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #58A6FF;">847 BTC ↑</span> 💎
+</div>
+</section>
+
+<section id="studio-nordost" class="studio-section">
+<h2>🎨 Studio Nordost (The Creative Canvas)</h2>
+<p><em>Philosophy: Ultra-minimalist creative studio aesthetic</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Pure Canvas</strong></td><td>#FFFFFF</td><td>Primary background</td><td><span class="color-chip" style="background-color: #FFFFFF;"></span></td></tr>
+<tr><td><strong>Soft Canvas</strong></td><td>#FAFAFA</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #FAFAFA;"></span></td></tr>
+<tr><td><strong>Light Mist</strong></td><td>#F5F5F5</td><td>Hover states</td><td><span class="color-chip" style="background-color: #F5F5F5;"></span></td></tr>
+<tr><td><strong>Silver Dust</strong></td><td>#EEEEEE</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #EEEEEE;"></span></td></tr>
+<tr><td><strong>Neutral Grey</strong></td><td>#E0E0E0</td><td>Separators</td><td><span class="color-chip" style="background-color: #E0E0E0;"></span></td></tr>
+<tr><td><strong>Medium Grey</strong></td><td>#BDBDBD</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #BDBDBD;"></span></td></tr>
+<tr><td><strong>Warm Grey</strong></td><td>#757575</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #757575;"></span></td></tr>
+<tr><td><strong>Charcoal Grey</strong></td><td>#424242</td><td>Primary text</td><td><span class="color-chip" style="background-color: #424242;"></span></td></tr>
+<tr><td><strong>Deep Charcoal</strong></td><td>#212121</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #212121;"></span></td></tr>
+<tr><td><strong>Rich Black</strong></td><td>#000000</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #000000;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Bold, uncompromising, artistic, intellectually sophisticated, avant-garde<br>
+<strong>Perfect For</strong>: Creative agencies, architecture firms, contemporary art galleries, luxury furniture<br>
+<strong>Psychological Effect</strong>: Creates focus and contemplation, allowing content to be the hero<br>
+<strong>Cultural Notes</strong>: Embraces Japanese principle of "ma" (negative space) and Scandinavian functionalism
+</div>
+
+<div class="ascii-title">CREATIVE ANALYTICS - Studio Nordost</div>
+<div class="ascii">
+<span style="color: #000000;">Brand Identity</span>  <span style="color: #000000; font-weight: bold;">████████████████████████████████</span>     82% Client Review
+<span style="color: #212121;">Web Design</span>     <span style="color: #212121; font-weight: bold;">████████████████████████████████████████</span> 98% Final Delivery
+<span style="color: #424242;">Packaging</span>      <span style="color: #424242; font-weight: bold;">████████████████</span>                     32% Concept Phase
+<span style="color: #757575;">Motion Graphics</span> <span style="color: #757575; font-weight: bold;">████████████████████████████</span>         67% Production
+
+Creative Metrics:
+100 ┤      <span style="color: #000000; font-weight: bold;">*───*───*</span>     (* Quality Score - Rich Black)
+ 90 ┤    <span style="color: #000000; font-weight: bold;">*</span>         <span style="color: #212121; font-weight: bold;">o───o</span> (o Client Satisfaction - Deep Charcoal)
+ 80 ┤  <span style="color: #000000; font-weight: bold;">*</span>       <span style="color: #212121; font-weight: bold;">o───</span>     <span style="color: #424242; font-weight: bold;">o───o</span>
+ 70 ┤ <span style="color: #000000; font-weight: bold;">*</span>     <span style="color: #212121; font-weight: bold;">o───</span>             <span style="color: #757575; font-weight: bold;">+───+</span> (+ Innovation Index - Warm Grey)
+
+<span style="color: #000000;">QUAL</span> <span style="color: #000000; font-weight: bold;">████████████████████</span> 100%  <span style="color: #212121;">INNO</span> <span style="color: #212121; font-weight: bold;">█████████████████</span> 85%
+<span style="color: #424242;">EFFI</span> <span style="color: #424242; font-weight: bold;">█████████████</span>       67%  <span style="color: #757575;">PACE</span> <span style="color: #757575; font-weight: bold;">████████</span>         42%
+</div>
+
+<div class="ascii-title">DESIGN STUDIO - Studio Nordost</div>
+<div class="ascii">
+<span style="color: #000000; font-weight: bold;">■ CREATIVE AGENCY DASHBOARD ■                   ■ MINIMALIST ■</span>
+
+PROJECT PORTFOLIO                   CREATIVE DISCIPLINES                                   
+
+<span style="color: #000000;">Branding:</span>     <span style="color: #000000; font-weight: bold;">$2.4M  ↑18%</span>     <span style="color: #212121;">Identity:</span>  <span style="color: #000000; font-weight: bold;">████████████████</span> Brand Excellence       
+<span style="color: #212121;">Digital:</span>      <span style="color: #212121; font-weight: bold;">$1.8M  ↑23%</span>     <span style="color: #424242;">Web:</span>       <span style="color: #212121; font-weight: bold;">████████████████</span> Digital Innovation     
+<span style="color: #424242;">Print:</span>        <span style="color: #424242; font-weight: bold;">$960K  ↑12%</span>     <span style="color: #757575;">Print:</span>     <span style="color: #424242; font-weight: bold;">████████████████</span> Tactile Design         
+<span style="color: #757575;">Motion:</span>       <span style="color: #757575; font-weight: bold;">$720K  ↑8%</span>      <span style="color: #BDBDBD;">Video:</span>     <span style="color: #757575; font-weight: bold;">████████████████</span> Dynamic Content        
+
+CLIENT SATISFACTION                  DESIGN AWARDS                                          
+
+<span style="color: #000000;">Fortune 500</span>  <span style="color: #000000; font-weight: bold;">██████████████████████</span> 87%    <span style="color: #212121;">D&AD     </span> <span style="color: #000000; font-weight: bold;">████████████████</span> 12 Pencils     
+<span style="color: #212121;">Startups   </span>  <span style="color: #212121; font-weight: bold;">████████████████</span>       68%    <span style="color: #424242;">Cannes   </span> <span style="color: #212121; font-weight: bold;">██████████████</span>   8 Lions        
+<span style="color: #424242;">Nonprofits </span>  <span style="color: #424242; font-weight: bold;">████████</span>             34%    <span style="color: #757575;">ADC      </span> <span style="color: #424242; font-weight: bold;">██████████</span>       5 Cubes        
+<span style="color: #757575;">Government </span>  <span style="color: #757575; font-weight: bold;">████</span>                 15%    <span style="color: #BDBDBD;">TDC      </span> <span style="color: #757575; font-weight: bold;">████</span>             3 Awards
+</div>
+
+<div class="ascii-title">CREATIVE PROCESS - Studio Nordost</div>
+<div class="ascii">
+<span style="color: #000000;">Research Phase</span>   <span style="color: #000000; font-weight: bold;">████████████████████████████████████████</span> Strategic Foundation
+<span style="color: #212121;">Ideation Phase</span>   <span style="color: #212121; font-weight: bold;">████████████████████████████████</span>         Creative Exploration
+<span style="color: #424242;">Design Phase</span>     <span style="color: #424242; font-weight: bold;">████████████████████████</span>                 Visual Execution
+<span style="color: #757575;">Refinement</span>       <span style="color: #757575; font-weight: bold;">████████████████████</span>                     Detail Perfection
+<span style="color: #BDBDBD;">Implementation</span>   <span style="color: #BDBDBD; font-weight: bold;">████████████████</span>                         Launch Support
+
+Process Excellence:
+100 ┤                              <span style="color: #000000; font-weight: bold;">●</span>     (* Mastery Level - Rich Black)
+ 90 ┤                         <span style="color: #212121; font-weight: bold;">●</span>    <span style="color: #424242; font-weight: bold;">•</span>     (• Expert Level - Deep Charcoal)
+ 80 ┤                    <span style="color: #424242; font-weight: bold;">•</span>      <span style="color: #000000; font-weight: bold;">●</span>     <span style="color: #757575; font-weight: bold;">○</span>  (○ Professional - Warm Grey)
+ 70 ┤                <span style="color: #757575; font-weight: bold;">○</span>      <span style="color: #424242; font-weight: bold;">•</span>          <span style="color: #BDBDBD;">◦</span>
+ 60 ┤           <span style="color: #757575; font-weight: bold;">○</span>     <span style="color: #424242; font-weight: bold;">•</span>         <span style="color: #BDBDBD;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Research Ideate Design Refine Launch
+</div>
+
+<div class="ascii-title">STUDIO METRICS - Studio Nordost</div>
+<div class="ascii">
+<span style="color: #000000; font-weight: bold;">Awards:   ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Industry recognition - Rich Black)
+<span style="color: #212121; font-weight: bold;">Revenue:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (Growth trajectory - Deep Charcoal)
+<span style="color: #424242; font-weight: bold;">Clients:  ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Premium portfolio - Charcoal Grey)
+<span style="color: #757575; font-weight: bold;">Team:     ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Selective hiring - Warm Grey)
+
+<span style="color: #000000;">Projects: 47</span>  <span style="color: #212121; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #424242;">124 ↑</span> 
+<span style="color: #757575;">Revenue:  $4.2M</span><span style="color: #BDBDBD; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #E0E0E0;">$15.8M ↑</span>
+<span style="color: #000000;">Rating:   4.8</span> <span style="color: #424242; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #757575;">4.9 ↑</span>
+</div>
+</section>
+
+<section id="datum-tech" class="datum-section">
+<h2>📊 Datum Tech (The Precision Instrument)</h2>
+<p><em>Philosophy: Contemporary tech with mathematical precision</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Sample</th></tr>
+<tr><td><strong>Tech White</strong></td><td>#F6F6F6</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F6F6F6;"></span></td></tr>
+<tr><td><strong>Clean White</strong></td><td>#FFFFFF</td><td>Secondary background</td><td><span class="color-chip" style="background-color: #FFFFFF;"></span></td></tr>
+<tr><td><strong>Light Steel</strong></td><td>#F0F0F0</td><td>Hover states</td><td><span class="color-chip" style="background-color: #F0F0F0;"></span></td></tr>
+<tr><td><strong>Steel Grey</strong></td><td>#E8E8E8</td><td>Borders, dividers</td><td><span class="color-chip" style="background-color: #E8E8E8;"></span></td></tr>
+<tr><td><strong>Medium Steel</strong></td><td>#D4D4D4</td><td>Separators</td><td><span class="color-chip" style="background-color: #D4D4D4;"></span></td></tr>
+<tr><td><strong>Cool Grey</strong></td><td>#9C9C9C</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #9C9C9C;"></span></td></tr>
+<tr><td><strong>Mid Grey</strong></td><td>#6A6A6A</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #6A6A6A;"></span></td></tr>
+<tr><td><strong>Tech Charcoal</strong></td><td>#282828</td><td>Primary text</td><td><span class="color-chip" style="background-color: #282828;"></span></td></tr>
+<tr><td><strong>Deep Tech</strong></td><td>#1A1A1A</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #1A1A1A;"></span></td></tr>
+<tr><td><strong>True Black</strong></td><td>#0A0A0A</td><td>High contrast text</td><td><span class="color-chip" style="background-color: #0A0A0A;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Precise, data-driven, cutting-edge, systematic, performance-oriented<br>
+<strong>Perfect For</strong>: Blockchain companies, AI/ML platforms, data analytics tools, crypto exchanges, dev tools<br>
+<strong>Psychological Effect</strong>: Conveys precision, reliability, and technical competence<br>
+<strong>Cultural Notes</strong>: Reflects Japanese concept of "shokunin" (craftsman's dedication to perfection) applied to digital
+</div>
+
+<div class="ascii-title">PRECISION ANALYTICS - Datum Tech</div>
+<div class="ascii">
+Algorithm Performance (ms):
+<span style="color: #0A0A0A;">Neural Net</span>    <span style="color: #0A0A0A; font-weight: bold;">████████████████████████████████████████</span> 40ms (100%)
+<span style="color: #1A1A1A;">Deep Learning</span> <span style="color: #1A1A1A; font-weight: bold;">████████████████████</span>                    20ms (50%)
+<span style="color: #282828;">ML Pipeline</span>   <span style="color: #282828; font-weight: bold;">████</span>                                     4ms (10%)
+<span style="color: #6A6A6A;">Data Prep</span>     <span style="color: #6A6A6A; font-weight: bold;">████████</span>                                 8ms (20%)
+<span style="color: #9C9C9C;">Inference</span>     <span style="color: #9C9C9C; font-weight: bold;">██████████████</span>                          14ms (35%)
+
+Model Accuracy vs Training Time:
+100.0 ┤                  <span style="color: #0A0A0A; font-weight: bold;">●</span>     (* Production Models - True Black)
+ 95.0 ┤             <span style="color: #1A1A1A; font-weight: bold;">●</span>    <span style="color: #282828; font-weight: bold;">•</span>     (• Development - Tech Charcoal)
+ 90.0 ┤        <span style="color: #282828; font-weight: bold;">•</span>      <span style="color: #0A0A0A; font-weight: bold;">●</span>     <span style="color: #6A6A6A; font-weight: bold;">○</span>  (○ Experimental - Mid Grey)
+ 85.0 ┤    <span style="color: #6A6A6A; font-weight: bold;">○</span>      <span style="color: #282828; font-weight: bold;">•</span>          <span style="color: #9C9C9C;">◦</span>
+</div>
+
+<div class="ascii-title">DATA SCIENCE LAB - Datum Tech</div>
+<div class="ascii">
+<span style="color: #0A0A0A; font-weight: bold;">■ MACHINE LEARNING OPERATIONS ■                 ■ PRECISION ■</span>
+
+MODEL PERFORMANCE                    DATA PROCESSING                                        
+
+<span style="color: #0A0A0A;">Accuracy:</span>     <span style="color: #0A0A0A; font-weight: bold;">97.8% ↑2.1%</span>     <span style="color: #1A1A1A;">ETL:</span>       <span style="color: #0A0A0A; font-weight: bold;">████████████████</span> 847GB Processed       
+<span style="color: #1A1A1A;">Precision:</span>    <span style="color: #1A1A1A; font-weight: bold;">95.4% ↑1.8%</span>     <span style="color: #282828;">Pipeline:</span> <span style="color: #1A1A1A; font-weight: bold;">████████████████</span> Real-time Streaming    
+<span style="color: #282828;">Recall:</span>       <span style="color: #282828; font-weight: bold;">93.2% ↑3.4%</span>     <span style="color: #6A6A6A;">Models:</span>   <span style="color: #282828; font-weight: bold;">████████████████</span> Auto-deployment        
+<span style="color: #6A6A6A;">F1-Score:</span>     <span style="color: #6A6A6A; font-weight: bold;">94.3% ↑2.6%</span>     <span style="color: #9C9C9C;">Monitor:</span>  <span style="color: #6A6A6A; font-weight: bold;">████████████████</span> Performance Tracking   
+
+INFRASTRUCTURE METRICS               COMPUTATIONAL RESOURCES                                
+
+<span style="color: #0A0A0A;">GPU Usage  </span> <span style="color: #0A0A0A; font-weight: bold;">██████████████████████</span> 89%    <span style="color: #1A1A1A;">Compute  </span> <span style="color: #0A0A0A; font-weight: bold;">████████████████</span> 2847 cores     
+<span style="color: #1A1A1A;">Memory     </span> <span style="color: #1A1A1A; font-weight: bold;">████████████████</span>       67%    <span style="color: #282828;">Storage  </span> <span style="color: #1A1A1A; font-weight: bold;">██████████████</span>   847TB          
+<span style="color: #282828;">Storage    </span> <span style="color: #282828; font-weight: bold;">████████</span>             34%    <span style="color: #6A6A6A;">Network  </span> <span style="color: #282828; font-weight: bold;">██████████</span>       100Gbps        
+<span style="color: #6A6A6A;">Network    </span> <span style="color: #6A6A6A; font-weight: bold;">████</span>                 12%    <span style="color: #9C9C9C;">Backup   </span> <span style="color: #6A6A6A; font-weight: bold;">████</span>             99.9%
+</div>
+
+<div class="ascii-title">ALGORITHM BENCHMARKS - Datum Tech</div>
+<div class="ascii">
+<span style="color: #0A0A0A;">Transformer Model</span>  <span style="color: #0A0A0A; font-weight: bold;">████████████████████████████████████████</span> State-of-Art Performance
+<span style="color: #1A1A1A;">Neural Network</span>     <span style="color: #1A1A1A; font-weight: bold;">████████████████████████████████</span>         Deep Learning Excellence
+<span style="color: #282828;">Random Forest</span>      <span style="color: #282828; font-weight: bold;">████████████████████████</span>                 Ensemble Method
+<span style="color: #6A6A6A;">SVM Classifier</span>     <span style="color: #6A6A6A; font-weight: bold;">████████████████████</span>                     Traditional ML
+<span style="color: #9C9C9C;">Linear Regression</span>  <span style="color: #9C9C9C; font-weight: bold;">████████████████</span>                         Baseline Model
+
+Algorithm Efficiency:
+100 ┤                              <span style="color: #0A0A0A; font-weight: bold;">●</span>     (* Optimal Performance - True Black)
+ 90 ┤                         <span style="color: #1A1A1A; font-weight: bold;">●</span>    <span style="color: #282828; font-weight: bold;">•</span>     (• High Efficiency - Deep Tech)
+ 80 ┤                    <span style="color: #282828; font-weight: bold;">•</span>      <span style="color: #0A0A0A; font-weight: bold;">●</span>     <span style="color: #6A6A6A; font-weight: bold;">○</span>  (○ Standard - Mid Grey)
+ 70 ┤                <span style="color: #6A6A6A; font-weight: bold;">○</span>      <span style="color: #282828; font-weight: bold;">•</span>          <span style="color: #9C9C9C;">◦</span>
+ 60 ┤           <span style="color: #6A6A6A; font-weight: bold;">○</span>     <span style="color: #282828; font-weight: bold;">•</span>         <span style="color: #9C9C9C;">◦</span>
+  0 ┴──────────────────────────────────────────
+    Transform Neural Random SVM Linear
+</div>
+
+<div class="ascii-title">PRECISION METRICS - Datum Tech</div>
+<div class="ascii">
+<span style="color: #0A0A0A; font-weight: bold;">Accuracy:  ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↑</span> (Continuous improvement - True Black)
+<span style="color: #1A1A1A; font-weight: bold;">Throughput:▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (Performance scaling - Deep Tech)
+<span style="color: #282828; font-weight: bold;">Latency:   ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (Response optimization - Tech Charcoal)
+<span style="color: #6A6A6A; font-weight: bold;">Memory:    ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (Efficient utilization - Mid Grey)
+
+<span style="color: #0A0A0A;">Models:   127</span>  <span style="color: #1A1A1A; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #282828;">2847 ↑</span>
+<span style="color: #6A6A6A;">Datasets: 45TB</span> <span style="color: #9C9C9C; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #D4D4D4;">847TB ↑</span>
+<span style="color: #0A0A0A;">Accuracy: 92.4</span><span style="color: #282828; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #6A6A6A;">97.8% ↑</span>
+</div>
+</section>
+
+<p style="text-align: center; margin-top: 80px; color: var(--sage-8);">
+🎋 Japandi Design System Complete Showcase 🎋<br>
+All 9 Palettes • 50+ Visualizations • ONLY Official Colors
+</p>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japandi Design System</title>
+    <style>
+        @font-face {
+            font-family: 'IBM3270';
+            src: url('file:///Users/bradleyheitmann/Projects/ai-inbox/Monospace fonts/3270/3270NerdFontMono-Regular.ttf') format('truetype');
+            font-display: swap;
+        }
+        
+        /* Swiss/Japanese Design System */
+        :root {
+            /* Single Font System */
+            --font: 'IBM3270', 'SF Mono', monospace;
+            
+            /* Mathematical Scale (Swiss) */
+            --base: 16px;
+            --scale: 1.618; /* Golden ratio */
+            --text-xs: calc(var(--base) * 0.618);
+            --text-sm: calc(var(--base) * 0.786);
+            --text-base: var(--base);
+            --text-lg: calc(var(--base) * var(--scale));
+            --text-xl: calc(var(--base) * var(--scale) * var(--scale));
+            --text-2xl: calc(var(--base) * var(--scale) * var(--scale) * var(--scale));
+            
+            /* Japanese Ma (Negative Space) */
+            --ma-xs: 8px;
+            --ma-sm: 16px;
+            --ma-md: 32px;
+            --ma-lg: 64px;
+            --ma-xl: 128px;
+            --ma-2xl: 256px;
+            
+            /* Color System */
+            --warm-1: #F8F6F1; --warm-2: #F3F0E8; --warm-3: #EDE8DF; --warm-4: #E5DFD2; --warm-5: #DDD4C0;
+            --warm-6: #C8B8A0; --warm-7: #B5A085; --warm-8: #9B8468; --warm-9: #7A6B52; --warm-10: #5A4F3D;
+            
+            --sage-1: #F7F8F6; --sage-2: #F0F2ED; --sage-3: #E8EBE4; --sage-4: #DDE1D8; --sage-5: #D0D5C8;
+            --sage-6: #B8C0AD; --sage-7: #9FAA93; --sage-8: #7A8470; --sage-9: #5C6655; --sage-10: #434B3F;
+            
+            --shibuya-1: #FDFDFE; --shibuya-2: #F9FAFB; --shibuya-3: #F4F6F8; --shibuya-4: #E9ECEF; --shibuya-5: #D6DBDF;
+            --shibuya-6: #4A90E2; --shibuya-7: #FF6B6B; --shibuya-8: #2C3E50; --shibuya-9: #1A252F; --shibuya-10: #0D1117;
+            
+            --dark-1: #0D1117; --dark-2: #161B22; --dark-3: #21262D; --dark-4: #30363D; --dark-5: #484F58;
+            --dark-6: #58A6FF; --dark-7: #FF7B72; --dark-8: #3FB950; --dark-9: #F0F6FC; --dark-10: #FFFFFF;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font);
+            font-size: var(--text-base);
+            line-height: 1.5;
+            color: #1a1a1a;
+            background: #ffffff;
+            margin: 0;
+            padding: var(--ma-lg);
+        }
+        
+        @media print {
+            @page { size: A2 landscape; margin: 20mm; }
+            body { padding: var(--ma-md); }
+        }
+        
+        /* Swiss Grid */
+        .page {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 12fr 1fr;
+            gap: var(--ma-xl);
+        }
+        
+        .content { grid-column: 2; }
+        .full { grid-column: 1 / -1; }
+        
+        /* Japanese Hierarchy */
+        h1 {
+            font-size: var(--text-2xl);
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--ma-xl);
+            color: #000;
+            text-align: center;
+        }
+        
+        h2 {
+            font-size: var(--text-xl);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin: var(--ma-xl) 0 var(--ma-lg) 0;
+            color: #1a1a1a;
+        }
+        
+        .subtitle {
+            font-size: var(--text-lg);
+            color: #666;
+            text-align: center;
+            margin-bottom: var(--ma-2xl);
+            font-weight: 300;
+        }
+        
+        /* ASCII Visualizations - Large & Impactful */
+        .viz {
+            font-family: var(--font);
+            font-size: 18px;
+            line-height: 1.2;
+            letter-spacing: 0;
+            background: #fafafa;
+            padding: var(--ma-lg);
+            margin: var(--ma-xl) 0;
+            border-radius: 8px;
+            border: 1px solid #e8e8e8;
+            white-space: pre;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .viz::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent, #9B8468);
+        }
+        
+        /* Palette Styling */
+        .warm { --accent: #9B8468; --bg: #F8F6F1; }
+        .warm .viz { 
+            background: linear-gradient(to bottom right, #F8F6F1, #F3F0E8);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .sage { --accent: #7A8470; --bg: #F7F8F6; }
+        .sage .viz { 
+            background: linear-gradient(to bottom right, #F7F8F6, #F0F2ED);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .shibuya-light { --accent: #4A90E2; --bg: #FDFDFE; }
+        .shibuya-light .viz { 
+            background: linear-gradient(to bottom right, #FDFDFE, #F9FAFB);
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.15);
+        }
+        
+        .shibuya-dark { 
+            --accent: #58A6FF; 
+            --bg: #0D1117; 
+            color: #F0F6FC;
+        }
+        .shibuya-dark .viz { 
+            background: linear-gradient(to bottom right, #0D1117, #161B22);
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 8px 32px rgba(88, 166, 255, 0.3);
+            color: #F0F6FC;
+        }
+        
+        /* Color Palette Display */
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--ma-sm);
+            margin: var(--ma-lg) 0;
+        }
+        
+        .color {
+            aspect-ratio: 3/2;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: end;
+            padding: var(--ma-sm);
+            font-size: var(--text-xs);
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        
+        /* Brand Insights */
+        .insight {
+            background: var(--bg, #f9f9f9);
+            padding: var(--ma-lg);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: var(--ma-lg) 0;
+            font-size: var(--text-base);
+        }
+        
+        .page-break { 
+            page-break-before: always; 
+            margin-top: var(--ma-2xl);
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="full">
+        <h1>Japandi Design System</h1>
+        <div class="subtitle">Where Japanese Wabi-Sabi meets Scandinavian Hygge</div>
+    </div>
+</div>
+
+<div class="page warm">
+    <div class="content">
+        <h2>🏯 Warm Neutral (The Kyoto Classical)</h2>
+        
+        <div class="palette">
+            <div class="color" style="background: #F8F6F1;">Silk<br>White</div>
+            <div class="color" style="background: #E5DFD2;">Linen</div>
+            <div class="color" style="background: #B5A085;">Clay</div>
+            <div class="color" style="background: #9B8468;">Walnut</div>
+            <div class="color" style="background: #7A6B52;">Deep<br>Earth</div>
+        </div>
+        
+        <div class="insight">
+            <strong>Perfect For:</strong> Luxury hospitality, artisanal food brands, premium wellness<br>
+            <strong>Philosophy:</strong> Traditional Japanese tea ceremony meets Scandinavian cabin warmth
+        </div>
+        
+        <div class="viz">
+<span style="color: #7A6B52; font-weight: bold;">              System Performance Analysis - Warm Neutral</span>
+
+<span style="color: #7A6B52;">[API    ] </span><span style="color: #7A6B52; font-weight: bold;">████████████████████████████████████████</span><span style="color: #7A6B52;"> 40ms (100%)</span>
+<span style="color: #7A6B52;">[DB     ] </span><span style="color: #9B8468; font-weight: bold;">████████████████████</span><span style="color: #DDD4C0;">                    </span><span style="color: #7A6B52;"> 20ms (50%)</span>
+<span style="color: #7A6B52;">[CACHE  ] </span><span style="color: #B5A085; font-weight: bold;">████</span><span style="color: #E5DFD2;">                                     </span><span style="color: #7A6B52;"> 4ms (10%)</span>
+<span style="color: #7A6B52;">[AUTH   ] </span><span style="color: #C8B8A0; font-weight: bold;">████████</span><span style="color: #E5DFD2;">                                 </span><span style="color: #7A6B52;"> 8ms (20%)</span>
+<span style="color: #7A6B52;">[STORAGE] </span><span style="color: #9B8468; font-weight: bold;">██████████████</span><span style="color: #DDD4C0;">                          </span><span style="color: #7A6B52;"> 14ms (35%)</span>
+
+<span style="color: #7A6B52;">                        |----------|----------|----------|----------|</span>
+<span style="color: #7A6B52;">                        0         10        20        30        40ms</span>
+        </div>
+        
+        <div class="viz">
+<span style="color: #7A6B52; font-weight: bold;">Performance Trends - Three Data Series</span>
+
+<span style="color: #7A6B52;">100 ┤       </span><span style="color: #7A6B52; font-weight: bold;">*───*───*───*</span><span style="color: #7A6B52;">     (* Revenue - Deep Earth)</span>
+<span style="color: #7A6B52;"> 90 ┤     </span><span style="color: #7A6B52; font-weight: bold;">*             </span><span style="color: #B5A085; font-weight: bold;">o───o───o</span><span style="color: #7A6B52;"> (o Costs - Clay)</span>
+<span style="color: #7A6B52;"> 80 ┤   </span><span style="color: #7A6B52; font-weight: bold;">*           </span><span style="color: #B5A085; font-weight: bold;">o         o───o</span>
+<span style="color: #7A6B52;"> 70 ┤ </span><span style="color: #7A6B52; font-weight: bold;">*         </span><span style="color: #B5A085; font-weight: bold;">o               </span><span style="color: #C8B8A0; font-weight: bold;">+───+</span><span style="color: #7A6B52;"> (+ Profit - Warm Taupe)</span>
+<span style="color: #7A6B52;"> 60 ┤   </span><span style="color: #B5A085; font-weight: bold;">o───o───o         </span><span style="color: #C8B8A0; font-weight: bold;">+       +</span>
+<span style="color: #7A6B52;"> 50 ┤ </span><span style="color: #B5A085; font-weight: bold;">o                 </span><span style="color: #C8B8A0; font-weight: bold;">+           +───+</span>
+<span style="color: #7A6B52;"> 40 ┤                   </span><span style="color: #C8B8A0; font-weight: bold;">+───+</span><span style="color: #7A6B52;">               </span>
+<span style="color: #7A6B52;"> 30 ┤               </span><span style="color: #C8B8A0; font-weight: bold;">+</span><span style="color: #7A6B52;">                       </span>
+<span style="color: #7A6B52;"> 20 ┤           </span><span style="color: #C8B8A0; font-weight: bold;">+</span><span style="color: #7A6B52;">                           </span>
+<span style="color: #7A6B52;"> 10 ┤       </span><span style="color: #C8B8A0; font-weight: bold;">+</span><span style="color: #7A6B52;">                               </span>
+<span style="color: #7A6B52;">  0 └───────────────────────────────────────────</span>
+<span style="color: #7A6B52;">    Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep</span>
+        </div>
+    </div>
+</div>
+
+<div class="page sage page-break">
+    <div class="content">
+        <h2>🌿 Cool Sage (The Forest Meditation)</h2>
+        
+        <div class="palette">
+            <div class="color" style="background: #F7F8F6;">Paper<br>White</div>
+            <div class="color" style="background: #DDE1D8;">Stone<br>Grey</div>
+            <div class="color" style="background: #9FAA93;">Sage<br>Green</div>
+            <div class="color" style="background: #7A8470;">Forest<br>Sage</div>
+            <div class="color" style="background: #5C6655;">Deep<br>Moss</div>
+        </div>
+        
+        <div class="insight">
+            <strong>Perfect For:</strong> Meditation apps, sustainable brands, eco-conscious products<br>
+            <strong>Philosophy:</strong> Japanese forest bathing (shinrin-yoku) meets Nordic wilderness
+        </div>
+        
+        <div class="viz">
+<span style="color: #5C6655; font-weight: bold;">              Wellness Metrics Dashboard - Cool Sage</span>
+
+<span style="color: #5C6655;">[STRESS ] </span><span style="color: #B8C0AD; font-weight: bold;">████████</span><span style="color: #E8EBE4;">                                </span><span style="color: #5C6655;"> 25% (Low)</span>
+<span style="color: #5C6655;">[ENERGY ] </span><span style="color: #7A8470; font-weight: bold;">████████████████████████████████</span><span style="color: #E8EBE4;">        </span><span style="color: #5C6655;"> 82% (High)</span>
+<span style="color: #5C6655;">[FOCUS  ] </span><span style="color: #9FAA93; font-weight: bold;">████████████████████████</span><span style="color: #E8EBE4;">                </span><span style="color: #5C6655;"> 65% (Good)</span>
+<span style="color: #5C6655;">[BALANCE] </span><span style="color: #7A8470; font-weight: bold;">██████████████████████████████████████</span><span style="color: #5C6655;"> 87% (Excellent)</span>
+
+<span style="color: #5C6655;">                        |----------|----------|----------|----------|</span>
+<span style="color: #5C6655;">                        0         25        50        75       100%</span>
+        </div>
+        
+        <div class="viz">
+<span style="color: #5C6655; font-weight: bold;">Sustainability Impact Matrix</span>
+
+<span style="color: #5C6655;">╔════════════════════════════════════════════════════════════════════════╗</span>
+<span style="color: #5C6655;">║ ENVIRONMENTAL IMPACT ASSESSMENT - Cool Sage                          ║</span>
+<span style="color: #5C6655;">║                                                                        ║</span>
+<span style="color: #5C6655;">║ Carbon    </span><span style="color: #7A8470; font-weight: bold;">████████████████████</span><span style="color: #B8C0AD; font-weight: bold;">▓▓▓▓▓▓▓▓</span><span style="color: #D0D5C8;">░░░░░░░░░░░░</span><span style="color: #5C6655;">         ║</span>
+<span style="color: #5C6655;">║ Water     </span><span style="color: #7A8470; font-weight: bold;">████████████████████████████</span><span style="color: #B8C0AD; font-weight: bold;">▓▓▓▓▓▓▓▓▓▓▓▓</span><span style="color: #5C6655;">         ║</span>
+<span style="color: #5C6655;">║ Waste     </span><span style="color: #9FAA93; font-weight: bold;">████████████████</span><span style="color: #B8C0AD;">▓▓▓▓▓▓▓▓</span><span style="color: #D0D5C8;">░░░░░░░░░░░░░░░░</span><span style="color: #5C6655;">         ║</span>
+<span style="color: #5C6655;">║ Energy    </span><span style="color: #9FAA93; font-weight: bold;">████████</span><span style="color: #D0D5C8;">░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</span><span style="color: #5C6655;">         ║</span>
+<span style="color: #5C6655;">║                                                                        ║</span>
+<span style="color: #5C6655;">║ Scale: </span><span style="color: #7A8470;">████</span><span style="color: #5C6655;"> Excellent  </span><span style="color: #B8C0AD;">▓▓▓▓</span><span style="color: #5C6655;"> Good  </span><span style="color: #D0D5C8;">░░░░</span><span style="color: #5C6655;"> Needs Work     ║</span>
+<span style="color: #5C6655;">╚════════════════════════════════════════════════════════════════════════╝</span>
+        </div>
+    </div>
+</div>
+
+<div class="page shibuya-dark page-break">
+    <div class="content">
+        <h2 style="color: #F0F6FC;">🌃 Shibuya Dark (The Night City)</h2>
+        
+        <div class="palette">
+            <div class="color" style="background: #0D1117;">Midnight<br>Base</div>
+            <div class="color" style="background: #30363D;">Steel<br>Dark</div>
+            <div class="color" style="background: #58A6FF;">Cyber<br>Blue</div>
+            <div class="color" style="background: #FF7B72;">Neon<br>Pink</div>
+            <div class="color" style="background: #3FB950;">Electric<br>Green</div>
+        </div>
+        
+        <div class="insight" style="background: #161B22; color: #F0F6FC;">
+            <strong>Perfect For:</strong> Crypto platforms, gaming, night entertainment, creative software<br>
+            <strong>Philosophy:</strong> Tokyo's neon-lit nightscape with Nordic focus principles
+        </div>
+        
+        <div class="viz">
+<span style="color: #F0F6FC; font-weight: bold;">              Night Trading Performance 🌃</span>
+
+<span style="color: #58A6FF;">[BTC    ] </span><span style="color: #F0F6FC; font-weight: bold; text-shadow: 0 0 6px #F0F6FC;">████████████████████████████████████████</span><span style="color: #58A6FF;"> 2.47 BTC 🔥</span>
+<span style="color: #58A6FF;">[ETH    ] </span><span style="color: #58A6FF; font-weight: bold; text-shadow: 0 0 6px #58A6FF;">████████████████████████████████</span><span style="color: #30363D;">        </span><span style="color: #58A6FF;"> 8.7 ETH 🌃</span>
+<span style="color: #58A6FF;">[DEFI   ] </span><span style="color: #FF7B72; font-weight: bold; text-shadow: 0 0 6px #FF7B72;">████████████████████</span><span style="color: #30363D;">                    </span><span style="color: #58A6FF;"> $12.4K 🔥</span>
+<span style="color: #58A6FF;">[NFT    ] </span><span style="color: #3FB950; font-weight: bold; text-shadow: 0 0 6px #3FB950;">████████</span><span style="color: #30363D;">                                </span><span style="color: #58A6FF;"> 0.8 ETH 🌃</span>
+<span style="color: #58A6FF;">[STAKING] </span><span style="color: #FF7B72; font-weight: bold;">██████████████████████████</span><span style="color: #30363D;">              </span><span style="color: #58A6FF;"> 15.2 ETH ↗</span>
+
+<span style="color: #58A6FF;">                        |----------|----------|----------|----------|</span>
+<span style="color: #58A6FF;">                        0         25        50        75       100%</span>
+        </div>
+        
+        <div class="viz">
+<span style="color: #F0F6FC; font-weight: bold;">Live Mining Dashboard 🔥</span>
+
+<span style="color: #58A6FF;">┌─────────🌃 NIGHT CITY MINING RIG 🔥───────────────────────────────┐</span>
+<span style="color: #58A6FF;">│                                                                    │</span>
+<span style="color: #58A6FF;">│ GPU 1: </span><span style="color: #FF7B72; font-weight: bold; text-shadow: 0 0 4px #FF7B72;">████████████████████████████████████████</span><span style="color: #58A6FF;"> 98% 🔥 82°C      │</span>
+<span style="color: #58A6FF;">│ GPU 2: </span><span style="color: #FF7B72; font-weight: bold; text-shadow: 0 0 4px #FF7B72;">██████████████████████████████████████</span><span style="color: #30363D;">██</span><span style="color: #58A6FF;"> 94%   79°C      │</span>
+<span style="color: #58A6FF;">│ GPU 3: </span><span style="color: #3FB950; font-weight: bold; text-shadow: 0 0 4px #3FB950;">████████████████████████████████</span><span style="color: #30363D;">████████</span><span style="color: #58A6FF;"> 85%   74°C      │</span>
+<span style="color: #58A6FF;">│                                                                    │</span>
+<span style="color: #58A6FF;">│ Hash Rate: </span><span style="color: #F0F6FC; font-weight: bold;">2.47 TH/s ↗</span><span style="color: #58A6FF;">  Pool: </span><span style="color: #3FB950; font-weight: bold;">89% connected</span><span style="color: #58A6FF;">  Rejected: </span><span style="color: #FF7B72;">0.12%</span><span style="color: #58A6FF;">   │</span>
+<span style="color: #58A6FF;">│ Earnings: </span><span style="color: #F0F6FC; font-weight: bold;">0.00247 BTC 🔥</span><span style="color: #58A6FF;">  Power: </span><span style="color: #FF7B72;">890W</span><span style="color: #58A6FF;">  Profit: </span><span style="color: #3FB950; font-weight: bold;">$89.23</span><span style="color: #58A6FF;">      │</span>
+<span style="color: #58A6FF;">│                                                                    │</span>
+<span style="color: #58A6FF;">└────────────────────────────────────────────────────────────────────┘</span>
+
+<span style="color: #F0F6FC;">Status: </span><span style="color: #3FB950; font-weight: bold;">OPTIMAL MINING 🔥</span><span style="color: #F0F6FC;"> | Night Mode: </span><span style="color: #58A6FF; font-weight: bold;">ACTIVE 🌃</span>
+        </div>
+    </div>
+</div>
+
+<div class="page shibuya-light page-break">
+    <div class="content">
+        <h2>⚡ Shibuya Light (The Urban Energy)</h2>
+        
+        <div class="palette">
+            <div class="color" style="background: #FDFDFE; color: #2C3E50;">Electric<br>White</div>
+            <div class="color" style="background: #E9ECEF;">Urban<br>Silver</div>
+            <div class="color" style="background: #4A90E2;">Electric<br>Blue</div>
+            <div class="color" style="background: #FF6B6B;">Neon<br>Accent</div>
+            <div class="color" style="background: #2C3E50;">Urban<br>Charcoal</div>
+        </div>
+        
+        <div class="insight">
+            <strong>Perfect For:</strong> Gaming platforms, social media, fitness brands, tech startups<br>
+            <strong>Philosophy:</strong> Tokyo's electric energy with Scandinavian accessibility
+        </div>
+        
+        <div class="viz">
+<span style="color: #2C3E50; font-weight: bold;">              Gaming Performance Analytics ⚡</span>
+
+<span style="color: #2C3E50;">[FPS    ] </span><span style="color: #2C3E50; font-weight: bold;">████████████████████████████████████████</span><span style="color: #2C3E50;"> 240 FPS ⚡</span>
+<span style="color: #2C3E50;">[LATENCY] </span><span style="color: #4A90E2; font-weight: bold;">████</span><span style="color: #E9ECEF;">                                    </span><span style="color: #2C3E50;"> 12ms ↗</span>
+<span style="color: #2C3E50;">[CPU    ] </span><span style="color: #FF6B6B; font-weight: bold;">████████████████████████████████</span><span style="color: #E9ECEF;">        </span><span style="color: #2C3E50;"> 89% ⚡</span>
+<span style="color: #2C3E50;">[GPU    ] </span><span style="color: #FF6B6B; font-weight: bold;">████████████████████████████████████████</span><span style="color: #2C3E50;"> 98% 🔥</span>
+<span style="color: #2C3E50;">[MEMORY ] </span><span style="color: #4A90E2; font-weight: bold;">██████████████████████████████</span><span style="color: #E9ECEF;">          </span><span style="color: #2C3E50;"> 76% ↗</span>
+
+<span style="color: #2C3E50;">                        |----------|----------|----------|----------|</span>
+<span style="color: #2C3E50;">                        0         25        50        75       100%</span>
+        </div>
+        
+        <div class="viz">
+<span style="color: #2C3E50; font-weight: bold;">Social Media Growth Explosion ⚡</span>
+
+<span style="color: #2C3E50;">500K ┤                                      </span><span style="color: #4A90E2; font-weight: bold;">⚡───⚡───⚡───⚡</span>
+<span style="color: #2C3E50;">450K ┤                                ⚡───⚡               </span>
+<span style="color: #2C3E50;">400K ┤                          ⚡───⚡                     </span>
+<span style="color: #2C3E50;">350K ┤                    ⚡───⚡                           </span>
+<span style="color: #2C3E50;">300K ┤              ⚡───⚡                                 </span>
+<span style="color: #2C3E50;">250K ┤        ⚡───⚡                                       </span>
+<span style="color: #2C3E50;">200K ┤  ⚡───⚡                                             </span>
+<span style="color: #2C3E50;">     └────┬────┬────┬────┬────┬────┬────┬────┬────┬────┬──</span>
+<span style="color: #2C3E50;">         JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT</span>
+
+<span style="color: #4A90E2; font-weight: bold;">Followers: </span><span style="color: #FF6B6B; font-weight: bold;">+156% MoM ⚡ VIRAL EXPLOSION</span>
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed; bottom: 20px; right: 20px; font-size: 12px; color: #999; font-style: italic;">
+    Designed with Japanese Ma + Swiss Grid Precision
+</div>
+
+</body>
+</html>

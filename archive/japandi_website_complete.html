@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japandi Design System Ultimate - Complete Style Guide</title>
+    <style>
+        /* IBM 3270 Font Import */
+        @font-face {
+            font-family: 'IBM3270';
+            src: url('/Users/bradleyheitmann/Projects/ai-inbox/Monospace fonts/3270/3270-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Warm Neutral Palette */
+            --warm-neutral-1: #F8F6F1;
+            --warm-neutral-2: #F3F0E8;
+            --warm-neutral-3: #EDE8DF;
+            --warm-neutral-4: #E5DFD2;
+            --warm-neutral-5: #DDD4C0;
+            --warm-neutral-6: #C8B8A0;
+            --warm-neutral-7: #B5A085;
+            --warm-neutral-8: #9B8468;
+            --warm-neutral-9: #7A6B52;
+            --warm-neutral-10: #5A4F3D;
+
+            /* Cool Sage Palette */
+            --cool-sage-1: #F7F8F6;
+            --cool-sage-2: #F0F2ED;
+            --cool-sage-3: #E8EBE4;
+            --cool-sage-4: #DDE1D8;
+            --cool-sage-5: #D0D5C8;
+            --cool-sage-6: #B8C0AD;
+            --cool-sage-7: #9FAA93;
+            --cool-sage-8: #7A8470;
+            --cool-sage-9: #5C6655;
+            --cool-sage-10: #434B3F;
+
+            /* Blush Mauve Palette */
+            --blush-mauve-1: #F8F5F4;
+            --blush-mauve-2: #F2EDE9;
+            --blush-mauve-3: #EDE5DF;
+            --blush-mauve-4: #E6D9D1;
+            --blush-mauve-5: #DBC9BC;
+            --blush-mauve-6: #C5B3A6;
+            --blush-mauve-7: #B09A8A;
+            --blush-mauve-8: #957E6E;
+            --blush-mauve-9: #786357;
+            --blush-mauve-10: #5D4E45;
+
+            /* Ocean Stone Palette */
+            --ocean-stone-1: #F6F7F8;
+            --ocean-stone-2: #EFF1F2;
+            --ocean-stone-3: #E5E8EA;
+            --ocean-stone-4: #D8DCDF;
+            --ocean-stone-5: #C8CDD2;
+            --ocean-stone-6: #B1B8BE;
+            --ocean-stone-7: #95A0A8;
+            --ocean-stone-8: #798186;
+            --ocean-stone-9: #5F6B72;
+            --ocean-stone-10: #475159;
+
+            /* Nordic Tech Palette */
+            --nordic-tech-1: #FEFEFE;
+            --nordic-tech-2: #F8F9FA;
+            --nordic-tech-3: #F1F3F4;
+            --nordic-tech-4: #E8EAED;
+            --nordic-tech-5: #DADCE0;
+            --nordic-tech-6: #9AA0A6;
+            --nordic-tech-7: #5F6368;
+            --nordic-tech-8: #3C4043;
+            --nordic-tech-9: #202124;
+            --nordic-tech-10: #0F0F10;
+
+            /* Studio Nordost Palette */
+            --studio-nordost-1: #FFFFFF;
+            --studio-nordost-2: #FAFAFA;
+            --studio-nordost-3: #F5F5F5;
+            --studio-nordost-4: #EEEEEE;
+            --studio-nordost-5: #E0E0E0;
+            --studio-nordost-6: #BDBDBD;
+            --studio-nordost-7: #757575;
+            --studio-nordost-8: #424242;
+            --studio-nordost-9: #212121;
+            --studio-nordost-10: #000000;
+
+            /* Datum Tech Palette */
+            --datum-tech-1: #F6F6F6;
+            --datum-tech-2: #FFFFFF;
+            --datum-tech-3: #F0F0F0;
+            --datum-tech-4: #E8E8E8;
+            --datum-tech-5: #D4D4D4;
+            --datum-tech-6: #9C9C9C;
+            --datum-tech-7: #6A6A6A;
+            --datum-tech-8: #282828;
+            --datum-tech-9: #1A1A1A;
+            --datum-tech-10: #0A0A0A;
+
+            /* Shibuya Light Palette */
+            --shibuya-light-1: #FDFDFE;
+            --shibuya-light-2: #F9FAFB;
+            --shibuya-light-3: #F4F6F8;
+            --shibuya-light-4: #E9ECEF;
+            --shibuya-light-5: #D6DBDF;
+            --shibuya-light-6: #4A90E2;
+            --shibuya-light-7: #FF6B6B;
+            --shibuya-light-8: #2C3E50;
+            --shibuya-light-9: #1A252F;
+            --shibuya-light-10: #0D1117;
+
+            /* Shibuya Dark Palette */
+            --shibuya-dark-1: #0D1117;
+            --shibuya-dark-2: #161B22;
+            --shibuya-dark-3: #21262D;
+            --shibuya-dark-4: #30363D;
+            --shibuya-dark-5: #484F58;
+            --shibuya-dark-6: #58A6FF;
+            --shibuya-dark-7: #FF7B72;
+            --shibuya-dark-8: #3FB950;
+            --shibuya-dark-9: #F0F6FC;
+            --shibuya-dark-10: #FFFFFF;
+
+            /* Typography Scale */
+            --text-xs: clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem);
+            --text-sm: clamp(0.875rem, 0.75vw + 0.625rem, 1rem);
+            --text-base: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+            --text-lg: clamp(1.125rem, 1.5vw + 0.875rem, 1.375rem);
+            --text-xl: clamp(1.375rem, 2vw + 1rem, 1.75rem);
+            --text-2xl: clamp(1.75rem, 3vw + 1.25rem, 2.5rem);
+            --text-3xl: clamp(2.5rem, 5vw + 1.5rem, 4rem);
+            --text-4xl: clamp(4rem, 8vw + 2rem, 6rem);
+            --text-5xl: clamp(6rem, 12vw + 3rem, 10rem);
+
+            /* Spacing System */
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-24: 6rem;
+            --space-32: 8rem;
+        }
+
+        /* Base Typography */
+        html {
+            font-size: 100%;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--warm-neutral-1);
+            color: var(--warm-neutral-9);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(248, 246, 241, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--warm-neutral-4);
+            padding: var(--space-4) var(--space-8);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--warm-neutral-10);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-8);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--warm-neutral-8);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-neutral-10);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-8);
+            margin-top: var(--space-24);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--space-32) 0 var(--space-24);
+            background: linear-gradient(135deg, var(--warm-neutral-1) 0%, var(--warm-neutral-2) 100%);
+        }
+
+        .hero-title {
+            font-size: var(--text-5xl);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            color: var(--warm-neutral-10);
+            margin-bottom: var(--space-8);
+        }
+
+        .hero-subtitle {
+            font-size: var(--text-2xl);
+            font-weight: 400;
+            color: var(--warm-neutral-8);
+            margin-bottom: var(--space-4);
+        }
+
+        .hero-description {
+            font-size: var(--text-lg);
+            color: var(--warm-neutral-7);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Section Styling */
+        .section {
+            margin: var(--space-32) 0;
+            padding: var(--space-16) 0;
+        }
+
+        .section-title {
+            font-size: var(--text-4xl);
+            font-weight: 300;
+            color: var(--warm-neutral-10);
+            margin-bottom: var(--space-8);
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: var(--text-2xl);
+            font-weight: 400;
+            color: var(--warm-neutral-8);
+            margin-bottom: var(--space-16);
+        }
+
+        /* Palette Cards */
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-8);
+            margin: var(--space-16) 0;
+        }
+
+        .palette-card {
+            background: white;
+            border-radius: 8px;
+            padding: var(--space-8);
+            box-shadow: 0 4px 20px rgba(90, 79, 61, 0.1);
+            border: 1px solid var(--warm-neutral-4);
+        }
+
+        .palette-title {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--warm-neutral-10);
+            margin-bottom: var(--space-4);
+        }
+
+        .palette-description {
+            font-size: var(--text-sm);
+            color: var(--warm-neutral-7);
+            font-style: italic;
+            margin-bottom: var(--space-6);
+        }
+
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: var(--space-6);
+        }
+
+        .color-table th,
+        .color-table td {
+            padding: var(--space-3) var(--space-4);
+            text-align: left;
+            border-bottom: 1px solid var(--warm-neutral-4);
+        }
+
+        .color-table th {
+            font-weight: 600;
+            color: var(--warm-neutral-10);
+            background: var(--warm-neutral-2);
+        }
+
+        .color-sample {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            border: 1px solid var(--warm-neutral-4);
+            display: inline-block;
+        }
+
+        .hex-code {
+            font-family: 'IBM3270', 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 0.875rem;
+            background: var(--warm-neutral-2);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        /* ASCII Visualization Styles */
+        .ascii-container {
+            background: var(--warm-neutral-10);
+            color: var(--warm-neutral-1);
+            padding: var(--space-8);
+            border-radius: 8px;
+            margin: var(--space-6) 0;
+            overflow-x: auto;
+        }
+
+        .ascii-art {
+            font-family: 'IBM3270', 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 18px;
+            line-height: 1.2;
+            white-space: pre;
+            letter-spacing: 0;
+        }
+
+        /* Warm Neutral ASCII Colors */
+        .warm-neutral .ascii-primary { color: var(--warm-neutral-8); }
+        .warm-neutral .ascii-secondary { color: var(--warm-neutral-7); }
+        .warm-neutral .ascii-tertiary { color: var(--warm-neutral-6); }
+        .warm-neutral .ascii-accent { color: var(--warm-neutral-5); }
+
+        /* Cool Sage ASCII Colors */
+        .cool-sage .ascii-primary { color: var(--cool-sage-8); }
+        .cool-sage .ascii-secondary { color: var(--cool-sage-7); }
+        .cool-sage .ascii-tertiary { color: var(--cool-sage-6); }
+        .cool-sage .ascii-accent { color: var(--cool-sage-5); }
+
+        /* Blush Mauve ASCII Colors */
+        .blush-mauve .ascii-primary { color: var(--blush-mauve-8); }
+        .blush-mauve .ascii-secondary { color: var(--blush-mauve-7); }
+        .blush-mauve .ascii-tertiary { color: var(--blush-mauve-6); }
+        .blush-mauve .ascii-accent { color: var(--blush-mauve-5); }
+
+        /* Ocean Stone ASCII Colors */
+        .ocean-stone .ascii-primary { color: var(--ocean-stone-8); }
+        .ocean-stone .ascii-secondary { color: var(--ocean-stone-7); }
+        .ocean-stone .ascii-tertiary { color: var(--ocean-stone-6); }
+        .ocean-stone .ascii-accent { color: var(--ocean-stone-5); }
+
+        /* Nordic Tech ASCII Colors */
+        .nordic-tech .ascii-primary { color: var(--nordic-tech-8); }
+        .nordic-tech .ascii-secondary { color: var(--nordic-tech-7); }
+        .nordic-tech .ascii-tertiary { color: var(--nordic-tech-6); }
+        .nordic-tech .ascii-accent { color: var(--nordic-tech-5); }
+
+        /* Studio Nordost ASCII Colors */
+        .studio-nordost .ascii-primary { color: var(--studio-nordost-8); }
+        .studio-nordost .ascii-secondary { color: var(--studio-nordost-7); }
+        .studio-nordost .ascii-tertiary { color: var(--studio-nordost-6); }
+        .studio-nordost .ascii-accent { color: var(--studio-nordost-5); }
+
+        /* Datum Tech ASCII Colors */
+        .datum-tech .ascii-primary { color: var(--datum-tech-8); }
+        .datum-tech .ascii-secondary { color: var(--datum-tech-7); }
+        .datum-tech .ascii-tertiary { color: var(--datum-tech-6); }
+        .datum-tech .ascii-accent { color: var(--datum-tech-5); }
+
+        /* Shibuya Light ASCII Colors */
+        .shibuya-light .ascii-primary { color: var(--shibuya-light-8); }
+        .shibuya-light .ascii-secondary { color: var(--shibuya-light-6); }
+        .shibuya-light .ascii-tertiary { color: var(--shibuya-light-7); }
+        .shibuya-light .ascii-accent { color: var(--shibuya-light-5); }
+
+        /* Shibuya Dark ASCII Colors */
+        .shibuya-dark { background: var(--shibuya-dark-1); }
+        .shibuya-dark .ascii-primary { color: var(--shibuya-dark-9); }
+        .shibuya-dark .ascii-secondary { color: var(--shibuya-dark-6); }
+        .shibuya-dark .ascii-tertiary { color: var(--shibuya-dark-7); }
+        .shibuya-dark .ascii-accent { color: var(--shibuya-dark-8); }
+
+        /* Typography Styles */
+        .display-xl {
+            font-size: var(--text-5xl);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin-bottom: var(--space-8);
+        }
+
+        .display-lg {
+            font-size: var(--text-4xl);
+            font-weight: 300;
+            line-height: 1.0;
+            letter-spacing: -0.03em;
+            margin-bottom: var(--space-6);
+        }
+
+        .body-lg {
+            font-size: var(--text-lg);
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            margin-bottom: var(--space-6);
+            font-family: 'Georgia', serif;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            background: linear-gradient(135deg, var(--warm-neutral-2) 0%, var(--warm-neutral-1) 100%);
+            padding: var(--space-16) var(--space-8);
+            border-radius: 12px;
+            margin: var(--space-16) 0;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-8);
+            margin-top: var(--space-8);
+        }
+
+        .philosophy-card {
+            background: white;
+            padding: var(--space-6);
+            border-radius: 8px;
+            border: 1px solid var(--warm-neutral-4);
+        }
+
+        .philosophy-card h3 {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            color: var(--warm-neutral-10);
+            margin-bottom: var(--space-4);
+        }
+
+        .philosophy-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .philosophy-card li {
+            padding: var(--space-2) 0;
+            color: var(--warm-neutral-8);
+        }
+
+        .philosophy-card li::before {
+            content: "•";
+            color: var(--warm-neutral-7);
+            margin-right: var(--space-3);
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: var(--warm-neutral-10);
+            color: var(--warm-neutral-1);
+            padding: var(--space-6);
+            border-radius: 8px;
+            margin: var(--space-6) 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'IBM3270', 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: var(--text-3xl);
+            }
+            
+            .container {
+                padding: var(--space-4);
+            }
+            
+            .palette-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ascii-art {
+                font-size: 14px;
+            }
+        }
+
+        /* Print Styles for PDF Export */
+        @media print {
+            .nav {
+                display: none;
+            }
+            
+            body {
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+            
+            .ascii-art {
+                font-size: 10pt;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin: 20pt 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-title">Japandi Design System</div>
+            <ul class="nav-links">
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#palettes">Palettes</a></li>
+                <li><a href="#typography">Typography</a></li>
+                <li><a href="#visualizations">Visualizations</a></li>
+                <li><a href="#implementation">Implementation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Japandi Design System Ultimate</h1>
+            <h2 class="hero-subtitle">Complete Style Guide for Brand & UX Applications</h2>
+            <p class="hero-description">Bridging Japanese Wabi-Sabi & Scandinavian Hygge</p>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="section">
+        <div class="container">
+            <div class="philosophy">
+                <h2 class="section-title">Philosophy & Foundation</h2>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <h3>Core Principles</h3>
+                        <p class="body-lg"><strong>Japandi</strong> represents the harmonious fusion of Japanese <strong>wabi-sabi</strong> (finding beauty in imperfection and impermanence) and Scandinavian <strong>hygge</strong> (creating comfort and coziness). This design philosophy emphasizes:</p>
+                        <ul>
+                            <li><strong>Intentional Simplicity</strong>: Every element serves a purpose, nothing is superfluous</li>
+                            <li><strong>Natural Harmony</strong>: Colors and materials reflect the organic world and seasonal rhythms</li>
+                            <li><strong>Quiet Luxury</strong>: Sophistication through restraint, elegance without ostentation</li>
+                            <li><strong>Timeless Elegance</strong>: Avoiding fleeting trends in favor of enduring beauty</li>
+                            <li><strong>Functional Beauty</strong>: Form follows function while maintaining aesthetic appeal</li>
+                            <li><strong>Mindful Contrast</strong>: Strategic use of light and dark to create visual interest without chaos</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h3>Japanese Wabi-Sabi Influence</h3>
+                        <ul>
+                            <li>Embraces imperfection and impermanence</li>
+                            <li>Muted, natural tones reflecting seasonal changes</li>
+                            <li>Emphasis on negative space (ma) and restraint</li>
+                            <li>Materials that age gracefully and show patina</li>
+                            <li>Finding beauty in simplicity and asymmetry</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h3>Scandinavian Hygge Influence</h3>
+                        <ul>
+                            <li>Warm, cozy colors that create inviting environments</li>
+                            <li>Functionality without sacrificing comfort</li>
+                            <li>Democratic design accessible to all</li>
+                            <li>Light-maximizing strategies for long winters</li>
+                            <li>Emphasis on craftsmanship and quality materials</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h3>Modern Synthesis</h3>
+                        <ul>
+                            <li>Digital minimalism meeting human warmth</li>
+                            <li>Sustainable design principles</li>
+                            <li>Accessibility-first approach</li>
+                            <li>Cross-cultural sensitivity and respect</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color System Architecture -->
+    <section id="palettes" class="section">
+        <div class="container">
+            <h2 class="section-title">Color System Architecture</h2>
+            
+            <div class="body-lg">
+                <h3 class="section-subtitle">Systematic Approach</h3>
+                <p>Each palette contains <strong>10-12 precisely calibrated colors</strong> organized by:</p>
+                <ul style="margin: var(--space-4) 0 var(--space-8) var(--space-8);">
+                    <li><strong>Tonal Progression</strong>: Mathematically consistent light-to-dark progression</li>
+                    <li><strong>Usage Hierarchy</strong>: Specific roles for backgrounds, text, and interactive elements</li>
+                    <li><strong>Accessibility Compliance</strong>: Meeting and exceeding WCAG 2.1 AA standards</li>
+                    <li><strong>Cultural Authenticity</strong>: Colors derived from traditional materials and natural phenomena</li>
+                    <li><strong>Brand Personality</strong>: Each palette targets specific brand archetypes and industries</li>
+                </ul>
+            </div>
+
+            <!-- Palette 1: Warm Neutral -->
+            <div class="palette-grid">
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 1: Warm Neutral (The Kyoto Classical)</h3>
+                    <p class="palette-description">Philosophy: Traditional Japanese aesthetics meets Scandinavian hygge</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Silk White</strong></td>
+                                <td><code class="hex-code">#F8F6F1</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #F8F6F1;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Warm Snow</strong></td>
+                                <td><code class="hex-code">#F3F0E8</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #F3F0E8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cream Mist</strong></td>
+                                <td><code class="hex-code">#EDE8DF</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #EDE8DF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Linen</strong></td>
+                                <td><code class="hex-code">#E5DFD2</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #E5DFD2;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sand Stone</strong></td>
+                                <td><code class="hex-code">#DDD4C0</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #DDD4C0;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Warm Taupe</strong></td>
+                                <td><code class="hex-code">#C8B8A0</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #C8B8A0;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clay</strong></td>
+                                <td><code class="hex-code">#B5A085</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #B5A085;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Walnut</strong></td>
+                                <td><code class="hex-code">#9B8468</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #9B8468;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Earth</strong></td>
+                                <td><code class="hex-code">#7A6B52</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #7A6B52;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Warm</strong></td>
+                                <td><code class="hex-code">#5A4F3D</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #5A4F3D;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Classic, trustworthy, artisanal, premium yet approachable</p>
+                        <p><strong>Perfect For</strong>: Luxury hospitality (boutique hotels, high-end restaurants), artisanal food brands, premium wellness products, traditional craftsmanship brands, heritage fashion labels, organic skincare lines</p>
+                        <p><strong>Psychological Effect</strong>: Evokes warmth, security, and timeless elegance. Creates environments where customers feel welcomed and valued.</p>
+                        <p><strong>Cultural Notes</strong>: Inspired by traditional Japanese tea ceremony aesthetics and Scandinavian cabin interiors.</p>
+                    </div>
+
+                    <div class="ascii-container warm-neutral">
+                        <div class="ascii-art">System Performance (ms) - Warm Neutral Palette
+<span class="ascii-primary">[API    ] ████████████████████████████████████████ 40ms (100%)</span>
+<span class="ascii-secondary">[DB     ] ████████████████████                    20ms (50%)</span>
+<span class="ascii-tertiary">[CACHE  ] ████                                     4ms (10%)</span>
+<span class="ascii-primary">[AUTH   ] ████████                                 8ms (20%)</span>
+<span class="ascii-secondary">[STORAGE] ██████████████                          14ms (35%)</span>
+                        |----------|----------|----------|----------|
+                        0         10        20        30        40ms</div>
+                    </div>
+
+                    <div class="ascii-container warm-neutral">
+                        <div class="ascii-art">╔════════════════════════════════════════════════════════════════════════╗
+║ PRODUCT COMPARISON - Warm Neutral                                     ║
+║                                                                        ║
+║ Product A  <span class="ascii-primary">████████████</span><span class="ascii-secondary">▓▓▓▓▓▓▓▓</span><span class="ascii-tertiary">░░░░░░░░</span>                                ║
+║ Product B  <span class="ascii-primary">████████████████████</span><span class="ascii-secondary">▓▓▓▓▓▓▓▓▓▓▓▓</span><span class="ascii-tertiary">░░░░</span>                        ║
+║ Product C  <span class="ascii-primary">████████</span><span class="ascii-secondary">▓▓▓▓▓▓▓▓</span><span class="ascii-tertiary">░░░░░░░░░░░░</span>                                ║
+║                                                                        ║
+║ Legend: <span class="ascii-primary">████ Sales (#9B8468)</span>  <span class="ascii-secondary">▓▓▓▓ Returns (#C8B8A0)</span>  <span class="ascii-tertiary">░░░░ Inventory</span>  ║
+╚════════════════════════════════════════════════════════════════════════╝</div>
+                    </div>
+                </div>
+
+                <!-- Palette 2: Cool Sage -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 2: Cool Sage (The Forest Meditation)</h3>
+                    <p class="palette-description">Philosophy: Japanese mountain temples meets Nordic forest walks</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Paper White</strong></td>
+                                <td><code class="hex-code">#F7F8F6</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #F7F8F6;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soft Mist</strong></td>
+                                <td><code class="hex-code">#F0F2ED</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #F0F2ED;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dove Grey</strong></td>
+                                <td><code class="hex-code">#E8EBE4</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #E8EBE4;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stone Grey</strong></td>
+                                <td><code class="hex-code">#DDE1D8</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #DDE1D8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sage Mist</strong></td>
+                                <td><code class="hex-code">#D0D5C8</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #D0D5C8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soft Sage</strong></td>
+                                <td><code class="hex-code">#B8C0AD</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #B8C0AD;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sage Green</strong></td>
+                                <td><code class="hex-code">#9FAA93</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #9FAA93;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Forest Sage</strong></td>
+                                <td><code class="hex-code">#7A8470</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #7A8470;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Moss</strong></td>
+                                <td><code class="hex-code">#5C6655</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #5C6655;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Green</strong></td>
+                                <td><code class="hex-code">#434B3F</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #434B3F;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Mindful, sustainable, grounded, authentic, peaceful</p>
+                        <p><strong>Perfect For</strong>: Meditation and mindfulness apps, sustainable fashion brands, organic agriculture, eco-conscious home goods, forest therapy services, natural health supplements, environmental nonprofits</p>
+                        <p><strong>Psychological Effect</strong>: Promotes calmness, focus, and connection to nature. Reduces anxiety and encourages mindful decision-making.</p>
+                        <p><strong>Cultural Notes</strong>: Reflects the Japanese concept of forest bathing (shinrin-yoku) and Scandinavian reverence for untouched wilderness.</p>
+                    </div>
+
+                    <div class="ascii-container cool-sage">
+                        <div class="ascii-art">Unicode Block Sparklines - Cool Sage:
+<span class="ascii-primary">CPU:     ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓ (trending down - Forest Sage #7A8470)</span>
+<span class="ascii-secondary">Memory:  ▃▃▄▄▅▅▆▆▇▇█████ ↑ (trending up - Sage Green #9FAA93)</span>
+<span class="ascii-tertiary">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ → (stable - Soft Sage #B8C0AD)</span>
+<span class="ascii-accent">Disk:    ████▇▇▆▆▅▅▄▄▃▃▂ ↓ (decreasing - Deep Moss #5C6655)</span>
+
+ASCII Sparklines:
+<span class="ascii-primary">Load:    .-·:!|!:·-..-·:!  (Charcoal Green #434B3F)</span>
+<span class="ascii-secondary">Temp:    .....--···::!!|   (Cool sage gradient)</span>
+<span class="ascii-tertiary">Power:   |!::···---......  (Natural fade)</span>
+
+Inline Metrics Dashboard - Cool Sage:
+┌──────────────────────────────────────┐
+│ <span class="ascii-primary">CPU:  ▃▅▇█▇▅▃▁ 45%</span>  <span class="ascii-secondary">MEM: ▂▄▆████ 72%</span> │
+│ <span class="ascii-tertiary">NET:  ▁▂▃▄▅▆▇█ ↑</span>    <span class="ascii-accent">DISK: ██▇▆▅▄ ↓</span>   │
+└──────────────────────────────────────┘</div>
+                    </div>
+                </div>
+
+                <!-- Palette 3: Blush Mauve -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 3: Blush Mauve (The Sunset Ritual)</h3>
+                    <p class="palette-description">Philosophy: Japanese cherry blossoms meets Scandinavian evening light</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Porcelain</strong></td>
+                                <td><code class="hex-code">#F8F5F4</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #F8F5F4;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soft Blush</strong></td>
+                                <td><code class="hex-code">#F2EDE9</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #F2EDE9;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rose Mist</strong></td>
+                                <td><code class="hex-code">#EDE5DF</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #EDE5DF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Warm Stone</strong></td>
+                                <td><code class="hex-code">#E6D9D1</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #E6D9D1;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dusty Rose</strong></td>
+                                <td><code class="hex-code">#DBC9BC</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #DBC9BC;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mauve Grey</strong></td>
+                                <td><code class="hex-code">#C5B3A6</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #C5B3A6;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soft Mauve</strong></td>
+                                <td><code class="hex-code">#B09A8A</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #B09A8A;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rose Brown</strong></td>
+                                <td><code class="hex-code">#957E6E</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #957E6E;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Mauve</strong></td>
+                                <td><code class="hex-code">#786357</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #786357;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Rose</strong></td>
+                                <td><code class="hex-code">#5D4E45</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #5D4E45;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Gentle, nurturing, sophisticated, feminine without being exclusive, therapeutic</p>
+                        <p><strong>Perfect For</strong>: Beauty and skincare brands, fertility and women's health services, luxury spas, artisanal soaps, premium baby products, wedding planners, therapeutic practices, soft luxury fashion</p>
+                        <p><strong>Psychological Effect</strong>: Creates feelings of safety, nurturing, and gentle sophistication. Encourages relaxation and self-care behaviors.</p>
+                        <p><strong>Cultural Notes</strong>: Inspired by Japanese hanami (cherry blossom viewing) and the soft, magical light of Scandinavian summer evenings.</p>
+                    </div>
+
+                    <div class="ascii-container blush-mauve">
+                        <div class="ascii-art">╔══════════════════════════════════════════════════════════════════════════════╗
+║                    WELLNESS DASHBOARD - Blush Mauve                         ║
+╠════════════════════════════════╤═════════════════════════════════════════════╣
+║ SELF-CARE METRICS              │ RITUAL TRACKING                             ║
+║                                │                                             ║
+║ <span class="ascii-primary">Skin Health:   92%  ↑8%</span>        │ <span class="ascii-secondary">Morning: ▄▅▆▇████ Consistent (#957E6E)</span>      ║
+║ <span class="ascii-primary">Hydration:     2.1L ↑15%</span>       │ <span class="ascii-secondary">Evening: ▆▇██████ Excellent</span>                 ║
+║ <span class="ascii-primary">Sleep Quality: 8.7  →1%</span>        │ <span class="ascii-tertiary">Weekly:  ▁▂▃▄▅▆▇██ Improving</span>                ║
+║ <span class="ascii-primary">Mood Score:    85   ↑12pts</span>     │                                             ║
+╠════════════════════════════════╪═════════════════════════════════════════════╣
+║ TREATMENT AREAS                │ PRODUCT EFFECTIVENESS                       ║
+║                                │                                             ║
+║ <span class="ascii-primary">Face   ████████████████ 65%</span>    │ <span class="ascii-secondary">Cleansing ████████████ 89% (#786357)</span>        ║
+║ <span class="ascii-secondary">Body   ████████████     45%</span>    │ <span class="ascii-tertiary">Serum     ████████     78% (#957E6E)</span>        ║
+║ <span class="ascii-tertiary">Hair   ██████           25%</span>    │ <span class="ascii-accent">Moisturizer ██████     65% (#B09A8A)</span>        ║
+║ <span class="ascii-accent">Nails  ███              15%</span>    │                                             ║
+╚════════════════════════════════╧═════════════════════════════════════════════╝</div>
+                    </div>
+                </div>
+
+                <!-- Palette 4: Ocean Stone -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 4: Ocean Stone (The Coastal Meditation)</h3>
+                    <p class="palette-description">Philosophy: Japanese zen gardens meets Scandinavian fjords</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Fog White</strong></td>
+                                <td><code class="hex-code">#F6F7F8</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #F6F7F8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mist Grey</strong></td>
+                                <td><code class="hex-code">#EFF1F2</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #EFF1F2;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cloud Grey</strong></td>
+                                <td><code class="hex-code">#E5E8EA</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #E5E8EA;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pebble</strong></td>
+                                <td><code class="hex-code">#D8DCDF</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #D8DCDF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Stone Blue</strong></td>
+                                <td><code class="hex-code">#C8CDD2</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #C8CDD2;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blue Grey</strong></td>
+                                <td><code class="hex-code">#B1B8BE</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #B1B8BE;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Slate Blue</strong></td>
+                                <td><code class="hex-code">#95A0A8</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #95A0A8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Slate</strong></td>
+                                <td><code class="hex-code">#798186</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #798186;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ocean Grey</strong></td>
+                                <td><code class="hex-code">#5F6B72</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #5F6B72;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Blue</strong></td>
+                                <td><code class="hex-code">#475159</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #475159;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Professional, trustworthy, reliable, sophisticated, intellectually curious</p>
+                        <p><strong>Perfect For</strong>: Financial services, legal firms, consulting companies, architecture studios, high-end technology, premium automotive, professional education, corporate wellness programs</p>
+                        <p><strong>Psychological Effect</strong>: Instills confidence, focus, and professional trust. Encourages logical thinking and clear decision-making.</p>
+                        <p><strong>Cultural Notes</strong>: Captures the meditative quality of Japanese stone gardens and the vast, contemplative seascapes of Scandinavian coastlines.</p>
+                    </div>
+
+                    <div class="ascii-container ocean-stone">
+                        <div class="ascii-art">┌──────────────────────────────────────────────────────────────────────┐
+│ <span class="ascii-primary">ENTERPRISE SYSTEM MONITOR - Ocean Stone    ■ SECURE ■ 14:32:01</span>      │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│ <span class="ascii-primary">CPU    [████████████░░░░░░░░] 60%  Temperature: 48°C</span>                 │
+│ <span class="ascii-secondary">Memory [████████████████░░░░] 78%  Available: 4.8GB</span>                  │
+│ <span class="ascii-tertiary">Disk   [██████████░░░░░░░░░░] 45%  I/O: 89 MB/s</span>                      │
+│ <span class="ascii-accent">Network ↑ 234 Mbps  ↓ 67 Mbps      Latency: 8ms</span>                      │
+│                                                                      │
+│ Security Status:                                                     │
+│ ✓ Firewall   ✓ VPN   ✓ Encryption   ✓ Backup   ✓ Compliance         │
+│                                                                      │
+│ SLA Uptime: 99.97%  Incidents: 0  Load: 1.23, 1.18, 1.31            │
+└──────────────────────────────────────────────────────────────────────┘</div>
+                    </div>
+                </div>
+
+                <!-- Nordic Tech -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 5: Nordic Tech (The Digital Minimalist)</h3>
+                    <p class="palette-description">Philosophy: Scandinavian design meets Silicon Valley precision</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pure Snow</strong></td>
+                                <td><code class="hex-code">#FEFEFE</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #FEFEFE;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ghost White</strong></td>
+                                <td><code class="hex-code">#F8F9FA</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #F8F9FA;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Light Steel</strong></td>
+                                <td><code class="hex-code">#F1F3F4</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #F1F3F4;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Silver Mist</strong></td>
+                                <td><code class="hex-code">#E8EAED</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #E8EAED;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cool Grey</strong></td>
+                                <td><code class="hex-code">#DADCE0</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #DADCE0;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steel Blue</strong></td>
+                                <td><code class="hex-code">#9AA0A6</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #9AA0A6;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nordic Blue</strong></td>
+                                <td><code class="hex-code">#5F6368</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #5F6368;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Graphite</strong></td>
+                                <td><code class="hex-code">#3C4043</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #3C4043;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Midnight</strong></td>
+                                <td><code class="hex-code">#202124</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #202124;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Void Black</strong></td>
+                                <td><code class="hex-code">#0F0F10</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #0F0F10;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Innovative, efficient, forward-thinking, democratic, user-centric</p>
+                        <p><strong>Perfect For</strong>: SaaS platforms, developer tools, fintech applications, productivity software, AI/ML services, design systems, open-source projects, digital agencies</p>
+                        <p><strong>Psychological Effect</strong>: Promotes focus, efficiency, and trust in technology. Reduces cognitive load while maintaining engagement.</p>
+                        <p><strong>Cultural Notes</strong>: Embodies Scandinavian democratic design principles applied to digital interfaces, prioritizing function and accessibility.</p>
+                    </div>
+
+                    <div class="ascii-container nordic-tech">
+                        <div class="ascii-art">┌──────────────────────────────────────────────────────────────────────┐
+│ <span class="ascii-primary">KUBERNETES CLUSTER MONITOR - Nordic Tech   ■ READY ■ 14:32:01</span>       │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│ <span class="ascii-primary">Nodes  [████████████████████] 12/12  CPU Requests: 67%</span>               │
+│ <span class="ascii-secondary">Pods   [███████████████░░░░░] 847/1024  Memory: 78%</span>                  │
+│ <span class="ascii-tertiary">PVCs   [██████████░░░░░░░░░░] 234/500   Storage: 45%</span>                 │
+│ <span class="ascii-accent">Network ↑ 1.2 GB/s  ↓ 890 MB/s    Ingress: 12K req/s</span>                │
+│                                                                      │
+│ Service Health:                                                      │
+│ ✓ API Gateway  ✓ Database  ✓ Cache  ✓ Queue  ✓ Monitoring           │
+│                                                                      │
+│ Cluster Age: 127d  Restarts: 3  Load: 0.78, 0.82, 0.91              │
+└──────────────────────────────────────────────────────────────────────┘</div>
+                    </div>
+                </div>
+
+                <!-- Studio Nordost -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 6: Studio Nordost (The Creative Canvas)</h3>
+                    <p class="palette-description">Philosophy: Ultra-minimalist creative studio aesthetic</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pure Canvas</strong></td>
+                                <td><code class="hex-code">#FFFFFF</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soft Canvas</strong></td>
+                                <td><code class="hex-code">#FAFAFA</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #FAFAFA;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Light Mist</strong></td>
+                                <td><code class="hex-code">#F5F5F5</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #F5F5F5;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Silver Dust</strong></td>
+                                <td><code class="hex-code">#EEEEEE</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #EEEEEE;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neutral Grey</strong></td>
+                                <td><code class="hex-code">#E0E0E0</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #E0E0E0;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium Grey</strong></td>
+                                <td><code class="hex-code">#BDBDBD</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #BDBDBD;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Warm Grey</strong></td>
+                                <td><code class="hex-code">#757575</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #757575;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Grey</strong></td>
+                                <td><code class="hex-code">#424242</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #424242;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Charcoal</strong></td>
+                                <td><code class="hex-code">#212121</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #212121;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rich Black</strong></td>
+                                <td><code class="hex-code">#000000</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #000000;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Bold, uncompromising, artistic, intellectually sophisticated, avant-garde</p>
+                        <p><strong>Perfect For</strong>: Creative agencies, architecture firms, contemporary art galleries, high-end fashion brands, design studios, luxury furniture, cultural institutions, avant-garde publications</p>
+                        <p><strong>Psychological Effect</strong>: Creates a sense of focus and contemplation, allowing content to be the hero. Appeals to design-conscious audiences.</p>
+                        <p><strong>Cultural Notes</strong>: Embraces the Japanese principle of "ma" (negative space) and Scandinavian functionalist philosophy of "form follows function."</p>
+                    </div>
+                </div>
+
+                <!-- Datum Tech -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 7: Datum Tech (The Precision Instrument)</h3>
+                    <p class="palette-description">Philosophy: Contemporary tech with mathematical precision</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Tech White</strong></td>
+                                <td><code class="hex-code">#F6F6F6</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #F6F6F6;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Clean White</strong></td>
+                                <td><code class="hex-code">#FFFFFF</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Light Steel</strong></td>
+                                <td><code class="hex-code">#F0F0F0</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #F0F0F0;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steel Grey</strong></td>
+                                <td><code class="hex-code">#E8E8E8</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #E8E8E8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medium Steel</strong></td>
+                                <td><code class="hex-code">#D4D4D4</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #D4D4D4;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cool Grey</strong></td>
+                                <td><code class="hex-code">#9C9C9C</code></td>
+                                <td>Secondary text, placeholders</td>
+                                <td><span class="color-sample" style="background-color: #9C9C9C;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mid Grey</strong></td>
+                                <td><code class="hex-code">#6A6A6A</code></td>
+                                <td>Interactive elements, links</td>
+                                <td><span class="color-sample" style="background-color: #6A6A6A;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tech Charcoal</strong></td>
+                                <td><code class="hex-code">#282828</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #282828;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Tech</strong></td>
+                                <td><code class="hex-code">#1A1A1A</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #1A1A1A;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>True Black</strong></td>
+                                <td><code class="hex-code">#0A0A0A</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #0A0A0A;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Precise, data-driven, cutting-edge, systematic, performance-oriented</p>
+                        <p><strong>Perfect For</strong>: Blockchain companies, AI/ML platforms, data analytics tools, crypto exchanges, dev tools, API services, cloud infrastructure, quantitative trading platforms</p>
+                        <p><strong>Psychological Effect</strong>: Conveys precision, reliability, and technical competence. Appeals to users who value performance and accuracy.</p>
+                        <p><strong>Cultural Notes</strong>: Reflects the Japanese concept of "shokunin" (craftsman's dedication to perfection) applied to digital products.</p>
+                    </div>
+                </div>
+
+                <!-- Shibuya Light -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 8: Shibuya Light (The Urban Energy)</h3>
+                    <p class="palette-description">Philosophy: Tokyo's electric energy meets Scandinavian accessibility - More Shibuya than Kyoto</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Electric White</strong></td>
+                                <td><code class="hex-code">#FDFDFE</code></td>
+                                <td>Primary background, card surfaces</td>
+                                <td><span class="color-sample" style="background-color: #FDFDFE;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bright Canvas</strong></td>
+                                <td><code class="hex-code">#F9FAFB</code></td>
+                                <td>Secondary background, input fields</td>
+                                <td><span class="color-sample" style="background-color: #F9FAFB;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Light Pulse</strong></td>
+                                <td><code class="hex-code">#F4F6F8</code></td>
+                                <td>Hover states, disabled elements</td>
+                                <td><span class="color-sample" style="background-color: #F4F6F8;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urban Silver</strong></td>
+                                <td><code class="hex-code">#E9ECEF</code></td>
+                                <td>Subtle borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #E9ECEF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steel Shine</strong></td>
+                                <td><code class="hex-code">#D6DBDF</code></td>
+                                <td>Section separators, light shadows</td>
+                                <td><span class="color-sample" style="background-color: #D6DBDF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Electric Blue</strong></td>
+                                <td><code class="hex-code">#4A90E2</code></td>
+                                <td>Primary interactive elements, CTAs</td>
+                                <td><span class="color-sample" style="background-color: #4A90E2;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neon Accent</strong></td>
+                                <td><code class="hex-code">#FF6B6B</code></td>
+                                <td>Secondary buttons, highlights</td>
+                                <td><span class="color-sample" style="background-color: #FF6B6B;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urban Charcoal</strong></td>
+                                <td><code class="hex-code">#2C3E50</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #2C3E50;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Deep Electric</strong></td>
+                                <td><code class="hex-code">#1A252F</code></td>
+                                <td>Strong emphasis, icons</td>
+                                <td><span class="color-sample" style="background-color: #1A252F;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Midnight Pulse</strong></td>
+                                <td><code class="hex-code">#0D1117</code></td>
+                                <td>High contrast text, black analog</td>
+                                <td><span class="color-sample" style="background-color: #0D1117;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Energetic, innovative, youthful, bold, forward-moving, urban-sophisticated</p>
+                        <p><strong>Perfect For</strong>: Tech startups, gaming platforms, social media apps, fitness brands, urban lifestyle products, creative software, music streaming, event platforms, trendy co-working spaces</p>
+                        <p><strong>Psychological Effect</strong>: Creates excitement and urgency while maintaining professionalism. Appeals to younger, tech-savvy audiences who value innovation.</p>
+                        <p><strong>Cultural Notes</strong>: Captures the electric energy of Tokyo's Shibuya district while maintaining Scandinavian accessibility principles.</p>
+                    </div>
+
+                    <div class="ascii-container shibuya-light">
+                        <div class="ascii-art">╔══════════════════════════════════════════════════════════════════════════════╗
+║                ⚡ <span class="ascii-primary">CREATOR DASHBOARD - Shibuya Light</span> ⚡                        ║
+╠════════════════════════════════╤═════════════════════════════════════════════╣
+║ <span class="ascii-primary">PERFORMANCE METRICS ⚡</span>          │ GROWTH TRENDS                               ║
+║                                │                                             ║
+║ <span class="ascii-secondary">Followers:  2.1M   ↗47%</span>        │ <span class="ascii-primary">Daily: ▄▅▆▇████⚡ EXPLOSIVE (#4A90E2)</span>        ║
+║ <span class="ascii-secondary">Engagement: 12.8%  ↗89%</span>        │ <span class="ascii-secondary">Weekly: ▆▇██████⚡ VIRAL GROWTH</span>              ║
+║ <span class="ascii-tertiary">Revenue:    $45K   ↗156%</span>       │ <span class="ascii-tertiary">Monthly: ▁▂▃▄▅▆▇███⚡ SKYROCKET</span>              ║
+║ <span class="ascii-accent">Streams:    890K   ↗203%</span>       │                                             ║
+╠════════════════════════════════╪═════════════════════════════════════════════╣
+║ <span class="ascii-primary">CONTENT PERFORMANCE ⚡</span>          │ AUDIENCE BREAKDOWN                          ║
+║                                │                                             ║
+║ <span class="ascii-primary">Gaming  ████████████████ 68% ⚡</span> │ <span class="ascii-secondary">Gen Z    ████████████ 52% (#2C3E50)</span>         ║
+║ <span class="ascii-secondary">Social  ████████████     45% ↗</span> │ <span class="ascii-tertiary">Millennial ████████  38% (#4A90E2)</span>          ║
+║ <span class="ascii-tertiary">Tech    ██████           28% ⚡</span> │ <span class="ascii-accent">Gen X      ██████    10% (#FF6B6B)</span>          ║
+║ <span class="ascii-accent">Lifestyle ███            15% →</span> │                                             ║
+╚════════════════════════════════╧═════════════════════════════════════════════╝</div>
+                    </div>
+                </div>
+
+                <!-- Shibuya Dark -->
+                <div class="palette-card">
+                    <h3 class="palette-title">Palette 9: Shibuya Dark (The Night City)</h3>
+                    <p class="palette-description">Philosophy: Tokyo after midnight meets Nordic night - Bold and energetic dark mode</p>
+                    
+                    <table class="color-table">
+                        <thead>
+                            <tr>
+                                <th>Color Name</th>
+                                <th>Hex Code</th>
+                                <th>Usage Role</th>
+                                <th>Sample</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Midnight Base</strong></td>
+                                <td><code class="hex-code">#0D1117</code></td>
+                                <td>Primary background, main surfaces</td>
+                                <td><span class="color-sample" style="background-color: #0D1117;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dark Electric</strong></td>
+                                <td><code class="hex-code">#161B22</code></td>
+                                <td>Secondary background, cards</td>
+                                <td><span class="color-sample" style="background-color: #161B22;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urban Shadow</strong></td>
+                                <td><code class="hex-code">#21262D</code></td>
+                                <td>Elevated surfaces, modals</td>
+                                <td><span class="color-sample" style="background-color: #21262D;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Steel Dark</strong></td>
+                                <td><code class="hex-code">#30363D</code></td>
+                                <td>Borders, dividers</td>
+                                <td><span class="color-sample" style="background-color: #30363D;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Charcoal Bright</strong></td>
+                                <td><code class="hex-code">#484F58</code></td>
+                                <td>Inactive elements, disabled</td>
+                                <td><span class="color-sample" style="background-color: #484F58;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cyber Blue</strong></td>
+                                <td><code class="hex-code">#58A6FF</code></td>
+                                <td>Primary interactive, links</td>
+                                <td><span class="color-sample" style="background-color: #58A6FF;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neon Pink</strong></td>
+                                <td><code class="hex-code">#FF7B72</code></td>
+                                <td>Secondary actions, warnings</td>
+                                <td><span class="color-sample" style="background-color: #FF7B72;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Electric Green</strong></td>
+                                <td><code class="hex-code">#3FB950</code></td>
+                                <td>Success states, positive actions</td>
+                                <td><span class="color-sample" style="background-color: #3FB950;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bright Text</strong></td>
+                                <td><code class="hex-code">#F0F6FC</code></td>
+                                <td>Primary text, headings</td>
+                                <td><span class="color-sample" style="background-color: #F0F6FC;"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pure Light</strong></td>
+                                <td><code class="hex-code">#FFFFFF</code></td>
+                                <td>High contrast text, white analog</td>
+                                <td><span class="color-sample" style="background-color: #FFFFFF; border: 1px solid #ddd;"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="body-lg">
+                        <p><strong>Brand Personality</strong>: Cutting-edge, nocturnal, powerful, rebellious, premium-tech, urban-cool</p>
+                        <p><strong>Perfect For</strong>: Gaming platforms, crypto/DeFi apps, night entertainment, creative software (video/audio editing), developer tools, streaming platforms, esports brands, premium tech products</p>
+                        <p><strong>Psychological Effect</strong>: Creates focus and reduces eye strain while maintaining energy. Appeals to power users and professionals who work in low-light environments.</p>
+                        <p><strong>Cultural Notes</strong>: Inspired by Tokyo's neon-lit nightscape and the Nordic concept of embracing darkness as a time for focus and creativity.</p>
+                    </div>
+
+                    <div class="ascii-container shibuya-dark">
+                        <div class="ascii-art">╔══════════════════════════════════════════════════════════════════════════════╗
+║                🌃 <span class="ascii-primary">DEFI PROTOCOL DASHBOARD - Shibuya Dark</span> 🌃                  ║
+╠════════════════════════════════╤═════════════════════════════════════════════╣
+║ <span class="ascii-primary">PROTOCOL METRICS 🔥</span>             │ YIELD FARMING TRENDS                        ║
+║                                │                                             ║
+║ <span class="ascii-secondary">TVL:        $247M  🔥↗89%</span>       │ <span class="ascii-primary">Daily: ▄▅▆▇████🔥 BURNING (#58A6FF)</span>         ║
+║ <span class="ascii-secondary">Volume:     $12.4M 🌃↗156%</span>      │ <span class="ascii-secondary">Weekly: ▆▇██████🔥 MOON MISSION</span>              ║
+║ <span class="ascii-tertiary">Users:      45.2K  ↗67%</span>        │ <span class="ascii-tertiary">Monthly: ▁▂▃▄▅▆▇███🔥 TO THE MOON</span>            ║
+║ <span class="ascii-accent">APY:        127%   🔥↗203%</span>      │                                             ║
+╠════════════════════════════════╪═════════════════════════════════════════════╣
+║ <span class="ascii-primary">LIQUIDITY POOLS 🌃</span>             │ TOKEN DISTRIBUTION                          ║
+║                                │                                             ║
+║ <span class="ascii-primary">BTC-ETH ████████████████ 42%🔥</span>  │ <span class="ascii-secondary">Stakers  ████████████ 58% (#F0F6FC)</span>         ║
+║ <span class="ascii-secondary">ETH-USDC ████████████    35%🌃</span>  │ <span class="ascii-tertiary">LPs      ████████     32% (#58A6FF)</span>         ║
+║ <span class="ascii-tertiary">DeFi Mix ██████          18%</span>   │ <span class="ascii-accent">Treasury ██████       10% (#FF7B72)</span>         ║
+║ <span class="ascii-accent">Exotic   ███             5%🔥</span>   │                                             ║
+╚════════════════════════════════╧═════════════════════════════════════════════╝</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section id="typography" class="section">
+        <div class="container">
+            <h2 class="section-title">Typography System</h2>
+            
+            <div class="philosophy">
+                <h3 class="section-subtitle">Scandinavian Typography Philosophy</h3>
+                <p class="body-lg">Scandinavian typography emphasizes <strong>clarity</strong>, <strong>functionality</strong>, and <strong>understated elegance</strong>. Key principles:</p>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <h4>Core Typography Principles</h4>
+                        <ul>
+                            <li><strong>Legibility over decoration</strong>: Function drives every typographic decision</li>
+                            <li><strong>Generous spacing</strong>: Breathing room enhances comprehension and reduces stress</li>
+                            <li><strong>Consistent rhythm</strong>: Mathematical precision in scaling creates harmony</li>
+                            <li><strong>Subtle contrast</strong>: Hierarchy without aggression or visual noise</li>
+                            <li><strong>Accessible by design</strong>: Inclusive typography that works for everyone</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Japanese Influence (Simplicity & Balance)</h4>
+                        <ul>
+                            <li>Emphasis on negative space and visual breathing room</li>
+                            <li>Preference for clean, unadorned letterforms</li>
+                            <li>Careful attention to character spacing and alignment</li>
+                            <li>Respect for traditional proportional relationships</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Scandinavian Influence (Democratic & Functional)</h4>
+                        <ul>
+                            <li>Typography accessible to all literacy levels</li>
+                            <li>High contrast for Nordic light conditions</li>
+                            <li>Efficient information hierarchy</li>
+                            <li>Sustainable, long-lasting type choices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">Primary Font Recommendations</h3>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <h4>Option 1: Inter + Georgia (The Balanced Approach) ⭐ Recommended</h4>
+                        <p><strong>Primary</strong>: Inter - Modern, optimized for screens, excellent cross-platform consistency</p>
+                        <p><strong>Secondary</strong>: Georgia - Warm, highly readable serif designed for screen reading</p>
+                        <div class="code-block">
+<pre>/* Primary Font Stack */
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+/* Secondary Font Stack */
+font-family: 'Georgia', 'Times New Roman', serif;</pre>
+                        </div>
+                        <p><strong>Why This Works</strong>: Inter's systematic design mirrors Japanese precision while Georgia's warmth embodies Scandinavian coziness. Perfect balance of modern efficiency and human warmth.</p>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Typography Scale Examples</h4>
+                        <div style="margin: var(--space-4) 0;">
+                            <h1 class="display-xl" style="margin-bottom: var(--space-4);">Display XL</h1>
+                            <h2 class="display-lg" style="margin-bottom: var(--space-4);">Display Large</h2>
+                            <h3 class="section-subtitle" style="margin-bottom: var(--space-4);">Section Subtitle</h3>
+                            <p class="body-lg">This is body large text (18px) using Georgia serif. It provides excellent readability for sustained reading while maintaining the warm, approachable feeling that embodies the hygge principle.</p>
+                            <p style="font-size: var(--text-base); margin-bottom: var(--space-4);">This is standard body text (16px) that scales responsively and maintains readability across all devices and screen sizes.</p>
+                            <p style="font-size: var(--text-sm); color: var(--warm-neutral-7);">This is small text (14px) used for metadata, captions, and supporting information.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Guidelines -->
+    <section id="implementation" class="section">
+        <div class="container">
+            <h2 class="section-title">Implementation Guidelines</h2>
+            
+            <div class="philosophy">
+                <h3 class="section-subtitle">Usage Guidelines & Best Practices</h3>
+                
+                <div class="philosophy-grid">
+                    <div class="philosophy-card">
+                        <h4>Background Usage (Colors 1-3)</h4>
+                        <ul>
+                            <li><strong>Primary Background</strong>: Always use Color 1 for main content areas and page backgrounds</li>
+                            <li><strong>Secondary Background</strong>: Use Color 2 for elevated surfaces like cards, modals, and input fields</li>
+                            <li><strong>Tertiary Background</strong>: Use Color 3 for hover states, disabled elements, and subtle highlights</li>
+                            <li><strong>Accessibility</strong>: Ensure minimum 3:1 contrast between background colors for clear visual separation</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Interactive Elements (Colors 4-7)</h4>
+                        <ul>
+                            <li><strong>Borders & Dividers</strong>: Colors 4-5 for subtle separation without harsh lines</li>
+                            <li><strong>Buttons & CTAs</strong>: Colors 6-7 for primary interactive elements that need attention</li>
+                            <li><strong>Hover States</strong>: Move one step darker in the palette for consistent interaction feedback</li>
+                            <li><strong>Focus States</strong>: Use high contrast combinations with visible focus rings</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Typography Hierarchy (Colors 7-10)</h4>
+                        <ul>
+                            <li><strong>Display & Headlines</strong>: Colors 9-10 for maximum impact and readability</li>
+                            <li><strong>Body Text</strong>: Colors 8-9 for comfortable sustained reading</li>
+                            <li><strong>Secondary Text</strong>: Colors 6-7 for supporting information and metadata</li>
+                            <li><strong>Disabled Text</strong>: Colors 4-5 for inactive or unavailable content</li>
+                        </ul>
+                    </div>
+
+                    <div class="philosophy-card">
+                        <h4>Accessibility Standards (WCAG 2.1 AA+)</h4>
+                        <ul>
+                            <li><strong>Large Text (18pt+ or 14pt+ bold)</strong>: Minimum 3:1 contrast ratio</li>
+                            <li><strong>Regular Text (Standard body copy)</strong>: Minimum 4.5:1 contrast ratio</li>
+                            <li><strong>Small Text/UI Elements</strong>: Minimum 7:1 contrast ratio when possible</li>
+                            <li><strong>Interactive Elements</strong>: Minimum 4.5:1 against background colors</li>
+                            <li><strong>Focus Indicators</strong>: Minimum 3:1 contrast and clearly visible</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="section-subtitle">CSS Custom Properties Template</h3>
+                <div class="code-block">
+<pre>:root {
+  /* ===== COLOR SYSTEM ===== */
+  
+  /* Warm Neutral Palette */
+  --warm-neutral-1: #F8F6F1;   /* Silk White */
+  --warm-neutral-2: #F3F0E8;   /* Warm Snow */
+  --warm-neutral-3: #EDE8DF;   /* Cream Mist */
+  --warm-neutral-4: #E5DFD2;   /* Linen */
+  --warm-neutral-5: #DDD4C0;   /* Sand Stone */
+  --warm-neutral-6: #C8B8A0;   /* Warm Taupe */
+  --warm-neutral-7: #B5A085;   /* Clay */
+  --warm-neutral-8: #9B8468;   /* Walnut */
+  --warm-neutral-9: #7A6B52;   /* Deep Earth */
+  --warm-neutral-10: #5A4F3D;  /* Charcoal Warm */
+  
+  /* ===== TYPOGRAPHY SYSTEM ===== */
+  
+  /* Font Families */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-secondary: 'Georgia', 'Times New Roman', serif;
+  --font-mono: 'IBM3270', 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+  
+  /* Font Sizes - Fluid Scale */
+  --text-xs: clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.75vw + 0.625rem, 1rem);
+  --text-base: clamp(1rem, 1vw + 0.75rem, 1.125rem);
+  --text-lg: clamp(1.125rem, 1.5vw + 0.875rem, 1.375rem);
+  --text-xl: clamp(1.375rem, 2vw + 1rem, 1.75rem);
+  --text-2xl: clamp(1.75rem, 3vw + 1.25rem, 2.5rem);
+  --text-3xl: clamp(2.5rem, 5vw + 1.5rem, 4rem);
+  --text-4xl: clamp(4rem, 8vw + 2rem, 6rem);
+  --text-5xl: clamp(6rem, 12vw + 3rem, 10rem);
+  
+  /* Spacing System */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-4: 1rem;       /* 16px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+}</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Philosophy Statement -->
+    <section class="section">
+        <div class="container">
+            <div class="philosophy">
+                <h2 class="section-title">Cultural Philosophy Statement</h2>
+                <p class="body-lg" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    This comprehensive Japandi Design System represents the ultimate synthesis of Japanese wabi-sabi philosophy and Scandinavian hygge principles, applied to modern digital design. It provides everything needed to create authentic, accessible, and beautiful experiences that honor cultural traditions while meeting contemporary standards.
+                </p>
+                <p class="body-lg" style="text-align: center; max-width: 800px; margin: var(--space-6) auto 0;">
+                    <strong>Cultural Respect</strong>: This system respects and celebrates the cultural origins of both Japanese and Scandinavian design traditions. It is created with deep appreciation for the philosophies of wabi-sabi and hygge, not as appropriation but as thoughtful synthesis that honors the wisdom of both cultures in service of better human experiences.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(248, 246, 241, 0.98)';
+            } else {
+                nav.style.background = 'rgba(248, 246, 241, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>

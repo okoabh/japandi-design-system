@@ -1,0 +1,62 @@
+{
+  "name": "Japandi Nordic Tech",
+  "type": "light",
+  "colors": {
+    "editor.background": "#FEFEFE",
+    "editor.foreground": "#0F0F10",
+    "editor.lineHighlightBackground": "#F8F9FA",
+    "editor.selectionBackground": "#F1F3F4",
+    "editor.selectionHighlightBackground": "#E8EAED",
+    "editorCursor.foreground": "#3C4043",
+    "editorWhitespace.foreground": "#DADCE0",
+    "editorIndentGuide.background": "#E8EAED",
+    "editorLineNumber.foreground": "#9AA0A6",
+    "editorLineNumber.activeForeground": "#5F6368",
+    "sideBar.background": "#F8F9FA",
+    "sideBar.foreground": "#202124",
+    "activityBar.background": "#F1F3F4",
+    "activityBar.foreground": "#0F0F10",
+    "statusBar.background": "#3C4043",
+    "statusBar.foreground": "#FEFEFE",
+    "titleBar.activeBackground": "#F8F9FA",
+    "titleBar.activeForeground": "#0F0F10",
+    "panel.background": "#F8F9FA",
+    "terminal.background": "#FEFEFE",
+    "terminal.foreground": "#0F0F10"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment"],
+      "settings": {
+        "foreground": "#9AA0A6",
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": ["keyword"],
+      "settings": {
+        "foreground": "#202124",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": ["string"],
+      "settings": {
+        "foreground": "#3C4043"
+      }
+    },
+    {
+      "scope": ["number"],
+      "settings": {
+        "foreground": "#5F6368"
+      }
+    },
+    {
+      "scope": ["function"],
+      "settings": {
+        "foreground": "#0F0F10",
+        "fontStyle": "bold"
+      }
+    }
+  ]
+}

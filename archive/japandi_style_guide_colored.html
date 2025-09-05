@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japandi Design System - Colored ASCII Visualizations</title>
+    <style>
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 11px;
+            line-height: 1.3;
+            margin: 20px;
+            background: #fefefe;
+            color: #1a1a1a;
+            max-width: none;
+        }
+        
+        @media print {
+            @page { 
+                size: landscape; 
+                margin: 0.4in;
+            }
+            body { 
+                font-size: 9px;
+                margin: 0;
+            }
+        }
+        
+        .ascii-art {
+            font-family: 'SF Mono', 'Monaco', 'Menlo', monospace;
+            font-size: 10px;
+            line-height: 1.1;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            white-space: pre;
+            border-left: 4px solid #ddd;
+        }
+        
+        .palette-section {
+            page-break-inside: avoid;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 30px;
+        }
+        
+        .color-chip {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        
+        /* Warm Neutral Colors */
+        .warm-bar { color: #9B8468; font-weight: bold; }
+        .warm-accent { color: #7A6B52; font-weight: bold; }
+        .warm-secondary { color: #B5A085; }
+        .warm-light { color: #C8B8A0; }
+        .warm-bg { background-color: #F8F6F1; }
+        
+        /* Cool Sage Colors */
+        .sage-bar { color: #7A8470; font-weight: bold; }
+        .sage-accent { color: #5C6655; font-weight: bold; }
+        .sage-secondary { color: #9FAA93; }
+        .sage-light { color: #B8C0AD; }
+        .sage-bg { background-color: #F7F8F6; }
+        
+        /* Shibuya Light Colors */
+        .shibuya-light-bar { color: #2C3E50; font-weight: bold; }
+        .shibuya-light-accent { color: #4A90E2; font-weight: bold; }
+        .shibuya-light-neon { color: #FF6B6B; font-weight: bold; }
+        .shibuya-light-secondary { color: #1A252F; }
+        .shibuya-light-bg { background-color: #FDFDFE; }
+        
+        /* Shibuya Dark Colors */
+        .shibuya-dark-bar { color: #F0F6FC; font-weight: bold; }
+        .shibuya-dark-accent { color: #58A6FF; font-weight: bold; }
+        .shibuya-dark-neon { color: #FF7B72; font-weight: bold; }
+        .shibuya-dark-green { color: #3FB950; font-weight: bold; }
+        .shibuya-dark-bg { background-color: #0D1117; color: #F0F6FC; }
+        
+        h1 { color: #1a1a1a; border-bottom: 3px solid #ddd; padding-bottom: 15px; }
+        h2 { color: #2d2d2d; margin-top: 40px; }
+        h3 { color: #4a4a4a; margin-top: 25px; }
+        
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin: 20px 0;
+            font-size: 10px;
+        }
+        
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 6px; 
+            text-align: left; 
+        }
+        
+        th { background: #f5f5f5; font-weight: bold; }
+        
+        .brand-notes {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #7A8470;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎨 Japandi Design System - Ultimate Colored Visualizations</h1>
+<p><em>ASCII Art Rendered in True Palette Colors - "Making the Visuals Sing in Japanese"</em></p>
+
+<div class="palette-section warm-bg">
+<h2>🏯 Warm Neutral (The Kyoto Classical)</h2>
+<p><strong>Colors:</strong> Silk White #F8F6F1, Walnut #9B8468, Deep Earth #7A6B52, Clay #B5A085</p>
+
+<div class="ascii-art warm-bg">
+<span style="color: #7A6B52;">              System Performance (ms) - Warm Neutral Palette</span>
+<span style="color: #7A6B52;">[API    ] </span><span style="color: #9B8468;">████████████████████████████████████████</span><span style="color: #7A6B52;"> 40ms (100%)</span>
+<span style="color: #7A6B52;">[DB     ] </span><span style="color: #B5A085;">████████████████████</span><span style="color: #DDD4C0;">                    </span><span style="color: #7A6B52;"> 20ms (50%)</span>
+<span style="color: #7A6B52;">[CACHE  ] </span><span style="color: #C8B8A0;">████</span><span style="color: #DDD4C0;">                                     </span><span style="color: #7A6B52;"> 4ms (10%)</span>
+<span style="color: #7A6B52;">[AUTH   ] </span><span style="color: #B5A085;">████████</span><span style="color: #DDD4C0;">                                 </span><span style="color: #7A6B52;"> 8ms (20%)</span>
+<span style="color: #7A6B52;">[STORAGE] </span><span style="color: #9B8468;">██████████████</span><span style="color: #DDD4C0;">                          </span><span style="color: #7A6B52;"> 14ms (35%)</span>
+<span style="color: #7A6B52;">                        |----------|----------|----------|----------|</span>
+<span style="color: #7A6B52;">                        0         10        20        30        40ms</span>
+</div>
+
+<div class="ascii-art warm-bg">
+<span style="color: #7A6B52;">╔════════════════════════════════════════════════════════════════════════╗</span>
+<span style="color: #7A6B52;">║ PRODUCT COMPARISON - Warm Neutral                                     ║</span>
+<span style="color: #7A6B52;">║                                                                        ║</span>
+<span style="color: #7A6B52;">║ Product A  </span><span style="color: #9B8468;">████████████</span><span style="color: #C8B8A0;">▓▓▓▓▓▓▓▓</span><span style="color: #DDD4C0;">░░░░░░░░</span><span style="color: #7A6B52;">                                ║</span>
+<span style="color: #7A6B52;">║ Product B  </span><span style="color: #9B8468;">████████████████████</span><span style="color: #C8B8A0;">▓▓▓▓▓▓▓▓▓▓▓▓</span><span style="color: #DDD4C0;">░░░░</span><span style="color: #7A6B52;">                        ║</span>
+<span style="color: #7A6B52;">║ Product C  </span><span style="color: #9B8468;">████████</span><span style="color: #C8B8A0;">▓▓▓▓▓▓▓▓</span><span style="color: #DDD4C0;">░░░░░░░░░░░░</span><span style="color: #7A6B52;">                                ║</span>
+<span style="color: #7A6B52;">║                                                                        ║</span>
+<span style="color: #7A6B52;">║ Legend: </span><span style="color: #9B8468;">████</span><span style="color: #7A6B52;"> Sales </span><span style="color: #C8B8A0;">▓▓▓▓</span><span style="color: #7A6B52;"> Returns </span><span style="color: #DDD4C0;">░░░░</span><span style="color: #7A6B52;"> Inventory  ║</span>
+<span style="color: #7A6B52;">╚════════════════════════════════════════════════════════════════════════╝</span>
+</div>
+</div>
+
+<div class="palette-section sage-bg">
+<h2>🌿 Cool Sage (The Forest Meditation)</h2>
+<p><strong>Colors:</strong> Paper White #F7F8F6, Forest Sage #7A8470, Deep Moss #5C6655, Sage Green #9FAA93</p>
+
+<div class="ascii-art sage-bg">
+<span style="color: #5C6655;">              System Performance (ms) - Cool Sage Palette</span>
+<span style="color: #5C6655;">[API    ] </span><span style="color: #7A8470;">████████████████████████████████████████</span><span style="color: #5C6655;"> 40ms (100%)</span>
+<span style="color: #5C6655;">[DB     ] </span><span style="color: #9FAA93;">████████████████████</span><span style="color: #D0D5C8;">                    </span><span style="color: #5C6655;"> 20ms (50%)</span>
+<span style="color: #5C6655;">[CACHE  ] </span><span style="color: #B8C0AD;">████</span><span style="color: #D0D5C8;">                                     </span><span style="color: #5C6655;"> 4ms (10%)</span>
+<span style="color: #5C6655;">[AUTH   ] </span><span style="color: #9FAA93;">████████</span><span style="color: #D0D5C8;">                                 </span><span style="color: #5C6655;"> 8ms (20%)</span>
+<span style="color: #5C6655;">[STORAGE] </span><span style="color: #7A8470;">██████████████</span><span style="color: #D0D5C8;">                          </span><span style="color: #5C6655;"> 14ms (35%)</span>
+<span style="color: #5C6655;">                        |----------|----------|----------|----------|</span>
+<span style="color: #5C6655;">                        0         10        20        30        40ms</span>
+</div>
+
+<div class="ascii-art sage-bg">
+<span style="color: #5C6655;">Unicode Block Sparklines - Cool Sage:</span>
+<span style="color: #7A8470;">CPU:     ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓</span><span style="color: #5C6655;"> (trending down - Forest Sage)</span>
+<span style="color: #9FAA93;">Memory:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span><span style="color: #5C6655;"> (trending up - Sage Green)</span>
+<span style="color: #B8C0AD;">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span><span style="color: #5C6655;"> (stable - Soft Sage)</span>
+<span style="color: #434B3F;">Disk:    ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span><span style="color: #5C6655;"> (decreasing - Charcoal Green)</span>
+</div>
+</div>
+
+<div class="palette-section shibuya-dark-bg">
+<h2>🌃 Shibuya Dark (The Night City)</h2>
+<p style="color: #F0F6FC;"><strong>Colors:</strong> Midnight Base #0D1117, Cyber Blue #58A6FF, Neon Pink #FF7B72, Electric Green #3FB950</p>
+
+<div class="ascii-art shibuya-dark-bg">
+<span style="color: #F0F6FC;">              System Performance (ms) - Shibuya Dark 🌃</span>
+<span style="color: #58A6FF;">[API    ] </span><span style="color: #F0F6FC;">████████████████████████████████████████</span><span style="color: #58A6FF;"> 40ms (100%)</span>
+<span style="color: #58A6FF;">[DB     ] </span><span style="color: #FF7B72;">████████████████████</span><span style="color: #484F58;">                    </span><span style="color: #58A6FF;"> 20ms (50%)</span>
+<span style="color: #58A6FF;">[CACHE  ] </span><span style="color: #3FB950;">████</span><span style="color: #484F58;">                                     </span><span style="color: #58A6FF;"> 4ms (10%)</span>
+<span style="color: #58A6FF;">[AUTH   ] </span><span style="color: #FF7B72;">████████</span><span style="color: #484F58;">                                 </span><span style="color: #58A6FF;"> 8ms (20%)</span>
+<span style="color: #58A6FF;">[STORAGE] </span><span style="color: #F0F6FC;">██████████████</span><span style="color: #484F58;">                          </span><span style="color: #58A6FF;"> 14ms (35%)</span>
+<span style="color: #58A6FF;">                        |----------|----------|----------|----------|</span>
+<span style="color: #58A6FF;">                        0         10        20        30        40ms</span>
+</div>
+
+<div class="ascii-art shibuya-dark-bg">
+<span style="color: #F0F6FC;">╔════════════════════════════════════════════════════════════════════════╗</span>
+<span style="color: #F0F6FC;">║ 🌃 NIGHT METRICS - Shibuya Dark 🌃                                    ║</span>
+<span style="color: #F0F6FC;">║                                                                        ║</span>
+<span style="color: #F0F6FC;">║ Crypto    </span><span style="color: #F0F6FC;">████████████</span><span style="color: #58A6FF;">▓▓▓▓▓▓▓▓</span><span style="color: #484F58;">░░░░░░░░</span><span style="color: #F0F6FC;">                                 ║</span>
+<span style="color: #F0F6FC;">║ DeFi      </span><span style="color: #F0F6FC;">████████████████████</span><span style="color: #58A6FF;">▓▓▓▓▓▓▓▓▓▓▓▓</span><span style="color: #484F58;">░░░░</span><span style="color: #F0F6FC;">                         ║</span>
+<span style="color: #F0F6FC;">║ NFT       </span><span style="color: #F0F6FC;">████████</span><span style="color: #58A6FF;">▓▓▓▓▓▓▓▓</span><span style="color: #484F58;">░░░░░░░░░░░░</span><span style="color: #F0F6FC;">                                 ║</span>
+<span style="color: #F0F6FC;">║                                                                        ║</span>
+<span style="color: #F0F6FC;">║ Legend: </span><span style="color: #F0F6FC;">████</span><span style="color: #F0F6FC;"> Volume </span><span style="color: #58A6FF;">▓▓▓▓</span><span style="color: #F0F6FC;"> Stakes </span><span style="color: #484F58;">░░░░</span><span style="color: #F0F6FC;"> Rewards      ║</span>
+<span style="color: #F0F6FC;">╚════════════════════════════════════════════════════════════════════════╝</span>
+</div>
+
+<div class="ascii-art shibuya-dark-bg">
+<span style="color: #F0F6FC;">Neon Sparklines - LIVE:</span>
+<span style="color: #F0F6FC;">Hash:    </span><span style="color: #FF7B72;">▁▂▃▄▅▆▇█▇▆▅▄▃▂▁</span><span style="color: #F0F6FC;"> 🔥 2.4 TH/s BURNING</span>
+<span style="color: #58A6FF;">Pool:    </span><span style="color: #3FB950;">▃▃▄▄▅▅▆▆▇▇█████</span><span style="color: #F0F6FC;"> ↗ 89% CONNECTED</span>  
+<span style="color: #58A6FF;">Network: </span><span style="color: #FF7B72;">▁▁▁▂▃▄▅▆▇█▇▆▅▄▃</span><span style="color: #F0F6FC;"> 🌃 567 MB/s FLOW</span>
+<span style="color: #3FB950;">Rewards: </span><span style="color: #F0F6FC;">████▇▇▆▆▅▅▄▄▃▃▂</span><span style="color: #F0F6FC;"> ↗ +15.7% APY</span>
+
+<span style="color: #58A6FF;">Night Terminal:</span>
+<span style="color: #58A6FF;">┌─────────🌃 NIGHT CITY METRICS 🌃───────┐</span>
+<span style="color: #58A6FF;">│ HASH: </span><span style="color: #FF7B72;">▃▅▇█▇▅▃▁</span><span style="color: #F0F6FC;"> 2.4T 🔥 POOL: </span><span style="color: #3FB950;">▂▄▆████</span><span style="color: #F0F6FC;"> 89│</span>
+<span style="color: #58A6FF;">│ NET:  </span><span style="color: #F0F6FC;">████████</span><span style="color: #F0F6FC;"> 567↗ 🌃 EARN: </span><span style="color: #3FB950;">██▇▆</span><span style="color: #F0F6FC;"> +15.7│</span>
+<span style="color: #58A6FF;">│ Status: [</span><span style="color: #F0F6FC;">████████████</span><span style="color: #58A6FF;">] 🔥 NIGHT MODE   │</span>
+<span style="color: #58A6FF;">└──────────────────────────────────────┘</span>
+</div>
+</div>
+
+<div class="palette-section">
+<h2>🌊 Ocean Stone (The Coastal Meditation)</h2>
+<p><strong>Colors:</strong> Fog White #F6F7F8, Deep Slate #798186, Ocean Grey #5F6B72, Slate Blue #95A0A8</p>
+
+<div class="ascii-art">
+<span style="color: #5F6B72;">Corporate Metrics Dashboard - Ocean Stone:</span>
+
+<span style="color: #5F6B72;">100 ┤       </span><span style="color: #798186;">*···*···*</span><span style="color: #5F6B72;">     (* Revenue - Deep Slate)</span>
+<span style="color: #5F6B72;"> 90 ┤     </span><span style="color: #798186;">*         </span><span style="color: #95A0A8;">o···o</span><span style="color: #5F6B72;"> (o Costs - Slate Blue)</span>
+<span style="color: #5F6B72;"> 80 ┤   </span><span style="color: #798186;">*       </span><span style="color: #95A0A8;">o···     o···o</span>
+<span style="color: #5F6B72;"> 70 ┤ </span><span style="color: #798186;">*     </span><span style="color: #95A0A8;">o···             </span><span style="color: #B1B8BE;">+···+</span><span style="color: #5F6B72;"> (+ Profit - Blue Grey)</span>
+<span style="color: #5F6B72;"> 60 ┤   </span><span style="color: #95A0A8;">o···             </span><span style="color: #B1B8BE;">+···     +</span>
+<span style="color: #5F6B72;"> 50 ┤ </span><span style="color: #95A0A8;">o             </span><span style="color: #B1B8BE;">+···           +···+</span>
+<span style="color: #5F6B72;"> 40 ┤           </span><span style="color: #B1B8BE;">+···</span><span style="color: #5F6B72;">                   </span>
+<span style="color: #5F6B72;"> 30 ┤       </span><span style="color: #B1B8BE;">+···</span><span style="color: #5F6B72;">                       </span>
+<span style="color: #5F6B72;"> 20 ┤   </span><span style="color: #B1B8BE;">+···</span><span style="color: #5F6B72;">                           </span>
+<span style="color: #5F6B72;"> 10 ┤ </span><span style="color: #B1B8BE;">+</span><span style="color: #5F6B72;">                                </span>
+<span style="color: #5F6B72;">  0 └──────────────────────────────────</span>
+<span style="color: #5F6B72;">    Jan Feb Mar Apr May Jun Jul Aug Sep</span>
+</div>
+</div>
+
+<p><strong>📄 To Create PDF:</strong></p>
+<ol>
+<li>Press Cmd+P to print this page</li>
+<li>Select "Save as PDF"</li>
+<li>Choose <strong>Landscape orientation</strong></li>
+<li>All ASCII art and colors will render perfectly!</li>
+</ol>
+
+<p><strong>🎯 This HTML shows the ASCII art in true palette colors - exactly what you requested!</strong></p>
+
+</body>
+</html>

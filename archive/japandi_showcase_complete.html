@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japandi Design System - Ultimate Showcase</title>
+    <style>
+        /* Single Font System - Source Code Pro */
+        @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            /* Cool Sage Leading */
+            --sage-1: #F7F8F6; --sage-2: #F0F2ED; --sage-3: #E8EBE4; --sage-4: #DDE1D8; --sage-5: #D0D5C8;
+            --sage-6: #B8C0AD; --sage-7: #9FAA93; --sage-8: #7A8470; --sage-9: #5C6655; --sage-10: #434B3F;
+            
+            /* Ocean Stone */
+            --ocean-1: #F6F7F8; --ocean-2: #EFF1F2; --ocean-3: #E5E8EA; --ocean-4: #D8DCDF; --ocean-5: #C8CDD2;
+            --ocean-6: #B1B8BE; --ocean-7: #95A0A8; --ocean-8: #798186; --ocean-9: #5F6B72; --ocean-10: #475159;
+            
+            /* Nordic Tech */
+            --nordic-1: #FEFEFE; --nordic-2: #F8F9FA; --nordic-3: #F1F3F4; --nordic-4: #E8EAED; --nordic-5: #DADCE0;
+            --nordic-6: #9AA0A6; --nordic-7: #5F6368; --nordic-8: #3C4043; --nordic-9: #202124; --nordic-10: #0F0F10;
+            
+            /* Shibuya Updated */
+            --shibuya-blue: #4A6FA5; --shibuya-red: #C53030; --shibuya-steel: #718096;
+            --shibuya-dark: #1A1D29; --shibuya-light: #F8F9FB;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Source Code Pro', monospace;
+            line-height: 1.6;
+            color: var(--sage-9);
+            background: var(--sage-1);
+        }
+        
+        /* Responsive Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(247, 248, 246, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--sage-4);
+            padding: 15px 20px;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--sage-8);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--sage-9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--sage-8);
+        }
+        
+        /* Responsive Main Content */
+        .main {
+            margin-top: 70px;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive Typography */
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            color: var(--sage-10);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--sage-8);
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 400;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 500;
+            color: var(--sage-9);
+            margin: 60px 0 30px 0;
+            border-bottom: 2px solid var(--sage-5);
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 500;
+            color: var(--sage-8);
+            margin: 40px 0 20px 0;
+        }
+        
+        p, li {
+            font-size: clamp(12px, 1.5vw, 14px);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        /* ASCII - NO BORDERS, Responsive */
+        .ascii {
+            font-family: 'Source Code Pro', monospace;
+            font-size: clamp(11px, 1.2vw, 13px);
+            line-height: 1.1;
+            background: var(--sage-2);
+            padding: clamp(20px, 3vw, 30px);
+            margin: clamp(20px, 3vw, 30px) 0;
+            border-radius: 6px;
+            border-left: 4px solid var(--sage-8);
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .ascii-title {
+            font-weight: 700;
+            color: var(--sage-10);
+            font-size: clamp(13px, 1.5vw, 16px);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .ascii-dark {
+            background: var(--shibuya-dark);
+            color: #F0F6FC;
+            border-left-color: var(--shibuya-blue);
+        }
+        
+        /* Responsive Color Tables */
+        .color-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: clamp(11px, 1.2vw, 13px);
+            overflow-x: auto;
+            display: block;
+            white-space: nowrap;
+        }
+        
+        .color-table thead,
+        .color-table tbody,
+        .color-table tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        
+        .color-table th, .color-table td {
+            padding: clamp(8px, 1vw, 12px);
+            text-align: left;
+            border: 1px solid var(--sage-4);
+            width: 25%;
+        }
+        
+        .color-table th {
+            background: var(--sage-3);
+            font-weight: 600;
+            color: var(--sage-9);
+        }
+        
+        .color-chip {
+            display: inline-block;
+            width: clamp(16px, 2vw, 20px);
+            height: clamp(16px, 2vw, 20px);
+            border-radius: 3px;
+            border: 1px solid var(--sage-6);
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+        
+        /* Brand Insights */
+        .insight {
+            background: var(--sage-2);
+            padding: clamp(20px, 3vw, 25px);
+            border-radius: 6px;
+            border-left: 4px solid var(--sage-7);
+            margin: 25px 0;
+            font-size: clamp(12px, 1.3vw, 14px);
+        }
+        
+        ul, ol { 
+            margin-left: clamp(20px, 3vw, 30px); 
+            margin-bottom: 20px; 
+        }
+        
+        strong { font-weight: 600; color: var(--sage-10); }
+        em { font-style: italic; color: var(--sage-8); }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav { padding: 12px 15px; }
+            .nav-links { gap: 15px; }
+            .nav-links a { font-size: 12px; }
+            .main { margin-top: 60px; padding: 20px 15px; }
+            .ascii { font-size: 10px; padding: 15px; }
+            .ascii-title { font-size: 12px; }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links { display: none; }
+            .ascii { font-size: 9px; padding: 12px; }
+        }
+        
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .main { max-width: 100%; padding: 30px 25px; }
+            .ascii { font-size: 12px; }
+        }
+        
+        /* Desktop */
+        @media (min-width: 1025px) {
+            .main { max-width: 1200px; padding: 50px 40px; }
+            .ascii { font-size: 13px; }
+        }
+        
+        /* Large Desktop */
+        @media (min-width: 1400px) {
+            .main { max-width: 1400px; }
+            .ascii { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-content">
+        <div class="nav-title">🎋 Japandi Design System</div>
+        <ul class="nav-links">
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#cool-sage">Cool Sage</a></li>
+            <li><a href="#ocean-stone">Ocean Stone</a></li>
+            <li><a href="#nordic-tech">Nordic Tech</a></li>
+            <li><a href="#shibuya">Shibuya</a></li>
+            <li><a href="#typography">Typography</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="main">
+
+<h1>Japandi Design System</h1>
+<p class="subtitle">Complete Style Guide for Brand & UX Applications<br><em>Bridging Japanese Wabi-Sabi & Scandinavian Hygge</em></p>
+
+<section id="philosophy">
+<h2>Philosophy & Foundation</h2>
+
+<h3>Core Principles</h3>
+<p><strong>Japandi</strong> represents the harmonious fusion of Japanese <strong>wabi-sabi</strong> (finding beauty in imperfection and impermanence) and Scandinavian <strong>hygge</strong> (creating comfort and coziness). This design philosophy emphasizes:</p>
+
+<ul>
+<li><strong>Intentional Simplicity</strong>: Every element serves a purpose, nothing is superfluous</li>
+<li><strong>Natural Harmony</strong>: Colors and materials reflect the organic world and seasonal rhythms</li>
+<li><strong>Quiet Luxury</strong>: Sophistication through restraint, elegance without ostentation</li>
+<li><strong>Timeless Elegance</strong>: Avoiding fleeting trends in favor of enduring beauty</li>
+<li><strong>Functional Beauty</strong>: Form follows function while maintaining aesthetic appeal</li>
+<li><strong>Mindful Contrast</strong>: Strategic use of light and dark to create visual interest without chaos</li>
+</ul>
+
+<h4>Cultural Context & Design DNA</h4>
+
+<p><strong>Japanese Wabi-Sabi Influence:</strong></p>
+<ul>
+<li>Embraces imperfection and impermanence</li>
+<li>Muted, natural tones reflecting seasonal changes</li>
+<li>Emphasis on negative space (ma) and restraint</li>
+<li>Materials that age gracefully and show patina</li>
+<li>Finding beauty in simplicity and asymmetry</li>
+</ul>
+
+<p><strong>Scandinavian Hygge Influence:</strong></p>
+<ul>
+<li>Warm, cozy colors that create inviting environments</li>
+<li>Functionality without sacrificing comfort</li>
+<li>Democratic design accessible to all</li>
+<li>Light-maximizing strategies for long winters</li>
+<li>Emphasis on craftsmanship and quality materials</li>
+</ul>
+
+<p><strong>Modern Synthesis:</strong></p>
+<ul>
+<li>Digital minimalism meeting human warmth</li>
+<li>Sustainable design principles</li>
+<li>Accessibility-first approach</li>
+<li>Cross-cultural sensitivity and respect</li>
+</ul>
+</section>
+
+<section id="cool-sage">
+<h2>🌿 Cool Sage (The Forest Meditation)</h2>
+<p><em>Philosophy: Japanese mountain temples meets Nordic forest walks</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Color Sample</th></tr>
+<tr><td><strong>Paper White</strong></td><td>#F7F8F6</td><td>Primary background, card surfaces</td><td><span class="color-chip" style="background-color: #F7F8F6;"></span></td></tr>
+<tr><td><strong>Soft Mist</strong></td><td>#F0F2ED</td><td>Secondary background, input fields</td><td><span class="color-chip" style="background-color: #F0F2ED;"></span></td></tr>
+<tr><td><strong>Dove Grey</strong></td><td>#E8EBE4</td><td>Hover states, disabled elements</td><td><span class="color-chip" style="background-color: #E8EBE4;"></span></td></tr>
+<tr><td><strong>Stone Grey</strong></td><td>#DDE1D8</td><td>Subtle borders, dividers</td><td><span class="color-chip" style="background-color: #DDE1D8;"></span></td></tr>
+<tr><td><strong>Sage Mist</strong></td><td>#D0D5C8</td><td>Section separators, light shadows</td><td><span class="color-chip" style="background-color: #D0D5C8;"></span></td></tr>
+<tr><td><strong>Soft Sage</strong></td><td>#B8C0AD</td><td>Secondary text, placeholders</td><td><span class="color-chip" style="background-color: #B8C0AD;"></span></td></tr>
+<tr><td><strong>Sage Green</strong></td><td>#9FAA93</td><td>Interactive elements, links</td><td><span class="color-chip" style="background-color: #9FAA93;"></span></td></tr>
+<tr><td><strong>Forest Sage</strong></td><td>#7A8470</td><td>Primary text, headings</td><td><span class="color-chip" style="background-color: #7A8470;"></span></td></tr>
+<tr><td><strong>Deep Moss</strong></td><td>#5C6655</td><td>Strong emphasis, icons</td><td><span class="color-chip" style="background-color: #5C6655;"></span></td></tr>
+<tr><td><strong>Charcoal Green</strong></td><td>#434B3F</td><td>High contrast text, black analog</td><td><span class="color-chip" style="background-color: #434B3F;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Mindful, sustainable, grounded, authentic, peaceful<br>
+<strong>Perfect For</strong>: Meditation apps, sustainable brands, wellness companies<br>
+<strong>Psychological Effect</strong>: Promotes calmness, focus, and connection to nature<br>
+<strong>Cultural Notes</strong>: Japanese forest bathing (shinrin-yoku) meets Nordic wilderness
+</div>
+
+<div class="ascii-title">🌿 WELLNESS EXECUTIVE DASHBOARD - Cool Sage</div>
+<div class="ascii">
+KEY METRICS                          SUSTAINABILITY TRENDS                                   
+
+<span style="color: #434B3F; font-weight: bold;">Carbon Offset:</span>  <span style="color: #434B3F; font-weight: bold;">2.4T  ↑15%</span>        <span style="color: #5C6655;">Monthly:</span> <span style="color: #434B3F; font-weight: bold;">████████████████</span> Positive Impact         
+<span style="color: #5C6655; font-weight: bold;">Green Energy:</span>   <span style="color: #5C6655; font-weight: bold;">89%  ↑23%</span>        <span style="color: #7A8470;">Energy: </span> <span style="color: #5C6655; font-weight: bold;">████████████████</span> 100% Renewable          
+<span style="color: #7A8470; font-weight: bold;">Wellness Score:</span> <span style="color: #7A8470; font-weight: bold;">8.7  ↑0.3</span>        <span style="color: #9FAA93;">Wellness:</span><span style="color: #7A8470; font-weight: bold;">████████████████</span> Team Health             
+<span style="color: #9FAA93; font-weight: bold;">Mindfulness:</span>    <span style="color: #9FAA93; font-weight: bold;">72%  ↑5pts</span>                                                                          
+
+REGIONAL PERFORMANCE                 IMPACT AREAS                                            
+
+<span style="color: #434B3F;">North </span> <span style="color: #434B3F; font-weight: bold;">██████████████████████</span> 45%    <span style="color: #5C6655;">Environment</span> <span style="color: #434B3F; font-weight: bold;">████████████████</span> 40%          
+<span style="color: #5C6655;">South </span> <span style="color: #5C6655; font-weight: bold;">████████████████</span>       35%    <span style="color: #7A8470;">Community  </span> <span style="color: #5C6655; font-weight: bold;">██████████████</span>   35%          
+<span style="color: #7A8470;">East  </span> <span style="color: #7A8470; font-weight: bold;">████████</span>             15%    <span style="color: #9FAA93;">Wellness   </span> <span style="color: #7A8470; font-weight: bold;">██████████</span>       25%          
+<span style="color: #9FAA93;">West  </span> <span style="color: #9FAA93; font-weight: bold;">████</span>                 5%                                                             
+</div>
+
+<div class="ascii-title">🌿 SYSTEM PERFORMANCE MONITOR - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F;">Stress  </span> [<span style="color: #B8C0AD; font-weight: bold;">████</span><span style="color: #E8EBE4;">░░░░░░░░░░░░░░░░</span>] 25%  <span style="color: #5C6655;">Mindfulness: 87%</span>               
+<span style="color: #5C6655;">Energy  </span> [<span style="color: #434B3F; font-weight: bold;">████████████████</span><span style="color: #E8EBE4;">░░░░</span>] 82%  <span style="color: #5C6655;">Sleep Quality: 8.2/10</span>          
+<span style="color: #7A8470;">Focus   </span> [<span style="color: #5C6655; font-weight: bold;">██████████████</span><span style="color: #E8EBE4;">░░░░░░</span>] 65%  <span style="color: #5C6655;">Meditation: 45 min</span>             
+<span style="color: #9FAA93;">Balance </span> ↑ Work-Life  ↓ Screen Time     <span style="color: #5C6655;">Nature Exposure: 2.5h</span>       
+
+<span style="color: #434B3F;">Wellness Activities:</span>                                                
+<span style="color: #5C6655;">✓ Morning Walk  ✓ Hydration  ! Posture  ✓ Breathing  ✓ Gratitude</span>   
+
+<span style="color: #7A8470;">Today's Intention: "Find peace in simplicity" 🧘‍♀️</span>                    
+</div>
+
+<div class="ascii-title">UNICODE BLOCK SPARKLINES - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">CPU:     ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓</span> (trending down - Charcoal Green)
+<span style="color: #5C6655; font-weight: bold;">Memory:  ▃▃▄▄▅▅▆▆▇▇█████ ↑</span> (trending up - Deep Moss)
+<span style="color: #7A8470; font-weight: bold;">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ →</span> (stable - Forest Sage)
+<span style="color: #9FAA93; font-weight: bold;">Disk:    ████▇▇▆▆▅▅▄▄▃▃▂ ↓</span> (decreasing - Soft Sage)
+
+<span style="color: #434B3F;">ASCII Sparklines:</span>
+<span style="color: #434B3F; font-weight: bold;">Load:    .-·:!|!:·-..-·:!</span>  (Charcoal Green)
+<span style="color: #5C6655; font-weight: bold;">Temp:    .....--···::!!|</span>   (Forest gradient)
+<span style="color: #7A8470; font-weight: bold;">Power:   |!::···---......</span>  (Sage fade)
+
+<span style="color: #434B3F;">Sparklines with Scale:</span>
+<span style="color: #5C6655;">Temp:    20°</span> <span style="color: #434B3F; font-weight: bold;">▂▃▅▇█▇▅▃▂▁▂▃▄▅</span> <span style="color: #5C6655;">35° ↑</span>
+<span style="color: #7A8470;">Latency: 5ms</span> <span style="color: #5C6655; font-weight: bold;">▁▁▂▃▄▅▆▇█▇▆▅▄</span> <span style="color: #7A8470;">50ms ↑</span>
+<span style="color: #9FAA93;">FPS:     30</span> <span style="color: #7A8470; font-weight: bold;">████▇▇▆▅▄▃▂▁▁▁</span> <span style="color: #9FAA93;">144 ↓</span>
+
+<span style="color: #434B3F;">Inline Metrics Dashboard:</span>
+<span style="color: #5C6655;">CPU:  </span><span style="color: #434B3F; font-weight: bold;">▃▅▇█▇▅▃▁</span><span style="color: #5C6655;"> 45%  MEM: </span><span style="color: #7A8470; font-weight: bold;">▂▄▆████</span><span style="color: #5C6655;"> 72%</span>
+<span style="color: #5C6655;">NET:  </span><span style="color: #9FAA93; font-weight: bold;">▁▂▃▄▅▆▇█</span><span style="color: #5C6655;"> ↑    DISK: </span><span style="color: #434B3F; font-weight: bold;">██▇▆▅▄</span><span style="color: #5C6655;"> ↓</span>
+</div>
+
+<div class="ascii-title">TERMGRAPH STYLE METRICS - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F;">January  :</span> <span style="color: #434B3F; font-weight: bold;">▇▇▇▇▇▇▇▇▇</span> 27.00
+<span style="color: #5C6655;">February :</span> <span style="color: #5C6655; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 136.50
+<span style="color: #7A8470;">March    :</span> <span style="color: #7A8470; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 98.70
+<span style="color: #9FAA93;">April    :</span> <span style="color: #9FAA93; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 84.00
+<span style="color: #7A8470;">May      :</span> <span style="color: #7A8470; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇</span> 27.35
+<span style="color: #434B3F;">June     :</span> <span style="color: #434B3F; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 74.70
+<span style="color: #5C6655;">July     :</span> <span style="color: #5C6655; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 83.20
+<span style="color: #7A8470;">August   :</span> <span style="color: #7A8470; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 67.00
+<span style="color: #9FAA93;">September:</span> <span style="color: #9FAA93; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 74.40
+<span style="color: #7A8470;">October  :</span> <span style="color: #7A8470; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 66.30
+<span style="color: #434B3F;">November :</span> <span style="color: #434B3F; font-weight: bold;">▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇</span> 46.00
+<span style="color: #5C6655;">December :</span> <span style="color: #5C6655; font-weight: bold;">▇▇▇▇▇▇▇</span> 19.50
+</div>
+
+<div class="ascii-title">SIMPLE BAR CHARTS - Cool Sage Multicolored</div>
+<div class="ascii">
+[<span style="color: #434B3F;">cats    </span>] <span style="color: #434B3F; font-weight: bold;">████████████████████████</span> 6
+[<span style="color: #5C6655;">ferrets </span>] <span style="color: #5C6655; font-weight: bold;">████████████████████████████████████████████████████████████</span> 15
+[<span style="color: #7A8470;">dogs    </span>] <span style="color: #7A8470; font-weight: bold;">████████</span> 2
+[<span style="color: #9FAA93;">koalas  </span>] <span style="color: #9FAA93;"> </span> 0
+
+[<span style="color: #434B3F;">dogs    </span>] <span style="color: #434B3F; font-weight: bold;">████████████████████</span> 30
+[<span style="color: #5C6655;">ferrets </span>] <span style="color: #5C6655; font-weight: bold;">█████████████</span> 20
+[<span style="color: #7A8470;">cats    </span>] <span style="color: #7A8470; font-weight: bold;">████████</span> 12
+[<span style="color: #9FAA93;">koalas  </span>] <span style="color: #9FAA93; font-weight: bold;">██</span> 3
+
+[<span style="color: #434B3F;">/data   </span>] <span style="color: #434B3F; font-weight: bold;">████████████████████</span> 150gb
+[<span style="color: #5C6655;">/srv    </span>] <span style="color: #5C6655; font-weight: bold;">█</span> 5gb
+[<span style="color: #7A8470;">/etc    </span>] <span style="color: #7A8470;"> </span> 150mb
+</div>
+<div class="ascii-title">🌿 PERFORMANCE vs COST ANALYSIS - Cool Sage Scatter Plot</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">ENVIRONMENTAL PERFORMANCE vs SUSTAINABILITY COST</span>
+
+100 ┤                              <span style="color: #434B3F; font-weight: bold;">●</span>     (* High Performance - Deep Moss)
+ 90 ┤                         <span style="color: #5C6655; font-weight: bold;">●</span>    <span style="color: #7A8470; font-weight: bold;">•</span>     (• Medium Performance - Deep Moss)  
+ 80 ┤                    <span style="color: #7A8470; font-weight: bold;">•</span>      <span style="color: #434B3F; font-weight: bold;">●</span>     <span style="color: #9FAA93; font-weight: bold;">○</span>  (○ Standard Performance - Forest Sage)
+ 70 ┤                <span style="color: #9FAA93; font-weight: bold;">○</span>      <span style="color: #7A8470; font-weight: bold;">•</span>          <span style="color: #7A8470;">◦</span>
+ 60 ┤           <span style="color: #9FAA93; font-weight: bold;">○</span>     <span style="color: #7A8470; font-weight: bold;">•</span>         <span style="color: #7A8470;">◦</span>
+ 50 ┤       <span style="color: #7A8470;">◦</span>    <span style="color: #9FAA93; font-weight: bold;">○</span>       <span style="color: #7A8470;">◦</span>  <span style="color: #B8C0AD;">○</span>    <span style="color: #7A8470;">◦</span>
+ 40 ┤          <span style="color: #9FAA93; font-weight: bold;">○</span>      <span style="color: #B8C0AD;">○</span>        <span style="color: #7A8470;">◦</span>
+ 30 ┤      <span style="color: #B8C0AD;">○</span>      <span style="color: #B8C0AD;">○</span>      <span style="color: #7A8470;">◦</span>
+ 20 ┤         <span style="color: #B8C0AD;">○</span>     <span style="color: #7A8470;">◦</span>
+ 10 ┤    <span style="color: #7A8470;">◦</span>     <span style="color: #B8C0AD;">○</span>
+  0 
+    0  20  40  60  80  100
+         Environmental Impact Score
+
+<span style="color: #434B3F; font-weight: bold;">●</span> Optimal Solutions  <span style="color: #5C6655; font-weight: bold;">•</span> Moderate Impact  <span style="color: #9FAA93; font-weight: bold;">○</span> High Impact
+</div>
+
+<div class="ascii-title">🌿 SUSTAINABILITY CORRELATION MATRIX - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">ENVIRONMENTAL IMPACT CORRELATION ANALYSIS</span>
+
+       CO2   H2O   WASTE ENERGY SOCIAL
+<span style="color: #434B3F;">CO2  </span> <span style="color: #434B3F; font-weight: bold;">████</span>  <span style="color: #5C6655; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E8EBE4;">░░░░</span>  (Carbon Impact)
+<span style="color: #5C6655;">H2O  </span> <span style="color: #5C6655; font-weight: bold;">▓▓▓▓</span>  <span style="color: #5C6655; font-weight: bold;">████</span>  <span style="color: #5C6655; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  (Water Usage)
+<span style="color: #7A8470;">WASTE</span> <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #5C6655; font-weight: bold;">▓▓▓▓</span>  <span style="color: #7A8470; font-weight: bold;">████</span>  <span style="color: #7A8470; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E8EBE4;">░░░░</span>  (Waste Reduction)
+<span style="color: #9FAA93;">ENRGY</span> <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #7A8470; font-weight: bold;">▓▓▓▓</span>  <span style="color: #9FAA93; font-weight: bold;">████</span>  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  (Energy Efficiency)
+<span style="color: #7A8470;">SOCIL</span> <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E8EBE4;">░░░░</span>  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span>  <span style="color: #7A8470; font-weight: bold;">████</span>  (Social Impact)
+
+<span style="color: #434B3F;">Scale:</span> <span style="color: #434B3F; font-weight: bold;">████</span> High  <span style="color: #5C6655; font-weight: bold;">▓▓▓▓</span> Med-High  <span style="color: #7A8470; font-weight: bold;">▒▒▒▒</span> Medium  <span style="color: #E8EBE4;">░░░░</span> Low
+</div>
+
+<div class="ascii-title">🌿 CARBON REDUCTION WATERFALL - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">QUARTERLY CARBON FOOTPRINT REDUCTION ANALYSIS</span>
+
+<span style="color: #7A8470;">2023 Start:</span>    <span style="color: #DDE1D8; font-weight: bold;">██████████████</span> 450 tons CO2 (Stone Grey)
+                                      ▼
+<span style="color: #434B3F;">-Renewable:</span>           <span style="color: #434B3F; font-weight: bold;">█████████████████████████</span> -125 tons (Charcoal Green)
+                                                                                  ▼
+<span style="color: #5C6655;">-Efficiency:</span>                      <span style="color: #5C6655; font-weight: bold;">██████████████████</span> -89 tons (Deep Moss)
+                                                                ▼
+<span style="color: #7A8470;">-Transport:</span>                 <span style="color: #7A8470; font-weight: bold;">██████████</span> -42 tons (Forest Sage)
+                                                      ▼
+<span style="color: #434B3F;">Q4 Target:</span>             <span style="color: #434B3F; font-weight: bold;">███████████████</span> 194 tons CO2 (57% reduction)
+
+<span style="color: #5C6655;">Flow:</span> Sustainable Operations Carbon Impact Reduction
+</div>
+
+<div class="ascii-title">🌿 STORAGE ALLOCATION TREEMAP - Cool Sage</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">DIGITAL STORAGE ENVIRONMENTAL ANALYSIS</span>
+
+[<span style="color: #434B3F;">Documents</span>] <span style="color: #434B3F; font-weight: bold;">████████████████████████████████</span> 45% (2.1TB)
+[<span style="color: #5C6655;">Media    </span>] <span style="color: #5C6655; font-weight: bold;">████████████████████████</span> 35% (1.6TB)
+[<span style="color: #7A8470;">Backups  </span>] <span style="color: #7A8470; font-weight: bold;">██████████████</span> 20% (950GB)
+[<span style="color: #9FAA93;">System   </span>] <span style="color: #9FAA93; font-weight: bold;">██████████</span> 15% (720GB)
+[<span style="color: #B8C0AD;">Cache    </span>] <span style="color: #B8C0AD; font-weight: bold;">████████</span> 8% (380GB)
+
+<span style="color: #5C6655;">Total Capacity:</span> 4.7TB | <span style="color: #7A8470;">Carbon Impact:</span> 12.3 kg CO2/year
+</div>
+
+</section>
+
+<section id="ocean-stone">
+<h2>🌊 Ocean Stone (The Coastal Meditation)</h2>
+<p><em>Philosophy: Japanese zen gardens meets Scandinavian fjords</em></p>
+
+<table class="color-table">
+<tr><th>Color Name</th><th>Hex Code</th><th>Usage Role</th><th>Color Sample</th></tr>
+<tr><td><strong>Fog White</strong></td><td>#F6F7F8</td><td>Primary background</td><td><span class="color-chip" style="background-color: #F6F7F8;"></span></td></tr>
+<tr><td><strong>Deep Slate</strong></td><td>#798186</td><td>Primary text, headings</td><td><span class="color-chip" style="background-color: #798186;"></span></td></tr>
+<tr><td><strong>Ocean Grey</strong></td><td>#5F6B72</td><td>Strong emphasis</td><td><span class="color-chip" style="background-color: #5F6B72;"></span></td></tr>
+<tr><td><strong>Slate Blue</strong></td><td>#95A0A8</td><td>Interactive elements</td><td><span class="color-chip" style="background-color: #95A0A8;"></span></td></tr>
+<tr><td><strong>Blue Grey</strong></td><td>#B1B8BE</td><td>Secondary text</td><td><span class="color-chip" style="background-color: #B1B8BE;"></span></td></tr>
+</table>
+
+<div class="insight">
+<strong>Brand Personality</strong>: Professional, trustworthy, sophisticated<br>
+<strong>Perfect For</strong>: Financial services, consulting, architecture studios<br>
+<strong>Cultural Notes</strong>: Japanese stone gardens meet Scandinavian fjords
+</div>
+
+<div class="ascii-title">SYSTEM PERFORMANCE (MS) - Ocean Stone Palette</div>
+<div class="ascii">
+[<span style="color: #475159;">API    </span>] <span style="color: #475159; font-weight: bold;">████████████████████████████████████████</span> 40ms (100%)
+[<span style="color: #5F6B72;">DB     </span>] <span style="color: #5F6B72; font-weight: bold;">████████████████████</span>                    20ms (50%)
+[<span style="color: #798186;">CACHE  </span>] <span style="color: #798186; font-weight: bold;">████</span>                                     4ms (10%)
+[<span style="color: #95A0A8;">AUTH   </span>] <span style="color: #95A0A8; font-weight: bold;">████████</span>                                 8ms (20%)
+[<span style="color: #B1B8BE;">STORAGE</span>] <span style="color: #B1B8BE; font-weight: bold;">██████████████</span>                          14ms (35%)
+                        |----------|----------|----------|----------|
+                        0         10        20        30        40ms
+</div>
+
+<div class="ascii-title">ROI VS RISK ANALYSIS - Ocean Stone Scatter Plot</div>
+<div class="ascii">
+100 ┤                              <span style="color: #475159; font-weight: bold;">●</span>     (* High ROI/Low Risk)
+ 90 ┤                         <span style="color: #5F6B72; font-weight: bold;">●</span>    <span style="color: #798186; font-weight: bold;">•</span>     (• Medium ROI/Risk)
+ 80 ┤                    <span style="color: #798186; font-weight: bold;">•</span>      <span style="color: #475159; font-weight: bold;">●</span>     <span style="color: #95A0A8; font-weight: bold;">○</span>  (○ Standard ROI)
+ 70 ┤                <span style="color: #95A0A8; font-weight: bold;">○</span>      <span style="color: #798186; font-weight: bold;">•</span>          <span style="color: #B1B8BE;">◦</span>
+ 60 ┤           <span style="color: #95A0A8; font-weight: bold;">○</span>     <span style="color: #798186; font-weight: bold;">•</span>         <span style="color: #B1B8BE;">◦</span>
+ 50 ┤       <span style="color: #B1B8BE;">◦</span>    <span style="color: #95A0A8; font-weight: bold;">○</span>       <span style="color: #B1B8BE;">◦</span>  <span style="color: #C8CDD2;">○</span>    <span style="color: #B1B8BE;">◦</span>
+ 40 ┤          <span style="color: #95A0A8; font-weight: bold;">○</span>      <span style="color: #C8CDD2;">○</span>        <span style="color: #B1B8BE;">◦</span>
+ 30 ┤      <span style="color: #C8CDD2;">○</span>      <span style="color: #C8CDD2;">○</span>      <span style="color: #B1B8BE;">◦</span>
+ 20 ┤         <span style="color: #C8CDD2;">○</span>     <span style="color: #B1B8BE;">◦</span>
+ 10 ┤    <span style="color: #B1B8BE;">◦</span>     <span style="color: #C8CDD2;">○</span>
+  0 
+    0  20  40  60  80  100
+         Risk Factor (%)
+
+<span style="color: #475159; font-weight: bold;">●</span> Optimal Investments  <span style="color: #5F6B72; font-weight: bold;">•</span> Moderate Risk  <span style="color: #95A0A8; font-weight: bold;">○</span> High Risk
+</div>
+
+<div class="ascii-title">PORTFOLIO TREEMAP - Ocean Stone</div>
+<div class="ascii">
+<span style="color: #475159; font-weight: bold;">ENTERPRISE PORTFOLIO ALLOCATION ANALYSIS</span>
+
+[<span style="color: #475159;">Equities </span>] <span style="color: #475159; font-weight: bold;">████████████████████████████████</span> 65%
+[<span style="color: #5F6B72;">Bonds    </span>] <span style="color: #5F6B72; font-weight: bold;">████████████████████</span> 25%
+[<span style="color: #798186;">Real Est </span>] <span style="color: #798186; font-weight: bold;">██████████████</span> 18%
+[<span style="color: #95A0A8;">Cash     </span>] <span style="color: #95A0A8; font-weight: bold;">████████</span> 7%
+[<span style="color: #B1B8BE;">Crypto   </span>] <span style="color: #B1B8BE; font-weight: bold;">██████████████████</span> 12%
+
+Total AUM: $2.4M | Risk Score: Moderate
+</div>
+
+<div class="ascii-title">🌊 QUARTERLY PERFORMANCE WATERFALL - Ocean Stone</div>
+<div class="ascii">
+<span style="color: #475159; font-weight: bold;">CORPORATE REVENUE FLOW ANALYSIS</span>
+
+<span style="color: #C8CDD2;">Q1 Start:</span>       <span style="color: #D8DCDF; font-weight: bold;">██████████████</span> $2.1M (Fog Light)
+                                                              ▼
+<span style="color: #475159;">+Operations:</span>           <span style="color: #475159; font-weight: bold;">█████████████████████████</span> +$1.8M (Charcoal Blue)
+                                                                                  ▼
+<span style="color: #5F6B72;">-Expenses:</span>                        <span style="color: #798186; font-weight: bold;">████████████████</span> -$0.9M (Ocean Grey)
+                                                                ▼
+<span style="color: #798186;">-Investments:</span>                <span style="color: #95A0A8; font-weight: bold;">██████████</span> -$0.5M (Slate Blue)
+                                                      ▼
+<span style="color: #475159;">Q4 Net:</span>                 <span style="color: #475159; font-weight: bold;">███████████████████████</span> $2.5M (Growth)
+
+<span style="color: #5F6B72;">Flow:</span> Corporate Financial Performance Q1-Q4
+</div>
+
+<div class="ascii-title">🌊 ENTERPRISE SYSTEM MONITOR - Ocean Stone</div>
+<div class="ascii">
+<span style="color: #475159; font-weight: bold;">CORPORATE INFRASTRUCTURE STATUS     ■ SECURE ■ 14:32:01</span>
+
+<span style="color: #475159;">CPU    </span>[<span style="color: #5F6B72; font-weight: bold;">████████████</span><span style="color: #E5E8EA;">░░░░░░░░</span>] 60%  <span style="color: #475159;">Temperature: 48°C</span>                
+<span style="color: #5F6B72;">Memory </span>[<span style="color: #798186; font-weight: bold;">████████████████</span><span style="color: #E5E8EA;">░░░░</span>] 78%  <span style="color: #5F6B72;">Available: 4.8GB</span>                 
+<span style="color: #798186;">Disk   </span>[<span style="color: #95A0A8; font-weight: bold;">██████████</span><span style="color: #E5E8EA;">░░░░░░░░░░</span>] 45%  <span style="color: #798186;">I/O: 89 MB/s</span>                     
+<span style="color: #95A0A8;">Network</span> ↑ 234 Mbps  ↓ 67 Mbps      <span style="color: #95A0A8;">Latency: 8ms</span>                     
+
+<span style="color: #475159;">Security Status:</span>                                                    
+<span style="color: #5F6B72;">✓ Firewall   ✓ VPN   ✓ Encryption   ✓ Backup   ✓ Compliance</span>        
+
+<span style="color: #475159;">SLA Uptime: 99.97%  Incidents: 0  Load: 1.23, 1.18, 1.31</span>           
+</div>
+<div class="ascii-title">🌊 MICROSERVICES DEPENDENCY MATRIX - Ocean Stone</div>
+<div class="ascii">
+<span style="color: #475159; font-weight: bold;">ENTERPRISE SERVICE ARCHITECTURE CORRELATION</span>
+
+       AUTH  USER  ORDER PAYMENT NOTIFY
+<span style="color: #475159;">AUTH  </span> <span style="color: #475159; font-weight: bold;">████</span>  <span style="color: #5F6B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E5E8EA;">░░░░</span>  (Authentication)
+<span style="color: #5F6B72;">USER  </span> <span style="color: #5F6B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #5F6B72; font-weight: bold;">████</span>  <span style="color: #5F6B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  (User Service)
+<span style="color: #798186;">ORDER </span> <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #5F6B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #798186; font-weight: bold;">████</span>  <span style="color: #798186; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E5E8EA;">░░░░</span>  (Order Management)
+<span style="color: #95A0A8;">PYMNT</span> <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #798186; font-weight: bold;">▓▓▓▓</span>  <span style="color: #95A0A8; font-weight: bold;">████</span>  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  (Payment Gateway)
+<span style="color: #B1B8BE;">NOTIF</span> <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E5E8EA;">░░░░</span>  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span>  <span style="color: #B1B8BE; font-weight: bold;">████</span>  (Notifications)
+
+<span style="color: #475159;">Scale:</span> <span style="color: #475159; font-weight: bold;">████</span> Critical  <span style="color: #5F6B72; font-weight: bold;">▓▓▓▓</span> High  <span style="color: #798186; font-weight: bold;">▒▒▒▒</span> Medium  <span style="color: #E5E8EA;">░░░░</span> Low Coupling
+</div>
+
+</section>
+
+<section id="nordic-tech">
+<h2>💻 Nordic Tech (The Digital Minimalist)</h2>
+<p><em>Philosophy: Scandinavian design meets Silicon Valley precision</em></p>
+
+<div class="ascii-title">PRECISION DATA ANALYTICS - Datum Tech Style</div>
+<div class="ascii">
+Algorithm Performance (ms):
+<span style="color: #0F0F10;">Neural Net</span>  <span style="color: #0F0F10; font-weight: bold;">████████████████████████████████████████</span> 40ms (100%)
+<span style="color: #202124;">Deep Learning</span> <span style="color: #202124; font-weight: bold;">████████████████████</span>                    20ms (50%)
+<span style="color: #3C4043;">ML Pipeline</span> <span style="color: #3C4043; font-weight: bold;">████</span>                                     4ms (10%)
+<span style="color: #5F6368;">Data Prep</span>   <span style="color: #5F6368; font-weight: bold;">████████</span>                                 8ms (20%)
+<span style="color: #9AA0A6;">Inference</span>   <span style="color: #9AA0A6; font-weight: bold;">██████████████</span>                          14ms (35%)
+                        |----------|----------|----------|----------|
+                        0         10        20        30        40ms
+
+Precision Metrics:
+
+100.0 ┤       <span style="color: #0F0F10; font-weight: bold;">*···*···*</span>     (* Accuracy - Tech Charcoal)
+ 87.5 ┤     <span style="color: #0F0F10; font-weight: bold;">*</span>         <span style="color: #202124; font-weight: bold;">o···o</span> (o Speed - Deep Tech)
+ 75.0 ┤   <span style="color: #0F0F10; font-weight: bold;">*</span>       <span style="color: #202124; font-weight: bold;">o···</span>     <span style="color: #3C4043; font-weight: bold;">o···o</span>
+ 62.5 ┤ <span style="color: #0F0F10; font-weight: bold;">*</span>     <span style="color: #202124; font-weight: bold;">o···</span>             <span style="color: #5F6368; font-weight: bold;">+···+</span> (+ Efficiency - Mid Grey)
+ 50.0 ┤   <span style="color: #202124; font-weight: bold;">o···</span>             <span style="color: #5F6368; font-weight: bold;">+···</span>     <span style="color: #9AA0A6; font-weight: bold;">+</span>
+ 37.5 ┤ <span style="color: #202124; font-weight: bold;">o</span>             <span style="color: #5F6368; font-weight: bold;">+···</span>           <span style="color: #9AA0A6; font-weight: bold;">+···+</span>
+ 25.0 ┤           <span style="color: #5F6368; font-weight: bold;">+···</span>                   
+ 12.5 ┤       <span style="color: #5F6368; font-weight: bold;">+···</span>                       
+  0.0 ─────────────────────────────────      0.0   2.5   5.0   7.5   10.0s
+
+High-Precision Sparklines:
+<span style="color: #0F0F10; font-weight: bold;">CPU:     ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁ ↓ 67.3%</span> (Deep Tech)
+<span style="color: #202124; font-weight: bold;">Memory:  ▃▃▄▄▅▅▆▆▇▇█████ ↑ 84.7%</span> (Tech gradient)
+<span style="color: #3C4043; font-weight: bold;">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃ → 23.1 MB/s</span> (Mid fade)
+<span style="color: #5F6368; font-weight: bold;">I/O:     ████▇▇▆▆▅▅▄▄▃▃▂ ↓ 156 IOPS</span> (Cool Grey)
+</div>
+
+<div class="ascii-title">SYSTEM STATUS MONITOR - Nordic Tech (No Borders)</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">■ SYSTEM STATUS MONITOR ■                        ■ LIVE ■ 14:32:01</span>
+
+<span style="color: #202124;">CPU    </span>[<span style="color: #3C4043; font-weight: bold;">████████████</span><span style="color: #DADCE0;">░░░░░░░░</span>] 60%  <span style="color: #202124;">Temperature: 52°C</span>                
+<span style="color: #3C4043;">Memory </span>[<span style="color: #202124; font-weight: bold;">████████████████</span><span style="color: #DADCE0;">░░░░</span>] 82%  <span style="color: #3C4043;">Available: 3.2GB</span>                 
+<span style="color: #5F6368;">Disk   </span>[<span style="color: #3C4043; font-weight: bold;">██████████</span><span style="color: #DADCE0;">░░░░░░░░░░</span>] 41%  <span style="color: #5F6368;">I/O: 125 MB/s</span>                    
+<span style="color: #9AA0A6;">Network</span> ↑ 45.7 Mbps  ↓ 12.4 Mbps   <span style="color: #9AA0A6;">Latency: 12ms</span>                    
+
+<span style="color: #202124;">Service Status:</span>                                                     
+<span style="color: #3C4043;">✓ Database    ✓ Cache    ! Queue    ✓ API    ✗ Backup</span>               
+
+<span style="color: #0F0F10;">Uptime: 42d 16h 23m  Load: 2.43, 2.51, 2.38</span>                         
+</div>
+
+<div class="ascii-title">💻 API PERFORMANCE vs LOAD - Nordic Tech Scatter Plot</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">SYSTEM RESPONSE TIME vs REQUEST LOAD ANALYSIS</span>
+
+100 ┤                              <span style="color: #0F0F10; font-weight: bold;">●</span>     (* Optimal Performance - Rich Black)
+ 90 ┤                         <span style="color: #202124; font-weight: bold;">●</span>    <span style="color: #3C4043; font-weight: bold;">•</span>     (• Good Performance - Deep Tech)
+ 80 ┤                    <span style="color: #3C4043; font-weight: bold;">•</span>      <span style="color: #0F0F10; font-weight: bold;">●</span>     <span style="color: #5F6368; font-weight: bold;">○</span>  (○ Degraded - Mid Grey)
+ 70 ┤                <span style="color: #5F6368; font-weight: bold;">○</span>      <span style="color: #3C4043; font-weight: bold;">•</span>          <span style="color: #9AA0A6;">◦</span>
+ 60 ┤           <span style="color: #5F6368; font-weight: bold;">○</span>     <span style="color: #3C4043; font-weight: bold;">•</span>         <span style="color: #9AA0A6;">◦</span>
+ 50 ┤       <span style="color: #9AA0A6;">◦</span>    <span style="color: #5F6368; font-weight: bold;">○</span>       <span style="color: #9AA0A6;">◦</span>  <span style="color: #9AA0A6;">○</span>    <span style="color: #9AA0A6;">◦</span>
+ 40 ┤          <span style="color: #5F6368; font-weight: bold;">○</span>      <span style="color: #9AA0A6;">○</span>        <span style="color: #9AA0A6;">◦</span>
+ 30 ┤      <span style="color: #9AA0A6;">○</span>      <span style="color: #9AA0A6;">○</span>      <span style="color: #9AA0A6;">◦</span>
+ 20 ┤         <span style="color: #9AA0A6;">○</span>     <span style="color: #9AA0A6;">◦</span>
+ 10 ┤    <span style="color: #9AA0A6;">◦</span>     <span style="color: #9AA0A6;">○</span>
+  0 
+    0  20  40  60  80  100
+         Request Load (RPS)
+
+<span style="color: #0F0F10; font-weight: bold;">●</span> Sub-100ms Response  <span style="color: #3C4043; font-weight: bold;">•</span> 100-500ms  <span style="color: #5F6368; font-weight: bold;">○</span> >500ms Timeout Risk
+</div>
+
+<div class="ascii-title">💻 KUBERNETES CLUSTER MONITOR - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">CONTAINER ORCHESTRATION STATUS       ■ READY ■ 14:32:01</span>
+
+<span style="color: #202124;">Nodes  </span>[<span style="color: #0F0F10; font-weight: bold;">████████████████████</span>] 12/12  <span style="color: #202124;">CPU Requests: 67%</span>              
+<span style="color: #3C4043;">Pods   </span>[<span style="color: #202124; font-weight: bold;">███████████████</span><span style="color: #DADCE0;">░░░░░</span>] 847/1024  <span style="color: #3C4043;">Memory: 78%</span>                 
+<span style="color: #5F6368;">PVCs   </span>[<span style="color: #3C4043; font-weight: bold;">██████████</span><span style="color: #DADCE0;">░░░░░░░░░░</span>] 234/500   <span style="color: #5F6368;">Storage: 45%</span>                
+<span style="color: #9AA0A6;">Network</span> ↑ 1.2 GB/s  ↓ 890 MB/s    <span style="color: #9AA0A6;">Ingress: 12K req/s</span>               
+
+<span style="color: #202124;">Service Health:</span>                                                     
+<span style="color: #3C4043;">✓ API Gateway  ✓ Database  ✓ Cache  ✓ Queue  ✓ Monitoring</span>          
+
+<span style="color: #0F0F10;">Cluster Age: 127d  Restarts: 3  Load: 0.78, 0.82, 0.91</span>             
+</div>
+
+<div class="ascii-title">💻 ML PIPELINE MONITOR - Nordic Tech</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">MACHINE LEARNING TRAINING PIPELINE     ■ TRAINING ■ 14:32:01</span>
+
+<span style="color: #202124;">Data   </span>[<span style="color: #0F0F10; font-weight: bold;">████████████████████</span>] 100%  <span style="color: #202124;">Features: 847</span>                  
+<span style="color: #3C4043;">Prep   </span>[<span style="color: #202124; font-weight: bold;">██████████████████</span><span style="color: #DADCE0;">░░</span>] 92%   <span style="color: #3C4043;">Clean/Transform</span>               
+<span style="color: #5F6368;">Train  </span>[<span style="color: #3C4043; font-weight: bold;">█████████████</span><span style="color: #DADCE0;">░░░░░░░</span>] 67%   <span style="color: #5F6368;">Epoch: 23/50</span>                  
+<span style="color: #9AA0A6;">Valid  </span>[<span style="color: #5F6368; font-weight: bold;">███████</span><span style="color: #DADCE0;">░░░░░░░░░░░░░</span>] 34%   <span style="color: #9AA0A6;">Accuracy: 94.2%</span>                
+
+<span style="color: #202124;">Model Performance:</span>                                                  
+<span style="color: #3C4043;">✓ Loss: 0.0234  ✓ F1: 0.947  → Learning Rate: 0.001</span>             
+
+<span style="color: #0F0F10;">ETA: 2h 14m  Memory: 89% GPU  Batch: 512</span>                           
+</div>
+</section>
+
+<section id="blush-mauve">
+<h2>🌸 Blush Mauve (The Sunset Ritual)</h2>
+<p><em>Philosophy: Gentle, nurturing tones for approachable data</em></p>
+
+<div class="ascii-title">🌸 BEAUTY ROUTINE EFFECTIVENESS TREEMAP - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">SELF-CARE PRODUCT IMPACT ANALYSIS</span>
+
+<span style="color: #434B3F;">Skincare</span>  <span style="color: #434B3F; font-weight: bold;">██████████████████████████████████</span> 68%
+<span style="color: #5C6655;">Wellness</span>  <span style="color: #5C6655; font-weight: bold;">███████████████████████</span>           45%
+<span style="color: #7A8470;">Fitness</span>   <span style="color: #7A8470; font-weight: bold;">████████████████</span>                 32%
+<span style="color: #B8C0AD;">Mindfulness</span> <span style="color: #B8C0AD; font-weight: bold;">████████████</span>                   25%
+<span style="color: #B8C0AD;">Nutrition</span> <span style="color: #B8C0AD; font-weight: bold;">█████████</span>                      18%
+
+<span style="color: #5C6655;">Total Wellness Score:</span> 8.7/10 | <span style="color: #434B3F;">Monthly Investment:</span> $340
+</div>
+
+<div class="ascii-title">🌸 SELF-CARE INVESTMENT WATERFALL - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">MONTHLY WELLNESS BUDGET FLOW ANALYSIS</span>
+
+<span style="color: #B8C0AD;">Base Budget:</span>   <span style="color: #D0D5C8; font-weight: bold;">████████</span> $120 (Light Neutral)
+                                                ▼
+<span style="color: #434B3F;">+Skincare:</span>            <span style="color: #434B3F; font-weight: bold;">█████████████████████████</span> +$85 (Deep Mauve)
+                                                                                  ▼
+<span style="color: #5C6655;">+Supplements:</span>                     <span style="color: #5C6655; font-weight: bold;">████████████████</span> +$65 (Rose Brown)
+                                                                ▼
+<span style="color: #7A8470;">+Wellness:</span>                 <span style="color: #7A8470; font-weight: bold;">████████████</span> +$45 (Soft Mauve)
+                                                      ▼
+<span style="color: #434B3F;">Total Investment:</span>     <span style="color: #434B3F; font-weight: bold;">██████████████████████</span> $315 (Self-Care)
+
+<span style="color: #5C6655;">Flow:</span> Monthly Wellness Budget Allocation
+</div>
+
+<div class="ascii-title">🌸 WELLNESS DASHBOARD - Blush Mauve</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">HOLISTIC HEALTH TRACKING SYSTEM</span>
+
+SELF-CARE METRICS              | RITUAL TRACKING                            
+                               |                                            
+<span style="color: #434B3F;">Skin Health:</span>   92%  ↑12%        | <span style="color: #5C6655;">Morning:</span> <span style="color: #434B3F; font-weight: bold;">▄▅▆▇████</span> Consistent              
+<span style="color: #5C6655;">Hydration:</span>     2.1L ↑15%       | <span style="color: #5C6655;">Evening:</span> <span style="color: #5C6655; font-weight: bold;">▆▇██████</span> Excellent               
+<span style="color: #7A8470;">Sleep Quality:</span> 8.7  →↑1%        | <span style="color: #7A8470;">Weekly: </span> <span style="color: #7A8470; font-weight: bold;">▁▂▃▄▅▆▇██</span> Improving               
+<span style="color: #B8C0AD;">Mood Score:</span>    85   ↑12pts     |                                            
+                               |                                            
+TREATMENT AREAS                | PRODUCT EFFECTIVENESS                     
+                               |                                            
+<span style="color: #434B3F;">Face   </span> <span style="color: #434B3F; font-weight: bold;">██████████████</span> 65%    | <span style="color: #434B3F;">Cleansing</span> <span style="color: #434B3F; font-weight: bold;">████████████</span> 89%        
+<span style="color: #5C6655;">Body   </span> <span style="color: #5C6655; font-weight: bold;">██████████</span>     45%    | <span style="color: #5C6655;">Serum    </span> <span style="color: #5C6655; font-weight: bold;">████████</span>     78%        
+<span style="color: #7A8470;">Hair   </span> <span style="color: #7A8470; font-weight: bold;">██████</span>           25%    | <span style="color: #7A8470;">Moisturizer</span> <span style="color: #7A8470; font-weight: bold;">██████</span> 65%        
+<span style="color: #B8C0AD;">Nails  </span> <span style="color: #B8C0AD; font-weight: bold;">███</span>              15%    |                                            
+</div>
+
+</section>
+
+<section id="shibuya">
+<h2>⚡ Shibuya Light (The Urban Energy)</h2>
+<p><em>Philosophy: Tokyo's electric energy meets Scandinavian accessibility</em></p>
+
+<div class="ascii-title">⚡ GAMING PERFORMANCE DASHBOARD - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #4A6FA5; font-weight: bold;">System Performance:</span>
+<span style="color: #4A6FA5;">GPU Usage</span>     [<span style="color: #2C3E50; font-weight: bold;">████████████████████████████████████████</span>] 98% ⚡ RTX 4090 TURBO
+<span style="color: #C53030;">CPU Threads</span>   [<span style="color: #4A6FA5; font-weight: bold;">████████████████████████████████████</span><span style="color: #718096;">████</span>] 89% ⚡ 16-Core Beast
+<span style="color: #C53030;">Memory</span>        [<span style="color: #718096; font-weight: bold;">████████████████████████████████</span><span style="color: #B1B8BE;">████████</span>] 76% ⚡ 32GB DDR5
+<span style="color: #C53030;">VRAM</span>          [<span style="color: #2C3E50; font-weight: bold;">██████████████████████████████████████</span><span style="color: #E5E8EA;">██</span>] 95% ⚡ 24GB GDDR6X
+
+<span style="color: #4A6FA5; font-weight: bold;">Gaming Metrics:</span>
+<span style="color: #C53030;">FPS:</span>          <span style="color: #2C3E50; font-weight: bold;">████████████████████████████</span> ⚡ 240 FPS ULTRA SMOOTH
+<span style="color: #C53030;">Frame Time:</span>   <span style="color: #4A6FA5; font-weight: bold;">████████████████████████████</span> → 4.2ms CONSISTENT
+<span style="color: #C53030;">Input Lag:</span>    <span style="color: #718096; font-weight: bold;">████████████████</span> ↑ 0.8ms LIGHTNING FAST
+
+<span style="color: #4A6FA5; font-weight: bold;">Live Player Stats:</span>
+
+100k ┤              <span style="color: #2C3E50; font-weight: bold;">*...*...*</span>     (* Active Players)
+ 90k ┤          <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡       <span style="color: #4A6FA5; font-weight: bold;">o...o</span> (o Sessions)
+ 80k ┤      <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡     <span style="color: #4A6FA5; font-weight: bold;">o...</span> ⚡  <span style="color: #C53030; font-weight: bold;">o...o</span>
+ 70k ┤  <span style="color: #2C3E50; font-weight: bold;">*</span> ⚡  <span style="color: #4A6FA5; font-weight: bold;">o...</span>         ⚡   <span style="color: #C53030; font-weight: bold;">+...+</span> (+ Revenue)
+ 60k ┤   <span style="color: #4A6FA5; font-weight: bold;">o...</span> ⚡       <span style="color: #C53030; font-weight: bold;">+...</span> ⚡   <span style="color: #C53030; font-weight: bold;">+</span>
+ 50k ┤ <span style="color: #4A6FA5; font-weight: bold;">o</span>       ⚡ <span style="color: #C53030; font-weight: bold;">+...</span>     ⚡   <span style="color: #C53030; font-weight: bold;">+...+</span>
+ 40k ┤     ⚡<span style="color: #C53030; font-weight: bold;">+...</span>               ⚡
+ 30k ┤   <span style="color: #C53030; font-weight: bold;">+...</span>
+ 20k ┤<span style="color: #C53030; font-weight: bold;">+...</span>
+ 10k 
+  0 
+    00:00 06:00 12:00 18:00 24:00
+
+<span style="color: #4A6FA5;">Status:</span> [<span style="color: #2C3E50; font-weight: bold;">████████████████████</span>] ⚡ TURBOCHARGED ⚡ ALL SYSTEMS GO!
+</div>
+<div class="ascii-title">⚡ GAMING PERFORMANCE TREEMAP - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #2C3E50; font-weight: bold;">GAMING PLATFORM ENGAGEMENT ANALYSIS</span>
+
+<span style="color: #2C3E50;">FPS Games</span> <span style="color: #2C3E50; font-weight: bold;">██████████████████████████████████</span> 78% ⚡
+<span style="color: #4A6FA5;">Battle Roy</span> <span style="color: #4A6FA5; font-weight: bold;">███████████████████████</span>           52% ⚡
+<span style="color: #C53030;">MOBA</span>      <span style="color: #C53030; font-weight: bold;">██████████████████</span>                 42% ⚡
+<span style="color: #718096;">Strategy</span>  <span style="color: #718096; font-weight: bold;">██████████████</span>                   34% ⚡
+<span style="color: #E9ECEF;">Casual</span>    <span style="color: #E9ECEF; font-weight: bold;">██████████</span>                       28% ⚡
+
+<span style="color: #4A6FA5;">Total Players:</span> 2.1M | <span style="color: #2C3E50;">Peak Concurrent:</span> 340K ⚡
+</div>
+
+<div class="ascii-title">⚡ STREAMING REVENUE WATERFALL - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #2C3E50; font-weight: bold;">CONTENT CREATOR REVENUE FLOW ANALYSIS</span>
+
+<span style="color: #E9ECEF;">Base Subs:</span>      <span style="color: #F4F6F8; font-weight: bold;">██████████</span> $3.2K (Light Base)
+                                                    ▼
+<span style="color: #2C3E50;">+Sponsorships:</span>           <span style="color: #2C3E50; font-weight: bold;">█████████████████████████</span> +$8.5K ⚡ (Urban Power)
+                                                                                  ▼
+<span style="color: #4A6FA5;">+Donations:</span>                        <span style="color: #4A6FA5; font-weight: bold;">████████████████</span> +$4.2K ⚡ (Electric)
+                                                                ▼
+<span style="color: #C53030;">+Merch:</span>                     <span style="color: #C53030; font-weight: bold;">███████████</span> +$2.8K ⚡ (Neon)
+                                                      ▼
+<span style="color: #2C3E50;">Total Revenue:</span>     <span style="color: #2C3E50; font-weight: bold;">█████████████████████</span> $18.7K ⚡ (Electric Growth)
+
+<span style="color: #4A6FA5;">Flow:</span> Monthly Content Creator Revenue Stream ⚡
+</div>
+
+<div class="ascii-title">⚡ SOCIAL ENGAGEMENT CORRELATION MATRIX - Shibuya Light</div>
+<div class="ascii">
+<span style="color: #2C3E50; font-weight: bold;">CONTENT VIRALITY CORRELATION ANALYSIS</span>
+
+       POSTS LIKES SHARES COMMENTS VIEWS
+<span style="color: #2C3E50;">POSTS</span> <span style="color: #2C3E50; font-weight: bold;">████</span>  <span style="color: #4A6FA5; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E9ECEF;">░░░░</span>  (Content Creation)
+<span style="color: #4A6FA5;">LIKES</span> <span style="color: #4A6FA5; font-weight: bold;">▓▓▓▓</span>  <span style="color: #4A6FA5; font-weight: bold;">████</span>  <span style="color: #4A6FA5; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  (User Appreciation)
+<span style="color: #C53030;">SHAR</span> <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #4A6FA5; font-weight: bold;">▓▓▓▓</span>  <span style="color: #C53030; font-weight: bold;">████</span>  <span style="color: #C53030; font-weight: bold;">▓▓▓▓</span>  <span style="color: #E9ECEF;">░░░░</span>  (Viral Potential)
+<span style="color: #718096;">COMM</span> <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #C53030; font-weight: bold;">▓▓▓▓</span>  <span style="color: #718096; font-weight: bold;">████</span>  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  (Engagement Depth)
+<span style="color: #E9ECEF;">VIEWS</span> <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E9ECEF;">░░░░</span>  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span>  <span style="color: #E9ECEF; font-weight: bold;">████</span>  (Reach Metrics)
+
+<span style="color: #2C3E50;">Scale:</span> <span style="color: #2C3E50; font-weight: bold;">████</span> Viral ⚡  <span style="color: #4A6FA5; font-weight: bold;">▓▓▓▓</span> Trending  <span style="color: #C53030; font-weight: bold;">▒▒▒▒</span> Popular  <span style="color: #E9ECEF;">░░░░</span> Standard
+</div>
+
+</section>
+
+<section id="shibuya-dark">
+<h2>🌃 Shibuya Dark (The Night City)</h2>
+<p><em>Philosophy: Tokyo after midnight - Bold cyberpunk energy</em></p>
+
+<div class="ascii-title ascii-dark">🌃 NIGHT CITY CRYPTO DASHBOARD</div>
+<div class="ascii ascii-dark">
+<span style="color: #7CB8FF; font-weight: bold;">Cyberpunk Performance - Shibuya Dark:</span>
+
+100 ┤       <span style="color: #FFFFFF; font-weight: bold;">*···*···*</span>     (* Hashrate - Pure White)
+ 90 ┤     <span style="color: #FFFFFF; font-weight: bold;">*</span> 🔥       <span style="color: #7CB8FF; font-weight: bold;">o···o</span> (o Staking - Cyber Blue)
+ 80 ┤   <span style="color: #FFFFFF; font-weight: bold;">*</span> ↗     <span style="color: #7CB8FF; font-weight: bold;">o···</span>🔥   <span style="color: #7CB8FF; font-weight: bold;">o···o</span>  
+ 70 ┤ <span style="color: #FFFFFF; font-weight: bold;">*</span> 🌃  <span style="color: #7CB8FF; font-weight: bold;">o···</span>         ↗   <span style="color: #FF9999; font-weight: bold;">+···+</span> (+ Yield - Neon Pink)
+ 60 ┤   <span style="color: #7CB8FF; font-weight: bold;">o···</span> ↗       <span style="color: #FF9999; font-weight: bold;">+···</span> 🔥   <span style="color: #FF9999; font-weight: bold;">+</span>
+ 50 ┤ <span style="color: #7CB8FF; font-weight: bold;">o</span>       ↗ <span style="color: #FF9999; font-weight: bold;">+···</span>     ↗   <span style="color: #FF9999; font-weight: bold;">+···+</span>
+ 40 ┤     🔥<span style="color: #FF9999; font-weight: bold;">+···</span>               🌃   
+ 30 ┤   <span style="color: #FF9999; font-weight: bold;">+···</span>                       
+ 20 ┤<span style="color: #FF9999; font-weight: bold;">+···</span>                          
+ 10 ┤                              
+  0 ─────────────────────────────────    00:00 03:00 06:00 09:00 12:00 UTC
+
+<span style="color: #7CB8FF;">Neon Sparklines - LIVE:</span>
+<span style="color: #FF9999; font-weight: bold;">Hash:    ▁▂▃▄▅▆▇█▇▆▅▄▃▂▁</span> 🔥 2.4 TH/s BURNING
+<span style="color: #66FF66; font-weight: bold;">Pool:    ▃▃▄▄▅▅▆▆▇▇█████</span> ↗ 89% CONNECTED  
+<span style="color: #7CB8FF; font-weight: bold;">Network: ▁▁▁▂▃▄▅▆▇█▇▆▅▄▃</span> 🌃 567 MB/s FLOW
+<span style="color: #66FF66; font-weight: bold;">Rewards: ████▇▇▆▆▅▅▄▄▃▃▂</span> ↗ +15.7% APY
+
+<span style="color: #7CB8FF;">Night Terminal:</span>
+<span style="color: #7CB8FF;">HASH:</span> <span style="color: #FF9999; font-weight: bold;">▃▅▇█▇▅▃▁</span> 2.4T 🔥 <span style="color: #7CB8FF;">POOL:</span> <span style="color: #66FF66; font-weight: bold;">▂▄▆████</span> 89
+<span style="color: #7CB8FF;">NET: </span> <span style="color: #FFFFFF; font-weight: bold;">████████</span> 567↗ 🌃 <span style="color: #7CB8FF;">EARN:</span> <span style="color: #66FF66; font-weight: bold;">██▇▆</span> +15.7
+<span style="color: #7CB8FF;">Status:</span> [<span style="color: #FFFFFF; font-weight: bold;">████████████</span>] 🔥 NIGHT MODE ACTIVE
+</div>
+
+<div class="ascii-title">🌃 CRYPTO PORTFOLIO TREEMAP - Shibuya Dark</div>
+<div class="ascii ascii-dark">
+<span style="color: #F0F6FC; font-weight: bold;">NIGHT TRADING PORTFOLIO ALLOCATION ANALYSIS</span>
+
+<span style="color: #F0F6FC;">BTC       </span> <span style="color: #F0F6FC; font-weight: bold;">█████████████████████████████████</span> 67% 🔥
+<span style="color: #58A6FF;">ETH       </span> <span style="color: #58A6FF; font-weight: bold;">██████████████████████</span>           45% 🌃
+<span style="color: #FF7B72;">DeFi      </span> <span style="color: #FF7B72; font-weight: bold;">████████████████</span>                 32% 🔥
+<span style="color: #3FB950;">Staking   </span> <span style="color: #3FB950; font-weight: bold;">████████████</span>                   24% ↗
+<span style="color: #484F58;">Stables   </span> <span style="color: #484F58; font-weight: bold;">████████</span>                       18% 🌃
+
+<span style="color: #58A6FF;">Total Value:</span> $247K | <span style="color: #F0F6FC;">24h Change:</span> +15.7% 🔥
+</div>
+
+<div class="ascii-title">🌃 DEFI YIELD WATERFALL - Shibuya Dark</div>
+<div class="ascii ascii-dark">
+<span style="color: #F0F6FC; font-weight: bold;">DECENTRALIZED FINANCE YIELD FARMING FLOW</span>
+
+<span style="color: #484F58;">Base Stake:</span>     <span style="color: #21262D; font-weight: bold;">████████████</span> $12.4K 🌃 (Dark Base)
+                                                      ▼
+<span style="color: #F0F6FC;">+Pool Rewards:</span>           <span style="color: #F0F6FC; font-weight: bold;">████████████████████████</span> +$8.9K 🔥 (Bright)
+                                                                                  ▼
+<span style="color: #58A6FF;">+Compound:</span>                         <span style="color: #58A6FF; font-weight: bold;">███████████████</span> +$5.2K 🌃 (Cyber)
+                                                                ▼
+<span style="color: #FF7B72;">+Flash Loans:</span>               <span style="color: #FF7B72; font-weight: bold;">█████████</span> +$3.1K 🔥 (Neon)
+                                                      ▼
+<span style="color: #F0F6FC;">Total Yield:</span>       <span style="color: #F0F6FC; font-weight: bold;">████████████████████</span> $29.6K 🔥 (Moon Mission)
+
+<span style="color: #58A6FF;">Flow:</span> Monthly DeFi Protocol Yield Generation 🌃
+</div>
+
+<div class="ascii-title">🌃 CRYPTO CORRELATION MATRIX - Shibuya Dark</div>
+<div class="ascii ascii-dark">
+<span style="color: #F0F6FC; font-weight: bold;">CRYPTOCURRENCY MARKET CORRELATION ANALYSIS</span>
+
+       BTC   ETH   DEFI  NFT   STABLE
+<span style="color: #F0F6FC;">BTC  </span> <span style="color: #F0F6FC; font-weight: bold;">████</span>  <span style="color: #58A6FF; font-weight: bold;">▓▓▓▓</span>  <span style="color: #21262D;">░░░░</span>  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  <span style="color: #21262D;">░░░░</span>  (Bitcoin)
+<span style="color: #58A6FF;">ETH  </span> <span style="color: #58A6FF; font-weight: bold;">▓▓▓▓</span>  <span style="color: #58A6FF; font-weight: bold;">████</span>  <span style="color: #58A6FF; font-weight: bold;">▓▓▓▓</span>  <span style="color: #21262D;">░░░░</span>  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  (Ethereum)
+<span style="color: #FF7B72;">DEFI</span> <span style="color: #21262D;">░░░░</span>  <span style="color: #58A6FF; font-weight: bold;">▓▓▓▓</span>  <span style="color: #FF7B72; font-weight: bold;">████</span>  <span style="color: #FF7B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #21262D;">░░░░</span>  (DeFi Tokens)
+<span style="color: #3FB950;">NFT </span> <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  <span style="color: #21262D;">░░░░</span>  <span style="color: #FF7B72; font-weight: bold;">▓▓▓▓</span>  <span style="color: #3FB950; font-weight: bold;">████</span>  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  (NFT Markets)
+<span style="color: #484F58;">STBL</span> <span style="color: #21262D;">░░░░</span>  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  <span style="color: #21262D;">░░░░</span>  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span>  <span style="color: #484F58; font-weight: bold;">████</span>  (Stablecoins)
+
+<span style="color: #F0F6FC;">Scale:</span> <span style="color: #F0F6FC; font-weight: bold;">████</span> Moon 🔥  <span style="color: #58A6FF; font-weight: bold;">▓▓▓▓</span> Bullish  <span style="color: #FF7B72; font-weight: bold;">▒▒▒▒</span> Neutral  <span style="color: #21262D;">░░░░</span> Bearish 🌃
+</div>
+</section>
+
+<section id="warm-neutral">
+<h2>🏯 Warm Neutral (The Kyoto Classical)</h2>
+<p><em>Philosophy: Traditional Japanese aesthetics meets Scandinavian hygge</em></p>
+
+<div class="ascii-title">EXECUTIVE BUSINESS SUMMARY - Warm Neutral</div>
+<div class="ascii">
+KEY PERFORMANCE INDICATORS          | QUARTERLY TREND ANALYSIS                               
+
+<span style="color: #475159;">Revenue:</span>    $2.4M  ↑12%                 | <span style="color: #5F6B72;">Monthly:</span>  <span style="color: #475159; font-weight: bold;">████████████████</span> Positive Growth                
+<span style="color: #5F6B72;">Customers:</span>  145K   ↑23%                 | <span style="color: #798186;">Customer:</span> <span style="color: #5F6B72; font-weight: bold;">████████████████</span> Strong Acquisition            
+<span style="color: #798186;">Retention:</span>  89%    →2%                  | <span style="color: #95A0A8;">Premium:</span>  <span style="color: #798186; font-weight: bold;">████████████████</span> Luxury Segment                
+<span style="color: #95A0A8;">NPS Score:</span>  72     ↑5pts                |                                                        
+
+REGIONAL PERFORMANCE                 | PRODUCT PORTFOLIO                                      
+                                     |                                                        
+<span style="color: #475159;">North America</span> <span style="color: #475159; font-weight: bold;">██████████████████████</span> 45%    | <span style="color: #475159;">Premium</span>  <span style="color: #5F6B72; font-weight: bold;">████████████████</span> 40%            
+<span style="color: #5F6B72;">Europe</span>        <span style="color: #5F6B72; font-weight: bold;">████████████████</span>       35%    | <span style="color: #5F6B72;">Standard</span> <span style="color: #798186; font-weight: bold;">██████████████</span>   35%            
+<span style="color: #798186;">Asia Pacific</span>  <span style="color: #798186; font-weight: bold;">████████</span>             15%    | <span style="color: #798186;">Artisanal</span><span style="color: #95A0A8; font-weight: bold;">██████████</span>       25%            
+<span style="color: #95A0A8;">Other</span>         <span style="color: #95A0A8; font-weight: bold;">████</span>                 5%    |                                                        
+
+BRAND SENTIMENT ANALYSIS            | QUALITY METRICS                                        
+
+<span style="color: #475159;">Luxury Appeal:</span>  92%                    | <span style="color: #475159;">Craftsmanship:</span> <span style="color: #5F6B72; font-weight: bold;">███████████████████</span> 95%          
+<span style="color: #5F6B72;">Trust Factor:</span>   87%                    | <span style="color: #5F6B72;">Materials:</span>     <span style="color: #798186; font-weight: bold;">██████████████████</span>  92%          
+<span style="color: #798186;">Authenticity:</span>  94%                    | <span style="color: #798186;">Experience:</span>    <span style="color: #95A0A8; font-weight: bold;">█████████████████</span>   89%          
+<span style="color: #95A0A8;">Accessibility:</span> 78%                    | <span style="color: #95A0A8;">Value:</span>         <span style="color: #9FAA93; font-weight: bold;">████████████████</span>    84%          
+</div>
+
+<div class="ascii-title">WATERFALL CHART - Revenue Breakdown (Warm Neutral)</div>
+<div class="ascii">
+<span style="color: #95A0A8;">Q4 Start:</span>    <span style="color: #C8CDD2; font-weight: bold;">██████████████</span> $2.4M (Sand Stone)
+                                      ▼
+<span style="color: #475159;">+New Sales:</span>          <span style="color: #475159; font-weight: bold;">█████████████████████████</span> +$4.2M (Deep Earth)
+                                                                                  ▼
+<span style="color: #5F6B72;">-Returns:</span>                       <span style="color: #798186; font-weight: bold;">██████████</span> -$0.8M (Clay)
+                                                                ▼
+<span style="color: #798186;">-Discounts:</span>                <span style="color: #95A0A8; font-weight: bold;">██████</span> -$0.3M (Warm Taupe)
+                                                      ▼
+<span style="color: #95A0A8;">Net Revenue:</span>           <span style="color: #5F6B72; font-weight: bold;">███████████████████████</span> $5.5M (Walnut)
+
+Flow: Q4 Revenue Growth Analysis
+</div>
+</section>
+
+<section id="multi-palette-comparisons">
+<h2>🌈 Multi-Palette Comparisons</h2>
+<p><em>Philosophy: Cross-palette analysis and unified visualization examples</em></p>
+
+<div class="ascii-title">🌈 SYSTEM PERFORMANCE COMPARISON - All Palettes</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">MULTI-COLORED PERFORMANCE METRICS ACROSS COLOR SYSTEMS</span>
+
+<span style="color: #434B3F;">Cool Sage:</span>    [<span style="color: #434B3F; font-weight: bold;">████████████</span><span style="color: #E8EBE4;">░░░░░░░░</span>] 67% Wellness Focused
+<span style="color: #475159;">Ocean Stone:</span>  [<span style="color: #475159; font-weight: bold;">████████████████</span><span style="color: #E5E8EA;">░░░░</span>] 78% Enterprise Ready
+<span style="color: #0F0F10;">Nordic Tech:</span>  [<span style="color: #0F0F10; font-weight: bold;">██████████████████</span><span style="color: #DADCE0;">░░</span>] 89% Developer Tools
+<span style="color: #434B3F;">Blush Mauve:</span>  [<span style="color: #434B3F; font-weight: bold;">█████████████</span><span style="color: #D0D5C8;">░░░░░░░</span>] 63% Beauty & Wellness
+<span style="color: #2C3E50;">Shibuya Light:</span>[<span style="color: #2C3E50; font-weight: bold;">████████████████████</span>] 98% Gaming Performance ⚡
+<span style="color: #F0F6FC;">Shibuya Dark:</span> [<span style="color: #58A6FF; font-weight: bold;">███████████████</span><span style="color: #21262D;">░░░░░</span>] 76% Crypto Trading 🌃
+<span style="color: #475159;">Warm Neutral:</span> [<span style="color: #475159; font-weight: bold;">█████████████████</span><span style="color: #D8DCDF;">░░░</span>] 84% Executive Dashboards
+<span style="color: #0F0F10;">Studio Nordost:</span>[<span style="color: #0F0F10; font-weight: bold;">██████████████████</span><span style="color: #E8EAED;">░░</span>] 89% Creative Projects
+<span style="color: #202124;">Datum Tech:</span>   [<span style="color: #202124; font-weight: bold;">███████████████████</span><span style="color: #DADCE0;">░</span>] 94% Data Precision
+
+<span style="color: #434B3F;">Analysis:</span> Each palette serves distinct use cases with optimized performance
+</div>
+
+<div class="ascii-title">🌈 UNIFIED HEATMAP - Cross-Palette Performance Matrix</div>
+<div class="ascii">
+<span style="color: #0F0F10; font-weight: bold;">PALETTE EFFECTIVENESS ACROSS DIFFERENT APPLICATION TYPES</span>
+
+              WELLNESS  CORP   GAMING  BEAUTY  CRYPTO  CREATIVE  DATA   
+<span style="color: #434B3F;">Cool Sage  </span> <span style="color: #434B3F; font-weight: bold;">████</span>     <span style="color: #B8C0AD;">▒▒</span>     <span style="color: #E8EBE4;">░░</span>     <span style="color: #7A8470; font-weight: bold;">▓▓▓</span>   <span style="color: #E8EBE4;">░░</span>     <span style="color: #9FAA93; font-weight: bold;">▓▓▓</span>    <span style="color: #B8C0AD;">▒▒</span>    
+<span style="color: #475159;">Ocean Stone</span> <span style="color: #C8CDD2;">▒▒</span>       <span style="color: #475159; font-weight: bold;">████</span>   <span style="color: #E5E8EA;">░░</span>     <span style="color: #B1B8BE;">▒▒</span>     <span style="color: #798186; font-weight: bold;">▓▓▓</span>   <span style="color: #B1B8BE;">▒▒</span>      <span style="color: #95A0A8; font-weight: bold;">▓▓▓</span>   
+<span style="color: #0F0F10;">Nordic Tech</span> <span style="color: #DADCE0;">░░</span>       <span style="color: #5F6368; font-weight: bold;">▓▓▓</span>   <span style="color: #9AA0A6;">▒▒</span>     <span style="color: #DADCE0;">░░</span>     <span style="color: #3C4043;">▒▒</span>     <span style="color: #5F6368;">▒▒</span>      <span style="color: #0F0F10; font-weight: bold;">████</span>  
+<span style="color: #434B3F;">Blush Mauve</span> <span style="color: #5C6655; font-weight: bold;">▓▓▓</span>     <span style="color: #B8C0AD;">░░</span>     <span style="color: #B8C0AD;">░░</span>     <span style="color: #434B3F; font-weight: bold;">████</span>  <span style="color: #D0D5C8;">░░</span>     <span style="color: #B8C0AD; font-weight: bold;">▓▓▓</span>    <span style="color: #7A8470;">▒▒</span>    
+<span style="color: #2C3E50;">Shibuya Lt </span> <span style="color: #E9ECEF;">░░</span>       <span style="color: #718096;">▒▒</span>     <span style="color: #2C3E50; font-weight: bold;">████</span>  <span style="color: #E9ECEF;">░░</span>     <span style="color: #4A6FA5;">▒▒</span>     <span style="color: #C53030; font-weight: bold;">▓▓▓</span>    <span style="color: #718096;">▒▒</span>    
+<span style="color: #F0F6FC;">Shibuya Dk </span> <span style="color: #21262D;">░░</span>       <span style="color: #484F58;">▒▒</span>     <span style="color: #FF7B72; font-weight: bold;">▓▓▓</span>   <span style="color: #21262D;">░░</span>     <span style="color: #F0F6FC; font-weight: bold;">████</span>  <span style="color: #3FB950;">▒▒</span>      <span style="color: #58A6FF; font-weight: bold;">▓▓▓</span>   
+<span style="color: #475159;">Warm Neutral</span><span style="color: #C8CDD2; font-weight: bold;">▓▓▓</span>     <span style="color: #475159; font-weight: bold;">████</span>   <span style="color: #D8DCDF;">░░</span>     <span style="color: #9FAA93; font-weight: bold;">▓▓▓</span>   <span style="color: #D8DCDF;">░░</span>     <span style="color: #798186; font-weight: bold;">▓▓▓</span>    <span style="color: #95A0A8;">▒▒</span>    
+<span style="color: #0F0F10;">Studio Nord</span> <span style="color: #B0B0B0;">▒▒</span>       <span style="color: #757575;">▒▒</span>     <span style="color: #E8EAED;">░░</span>     <span style="color: #424242;">▒▒</span>     <span style="color: #E8EAED;">░░</span>     <span style="color: #0F0F10; font-weight: bold;">████</span>   <span style="color: #424242;">▒▒</span>    
+<span style="color: #202124;">Datum Tech </span> <span style="color: #9AA0A6;">▒▒</span>       <span style="color: #5F6368; font-weight: bold;">▓▓▓</span>   <span style="color: #DADCE0;">░░</span>     <span style="color: #DADCE0;">░░</span>     <span style="color: #9AA0A6;">▒▒</span>     <span style="color: #5F6368;">▒▒</span>      <span style="color: #202124; font-weight: bold;">████</span>  
+
+<span style="color: #0F0F10;">Scale:</span> <span style="color: #0F0F10; font-weight: bold;">████</span> Optimal  <span style="color: #5F6368; font-weight: bold;">▓▓▓</span> Good  <span style="color: #9AA0A6;">▒▒</span> Fair  <span style="color: #E8EAED;">░░</span> Not Recommended
+</div>
+
+</section>
+
+<section id="typography">
+<h2>Typography System</h2>
+
+<h3>Single Font Family: Source Code Pro</h3>
+<p>Used consistently throughout for both body text and ASCII visualizations - optimal for coding and web display.</p>
+
+<h3>Responsive Typography Scale</h3>
+<ul>
+<li><strong>Display XL</strong>: clamp(2rem, 5vw, 3.5rem), weight 300</li>
+<li><strong>Headlines</strong>: clamp(1.5rem, 3vw, 2.2rem), weight 500</li>
+<li><strong>Subheads</strong>: clamp(1.2rem, 2vw, 1.6rem), weight 500</li>
+<li><strong>Body Text</strong>: clamp(12px, 1.5vw, 14px), weight 400</li>
+<li><strong>ASCII Charts</strong>: clamp(11px, 1.2vw, 13px), weight 400-700</li>
+</ul>
+
+<h3>Breakpoint Strategy</h3>
+<ul>
+<li><strong>Mobile</strong>: ≤ 768px - Smaller fonts, condensed spacing</li>
+<li><strong>Tablet</strong>: 769px - 1024px - Medium scaling</li>
+<li><strong>Desktop</strong>: 1025px - 1399px - Standard sizing</li>
+<li><strong>Large Desktop</strong>: ≥ 1400px - Maximum impact</li>
+</ul>
+
+<div class="ascii-title">FONT WEIGHT DEMONSTRATION</div>
+<div class="ascii">
+<span style="font-weight: 300; color: #434B3F;">Light Weight (300) - Display headers and elegant touches</span>
+<span style="font-weight: 400; color: #5C6655;">Regular Weight (400) - Body text and standard content</span>
+<span style="font-weight: 500; color: #7A8470;">Medium Weight (500) - Subheadings and emphasis</span>
+<span style="font-weight: 600; color: #9FAA93;">Semi-Bold (600) - Strong emphasis and labels</span>
+<span style="font-weight: 700; color: #7A8470;">Bold Weight (700) - ASCII chart titles and impact</span>
+</div>
+
+<div class="ascii-title">🌿 COOL SAGE TYPOGRAPHY SHOWCASE</div>
+<div class="ascii">
+<span style="color: #434B3F; font-weight: bold;">ASCII LETTERING EXAMPLES - Natural Green Palette</span>
+
+  ███████  ██      ██ ██████   ███████  (#434B3F)
+ ██╔════╝ ██      ██ ██╔══██╗ ██╔════╝  
+ ██║          ██      ██ ██║  ██║ ██████╗   (#5C6655)
+ ██║          ██      ██ ██║  ██║ ██╔═══╝   
+ ╚███████╗ ╚██████╔╝ ██████╔╝ ███████╗ (#7A8470)
+  ╚══════╝  ╚═════╝  ╚═════╝  ╚══════╝ 
+
+<span style="color: #9FAA93; font-weight: bold;">Block Style Headers:</span>
+████████████████████████████████████████████████ (#7A8470)
+██                    SUSTAINABLE DESIGN                     ██
+████████████████████████████████████████████████
+
+<span style="color: #B8C0AD; font-weight: bold;">Minimalist Typography:</span> Simple • Clean • Purposeful
+<span style="color: #9FAA93;">       "Less is more in sustainable design" </span>
+</div>
+
+<div class="ascii-title">🌊 OCEAN STONE TYPOGRAPHY SHOWCASE</div>
+<div class="ascii">
+<span style="color: #475159; font-weight: bold;">CORPORATE TYPOGRAPHY - Professional Blue-Grey Palette</span>
+
+███████  ██████╗  ███████  ███████   (#475159)
+██╔══██╗ ██╔══██╗ ██╔══██╗ ██╔══██╗  
+██████╔╝ ██████╔╝ ██████╔╝ ██████╔╝  (#5F6B72)
+██╔═══╝  ██╔══██╗ ██╔══██╗ ██╔══██╗  
+██║       ██║  ██║ ██║  ██║ ██║  ██║ (#798186)
+╚═╝       ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ 
+
+ENTERPRISE  ■  ARCHITECTURE  ■  CONSULTING (#95A0A8)
+
+<span style="color: #B1B8BE; font-weight: bold;">Professional Standards:</span>
+────────────────────────────────────────── 
+│    RELIABILITY  •  SECURITY  •  TRUST     │ (#C8CDD2)
+────────────────────────────────────────── 
+</div>
+
+<div class="ascii-title">⚡ SHIBUYA LIGHT TYPOGRAPHY SHOWCASE</div>
+<div class="ascii">
+<span style="color: #2C3E50; font-weight: bold;">DYNAMIC GAMING TYPOGRAPHY - High Energy Palette</span>
+
+ ▄▄▄▄▄▄▄ ▄▄▄   ▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄     (#2C3E50) ⚡
+ ▀▀▀▌▀▀▀ ▀▀▀▌  ▌ ▀▀▀▌▀▀▀ ▀▀▀▌▀▀▀   
+    ▌    ▄▄▄▌  ▌    ▌    ▄▄▄▌      (#4A6FA5) ⚡
+    ▌    ▀▀▀▌  ▌    ▌    ▀▀▀▌      
+ ▄▄▄▌▄▄▄ ▄▄▄▌  ▌ ▄▄▄▌▄▄▄ ▄▄▄▌▄▄▄  (#C53030) ⚡
+
+GAMING • STREAMING • ESPORTS • SOCIAL (#718096)
+
+<span style="color: #4A6FA5; font-weight: bold;">⚡ ELECTRIC PERFORMANCE METRICS ⚡</span>
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ 
+┃ FPS: 240  •  LATENCY: 0.8ms  •  BOOST: 98% ┃ (#E9ECEF)
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛ 
+</div>
+
+<div class="ascii-title">🌃 SHIBUYA DARK TYPOGRAPHY SHOWCASE</div>
+<div class="ascii ascii-dark">
+<span style="color: #F0F6FC; font-weight: bold;">CYBERPUNK TYPOGRAPHY - Night City Neon Palette</span>
+
+ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄ ▄▄▄▄▄▄▄     (#F0F6FC) 🔥
+▀▌▄▄▄▐▀▌ ▌▄▄▄▐▀▌▄▄▄▐▀▌▄ ▄▄▌   
+▄▌▄▌▎▄▌ ▌▎▄▌ ▌▎▄▌▄▌▄▌ ▎▄  (#58A6FF) 🌃
+▐▌▐▌▐ ▌ ▌▐ ▌ ▌▐ ▌▐▌▌▌ ▌▐  
+▐▌▐▌▎ ▐█▌▎▐█▌▎▐▐█▌▐▌ ▐█▐ (#FF7B72) 🔥
+
+<span style="color: #58A6FF;">CRYPTO • DEFI • NFT • MINING</span> 🌃
+
+<span style="color: #FF7B72; font-weight: bold;">🔥 NIGHT MODE ACTIVE 🔥</span>
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
+▓ HASH RATE: 2.4 TH/s  •  YIELD: +15.7%  •  MOON: ↗ ▓ (#3FB950)
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 
+</div>
+
+<div class="ascii-title">📊 DATUM TECH TYPOGRAPHY SHOWCASE</div>
+<div class="ascii">
+<span style="color: #202124; font-weight: bold;">PRECISION DATA TYPOGRAPHY - Mathematical Accuracy</span>
+
+██████╗ ██████╗ ███████╗█████╗      (#202124)
+██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗    
+██║  ██║██████╔╝   ██║   ███████║ (#282828)   
+██║  ██║██╔══██╗   ██║   ██╔══██║    
+██████╔╝██║  ██║   ██║   ██║  ██║ (#5F6368)
+╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ 
+
+<span style="color: #9AA0A6; font-weight: bold;">PRECISION METRICS:</span>
+Accuracy: 94.237%  •  Latency: 23.1ms  •  F1: 0.9174 (#9AA0A6)
+
+────────────────────────────────────────── 
+  MATHEMATICAL PRECISION IN EVERY MEASUREMENT  (#DADCE0)
+────────────────────────────────────────── 
+</div>
+</section>
+
+<p style="text-align: center; margin-top: 80px; color: var(--sage-8); font-style: italic;">
+🎋 Japandi Design System - Japanese Wabi-Sabi meets Scandinavian Hygge 🎋<br>
+90+ Colors • 50+ ASCII Visualizations • 9 Complete Palettes • Cultural Authenticity<br>
+Executive Dashboards • Gaming Analytics • Crypto Trading • Beauty & Wellness • Creative Workflows<br>
+Scatter Plots • Correlation Matrices • Treemaps • Waterfall Charts • Typography Showcases<br>
+Multicolored Performance Charts • Infrastructure Diagrams • Cross-Palette Analysis<br><br>
+<strong>Complete Design System for Modern Applications</strong>
+</p>
+
+</main>
+</body>
+</html>
